@@ -90,7 +90,15 @@ def calculate_center(coordinates):
 def fetch_rent_zones(city_id, token):
     """Загрузка зон аренды для города."""
     url = f"https://backyard.urentbike.ru/gatewayclient/api/v3/zones/rent?cityId={city_id}"
-    headers = {"Authorization": f"Bearer {token}"}
+    headers = {
+        'Host': 'backyard.urentbike.ru',
+        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'UR-Client-Id': 'mobile.client.ios',
+        'UR-Platform': 'iOS'
+    }
     
     response = requests.get(url, headers=headers)
     
@@ -113,7 +121,15 @@ def fetch_transports(center, token, radius_meters=10000):
         - radius - радиус поиска в метрах
     """
     url = "https://backyard.urentbike.ru/gatewayclient/api/v6/transports"
-    headers = {"Authorization": f"Bearer {token}"}
+    headers = {
+        'Host': 'backyard.urentbike.ru',
+        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'UR-Client-Id': 'mobile.client.ios',
+        'UR-Platform': 'iOS'
+    }
     
     params = {
         "startLatitude": center["latitude"],

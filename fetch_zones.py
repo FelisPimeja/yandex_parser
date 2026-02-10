@@ -71,7 +71,15 @@ def get_cities():
 def fetch_rent_zones(city_id, token):
     """Загрузка зон аренды для города."""
     url = f"https://backyard.urentbike.ru/gatewayclient/api/v3/zones/rent?cityId={city_id}"
-    headers = {"Authorization": f"Bearer {token}"}
+    headers = {
+        'Host': 'backyard.urentbike.ru',
+        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'UR-Client-Id': 'mobile.client.ios',
+        'UR-Platform': 'iOS'
+    }
     
     response = requests.get(url, headers=headers)
     
@@ -86,7 +94,15 @@ def fetch_rent_zones(city_id, token):
 def fetch_restriction_zones(rent_zone_id, token):
     """Загрузка зон ограничений для rent zone."""
     url = f"https://backyard.urentbike.ru/gatewayclient/api/v5/zones/general?rentZoneId={rent_zone_id}"
-    headers = {"Authorization": f"Bearer {token}"}
+    headers = {
+        'Host': 'backyard.urentbike.ru',
+        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'UR-Client-Id': 'mobile.client.ios',
+        'UR-Platform': 'iOS'
+    }
     
     response = requests.get(url, headers=headers)
     response.raise_for_status()
@@ -167,10 +183,9 @@ def convert_zones_to_geojson(all_zones_data, output_path):
             # Restricted zones (запрет парковки)
             for zone in general_zones.get('restrictedZones', []):
                 coordinates = zone.get('coordinates', [])
-                if not coordinates:
+                geojson_coords = convert_coordinates_to_geojson(coordinates)
+                if not geojson_coords:
                     continue
-                
-                geojson_coords = [[[point[1], point[0]] for point in coordinates]]
                 
                 feature = {
                     "type": "Feature",

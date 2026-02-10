@@ -15,6 +15,10 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 import requests
+import urllib3
+
+# Отключаем предупреждения о небезопасном SSL
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def load_config():
@@ -39,14 +43,37 @@ def load_config():
 def fetch_cities(token):
     """Загрузка списка городов из API."""
     url = "https://backyard.urentbike.ru/gatewayclient/api/v3/zones/uses"
-    headers = {"Authorization": f"Bearer {token}"}
+    
+    # Параметры запроса (координаты Москвы)
+    params = {
+        'availableCityTypes': ['available', 'frozen'],
+        'locationLat': 55.77545546986907,
+        'locationLng': 37.63290022965542
+    }
+    
+    headers = {
+        'Host': 'backyard.urentbike.ru',
+        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'UR-Client-Id': 'mobile.client.ios',
+        'UR-Platform': 'iOS'
+    }
     
     print("📥 Загружаю список городов...")
-    response = requests.get(url, headers=headers)
+    
+    response = requests.get(url, headers=headers, params=params, verify=False, timeout=30)
     
     if response.status_code == 403:
         print("❌ Ошибка 403: Токен истёк или недействителен")
         print("Обновите токен в config.json")
+        print(f"Debug: Response text: {response.text[:200]}")
+        sys.exit(1)
+    
+    if response.status_code != 200:
+        print(f"❌ Ошибка {response.status_code}")
+        print(f"Response: {response.text[:500]}")
         sys.exit(1)
     
     response.raise_for_status()
@@ -56,8 +83,8 @@ def fetch_cities(token):
     print(f"✅ Загружено городов: {len(cities)}")
     
     # Подсчёт по статусам
-    available = sum(1 for c in cities if c.get('status') == 'AVAILABLE')
-    frozen = sum(1 for c in cities if c.get('status') == 'FROZEN')
+    available = sum(1 for c in cities if c.get('cityAvailabilityStatus') == 'AVAILABLE')
+    frozen = sum(1 for c in cities if c.get('cityAvailabilityStatus') == 'FROZEN')
     print(f"   - AVAILABLE: {available}")
     print(f"   - FROZEN: {frozen}")
     
@@ -81,7 +108,8 @@ def convert_to_geojson(json_data, output_path, include_frozen=False):
     features = []
     for city in cities:
         # Фильтр по статусу
-        if not include_frozen and city.get('status') != 'AVAILABLE':
+        status = city.get('cityAvailabilityStatus', city.get('status'))
+        if not include_frozen and status != 'AVAILABLE':
             continue
         
         # Конвертация координат в GeoJSON Polygon
@@ -89,18 +117,28 @@ def convert_to_geojson(json_data, output_path, include_frozen=False):
         if not coordinates:
             continue
         
-        # Преобразование [[lat, lng], ...] -> [[lng, lat], ...]
-        geojson_coords = [[[point[1], point[0]] for point in coordinates]]
+        # Преобразование [{lat, lng}, ...] -> [[lng, lat], ...]
+        try:
+            if isinstance(coordinates[0], dict):
+                # Новый формат: {lat: ..., lng: ...}
+                geojson_coords = [[[point['lng'], point['lat']] for point in coordinates]]
+            else:
+                # Старый формат: [lat, lng]
+                geojson_coords = [[[point[1], point[0]] for point in coordinates]]
+        except (KeyError, IndexError, TypeError) as e:
+            print(f"⚠️  Пропускаю город {city.get('id')}: ошибка в координатах ({e})")
+            continue
         
         feature = {
             "type": "Feature",
             "id": city.get('id'),
             "properties": {
                 "id": city.get('id'),
-                "name": city.get('name'),
-                "status": city.get('status'),
-                "country": city.get('country'),
-                "timezone": city.get('timezone')
+                "cityId": city.get('cityId'),
+                "status": status,
+                "modalities": city.get('modalities', []),
+                "centerLat": city.get('center', {}).get('lat'),
+                "centerLng": city.get('center', {}).get('lng')
             },
             "geometry": {
                 "type": "Polygon",
@@ -152,13 +190,9 @@ def main():
     if not args.noexport:
         print("\n📍 Конвертирую в GeoJSON...")
         
-        # Только AVAILABLE города
+        # Все города (AVAILABLE + FROZEN)
         geojson_path = output_dir / 'cities.geojson'
-        convert_to_geojson(data, geojson_path, include_frozen=False)
-        
-        # Все города (включая FROZEN)
-        geojson_all_path = output_dir / 'cities_all.geojson'
-        convert_to_geojson(data, geojson_all_path, include_frozen=True)
+        convert_to_geojson(data, geojson_path, include_frozen=True)
     
     print("\n✅ Готово!")
 

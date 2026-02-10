@@ -58,7 +58,7 @@ python3 fetch_parkings.py
 ```
 
 Результат:
-- `output/cities.geojson` - границы городов
+- `output/cities.geojson` - все города (AVAILABLE + FROZEN)
 - `output/zones.geojson` - все зоны аренды и ограничений
 - `output/parkings.geojson` - парковки
 - `output/vehicles.geojson` - доступный транспорт
