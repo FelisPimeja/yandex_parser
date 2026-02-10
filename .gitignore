@@ -5,6 +5,10 @@ config.json
 *.pyc
 __pycache__/
 .DS_Store
+output/tmp/
+
+# Старые скрипты
+old_scripts/
 
 # IDE
 .vscode/
