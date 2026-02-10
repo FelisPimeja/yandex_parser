@@ -5,7 +5,7 @@ config.json
 *.pyc
 __pycache__/
 .DS_Store
-output/tmp/
+output/
 
 # Старые скрипты
 old_scripts/

@@ -131,9 +131,12 @@ def fetch_transports(center, token, radius_meters=10000):
     
     API endpoint: GET /gatewayclient/api/v6/transports
     Query params:
-        - startLatitude, startLongitude - координаты точки отправления
-        - latitude, longitude - координаты центра поиска
-        - radius - радиус поиска в метрах
+        - locationLat, locationLng - координаты центра поиска
+        - latitude, longitude - координаты центра поиска (дубликат)
+        - radiusByMeters - радиус поиска в метрах
+        - includeEmptyParkings - включить пустые парковки
+        - withEBikes - включить электросамокаты
+        - zoom - уровень зума карты
     """
     url = "https://backyard.urentbike.ru/gatewayclient/api/v6/transports"
     headers = {
@@ -147,11 +150,14 @@ def fetch_transports(center, token, radius_meters=10000):
     }
     
     params = {
-        "startLatitude": center["latitude"],
-        "startLongitude": center["longitude"],
+        "includeEmptyParkings": "false",
         "latitude": center["latitude"],
+        "locationLat": center["latitude"],
+        "locationLng": center["longitude"],
         "longitude": center["longitude"],
-        "radius": radius_meters
+        "radiusByMeters": radius_meters,
+        "withEBikes": "true",
+        "zoom": 11 if radius_meters >= 50000 else 14
     }
     
     response = requests.get(url, headers=headers, params=params, verify=False, timeout=30)
@@ -176,8 +182,14 @@ def convert_parkings_to_geojson(all_parkings_data, output_path):
         city_name = city_data['city_name']
         
         for zone_data in city_data.get('zones', []):
-            transports_data = zone_data.get('transports', {}).get('data', {})
-            parkings = transports_data.get('parkingList', [])
+            # Поддержка обоих форматов API: data и entries
+            transports_data = zone_data.get('transports', {})
+            if 'data' in transports_data:
+                parkings = transports_data['data'].get('parkingList', [])
+            elif 'entries' in transports_data:
+                parkings = transports_data['entries'].get('parkings', [])
+            else:
+                parkings = []
             
             for parking in parkings:
                 parking_id = parking.get('id')
@@ -187,8 +199,10 @@ def convert_parkings_to_geojson(all_parkings_data, output_path):
                     continue
                 seen_parking_ids.add(parking_id)
                 
-                lat = parking.get('latitude')
-                lng = parking.get('longitude')
+                # Координаты могут быть в location.lat/long или напрямую в latitude/longitude
+                location = parking.get('location', {})
+                lat = location.get('lat') or parking.get('latitude')
+                lng = location.get('long') or parking.get('longitude')
                 
                 if lat is None or lng is None:
                     continue
@@ -198,11 +212,11 @@ def convert_parkings_to_geojson(all_parkings_data, output_path):
                     "id": parking_id,
                     "properties": {
                         "id": parking_id,
-                        "name": parking.get('name'),
+                        "isEmpty": parking.get('isEmpty'),
+                        "countBikes": parking.get('countBikes'),
+                        "countScooters": parking.get('countScooters'),
                         "city": city_name,
-                        "type": "parking",
-                        "capacity": parking.get('capacity'),
-                        "address": parking.get('address')
+                        "radius": parking.get('radius')
                     },
                     "geometry": {
                         "type": "Point",
@@ -232,19 +246,27 @@ def convert_vehicles_to_geojson(all_parkings_data, output_path):
         city_name = city_data['city_name']
         
         for zone_data in city_data.get('zones', []):
-            transports_data = zone_data.get('transports', {}).get('data', {})
-            vehicles = transports_data.get('transports', [])
+            # Поддержка обоих форматов API: data и entries
+            transports_data = zone_data.get('transports', {})
+            if 'data' in transports_data:
+                vehicles = transports_data['data'].get('transports', [])
+            elif 'entries' in transports_data:
+                vehicles = transports_data['entries'].get('transports', [])
+            else:
+                vehicles = []
             
             for vehicle in vehicles:
-                vehicle_id = vehicle.get('id')
+                vehicle_id = vehicle.get('id') or vehicle.get('identifier')
                 
                 # Избегаем дубликатов транспорта
                 if vehicle_id in seen_vehicle_ids:
                     continue
                 seen_vehicle_ids.add(vehicle_id)
                 
-                lat = vehicle.get('latitude')
-                lng = vehicle.get('longitude')
+                # Координаты могут быть в location.lat/long или напрямую в latitude/longitude
+                location = vehicle.get('location', {})
+                lat = location.get('lat') or vehicle.get('latitude')
+                lng = location.get('long') or vehicle.get('longitude')
                 
                 if lat is None or lng is None:
                     continue
@@ -254,13 +276,11 @@ def convert_vehicles_to_geojson(all_parkings_data, output_path):
                     "id": vehicle_id,
                     "properties": {
                         "id": vehicle_id,
-                        "number": vehicle.get('number'),
+                        "identifier": vehicle.get('identifier'),
+                        "displayedIdentifier": vehicle.get('displayedIdentifier'),
                         "city": city_name,
-                        "type": "vehicle",
                         "vehicleType": vehicle.get('type'),
-                        "battery": vehicle.get('battery'),
-                        "model": vehicle.get('model'),
-                        "status": vehicle.get('status')
+                        "batteryPercent": vehicle.get('batteryPercent')
                     },
                     "geometry": {
                         "type": "Point",
@@ -368,10 +388,18 @@ def main():
                 try:
                     transports_data = fetch_transports(center, token, radius_meters=10000)
                     
-                    # Подсчёт парковок и транспорта
-                    data = transports_data.get('data', {})
-                    parkings = data.get('parkingList', [])
-                    vehicles = data.get('transports', [])
+                    # Подсчёт парковок и транспорта (поддержка обоих форматов)
+                    if 'data' in transports_data:
+                        data = transports_data['data']
+                        parkings = data.get('parkingList', [])
+                        vehicles = data.get('transports', [])
+                    elif 'entries' in transports_data:
+                        entries = transports_data['entries']
+                        parkings = entries.get('parkings', [])
+                        vehicles = entries.get('transports', [])
+                    else:
+                        parkings = []
+                        vehicles = []
                     
                     total_parkings += len(parkings)
                     total_vehicles += len(vehicles)
