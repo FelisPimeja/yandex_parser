@@ -1,0 +1,3735 @@
+{
+  "entries": {
+    "parkings": [
+      {
+        "id": "636a7b6af21147019e45e3cf",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.60412202645911,
+          "long": 39.73268473952399
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fddd4efa3838d0001516503",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.572519194499314,
+          "long": 39.73340213298798
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "67ef8c735b6627fb76f96f06",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 3,
+        "location": {
+          "lat": 43.591483,
+          "long": 39.720105
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e71e1202d2aef00012d6024",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 5,
+        "location": {
+          "lat": 43.588216043236514,
+          "long": 39.71758299991799
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdb36ac4d97d000010527c7",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.58581744698842,
+          "long": 39.719468057155616
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdb0a474d97d0000188d772",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 3,
+        "location": {
+          "lat": 43.58546383057866,
+          "long": 39.71905222989215
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e4501cf16776f0001649c61",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 7,
+        "location": {
+          "lat": 43.58939612946286,
+          "long": 39.72224947472331
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "65b24b05143e973e7209ef52",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 9,
+        "location": {
+          "lat": 43.5904553085576,
+          "long": 39.72704865038395
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "67ef92865b6627fb760afbc7",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.584916,
+          "long": 39.719142
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6183c38ddc030be15671b622",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 5,
+        "location": {
+          "lat": 43.5939198101341,
+          "long": 39.72208383616393
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "6183c2c3b851907ccfdd677a",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 10,
+        "location": {
+          "lat": 43.5943789255597,
+          "long": 39.72097277641297
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "668429e646484d98c4dc1568",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.594839,
+          "long": 39.725479
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5dbd35ceab68460001e35bc4",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 7,
+        "location": {
+          "lat": 43.56906697705005,
+          "long": 39.740068420657295
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fccb4b8ba85e500018c41d5",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.570359130517964,
+          "long": 39.738021795234886
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fda28c0959e380001c6774d",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 3,
+        "location": {
+          "lat": 43.60578056227099,
+          "long": 39.72784662014862
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e1ee7bf9d497400017fbc59",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.594860429647056,
+          "long": 39.72145364091746
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "64d8d9718b38827406f4ac94",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 14,
+        "location": {
+          "lat": 43.59221778680498,
+          "long": 39.72685888409615
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e52a03716776f0001e55134",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.566795105525244,
+          "long": 39.737991392612464
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e0ae5efc81c660001d93d5b",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 8,
+        "location": {
+          "lat": 43.576928306469476,
+          "long": 39.72640693187714
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6694d40a5923545f50465c7c",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 11,
+        "location": {
+          "lat": 43.59597085798567,
+          "long": 39.72260758280755
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e0af740c81c660001fb4b2c",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 11,
+        "location": {
+          "lat": 43.5725088315003,
+          "long": 39.72966576419355
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "67a5ff52293b2abfe7320400",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.569887,
+          "long": 39.733442
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fddb5a2a3838d00016224ad",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.5839134355425,
+          "long": 39.75369036197663
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "61d8248c5c21b195719a564c",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 5,
+        "location": {
+          "lat": 43.5778804301775,
+          "long": 39.72746372222901
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "68285da6965606c0bc708704",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.595161,
+          "long": 39.72322
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "61d82bef0a42404b613e9019",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.57631070762093,
+          "long": 39.730081301334955
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "60d31ab685789c06f14e4415",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 8,
+        "location": {
+          "lat": 43.557924261265285,
+          "long": 39.792653327463825
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdb5f8b4d97d00001aa4475",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.61530444641402,
+          "long": 39.739466607570655
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e60cc61e1544d0001c82c6e",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 7,
+        "location": {
+          "lat": 43.578369686256195,
+          "long": 39.724475881286395
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fda2987959e380001d222a9",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.60408728793741,
+          "long": 39.728460282775494
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e522aee16776f0001867b35",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 3,
+        "location": {
+          "lat": 43.59573870342397,
+          "long": 39.72995281219483
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "685a3f79210a479beae916f9",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 8,
+        "location": {
+          "lat": 43.592969,
+          "long": 39.723172
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e722e222d2aef0001ca8823",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 5,
+        "location": {
+          "lat": 43.58832365595953,
+          "long": 39.72144216299058
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "67f38606fb67d0837527a966",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 9,
+        "location": {
+          "lat": 43.581070998135914,
+          "long": 39.72125707461627
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5d8dcaaeaac1200001934b62",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.60033840990327,
+          "long": 39.73077893257142
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6684234d46484d98c4d11629",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.595852,
+          "long": 39.731809
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fd9e686959e3800016d4988",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 14,
+        "location": {
+          "lat": 43.62696628359072,
+          "long": 39.71806257963181
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e60a86be1544d00019bbaf6",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.56894136943689,
+          "long": 39.739222484332394
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5f4f4b4c9b11db00016f9191",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.62014149024788,
+          "long": 39.74247336387635
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fddd35da3838d00013d4765",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.567200237185574,
+          "long": 39.73703116178513
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5ec3994200d0e8000167f5b0",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.62961444423518,
+          "long": 39.71609383821488
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "60d319866c1d76b10a1236ef",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.55502091234106,
+          "long": 39.79377298464496
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5e0af446c81c660001f2d28d",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.57589673351285,
+          "long": 39.72509397960456
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6471ffef542ae5c2ef21526c",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 3,
+        "location": {
+          "lat": 43.58358897044362,
+          "long": 39.72116187214852
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fccb41fba85e500017cf02a",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 7,
+        "location": {
+          "lat": 43.56604776691372,
+          "long": 39.745118021965034
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6818b56a810537ff261c7b5b",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.582962,
+          "long": 39.722305
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "643eb18b2d43b781726e8204",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.58394063613001,
+          "long": 39.72025394439698
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6447f19cf315014ac6ca55bb",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.591313485041525,
+          "long": 39.72681194543839
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "5e33e9022ae3370001a2c04e",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.59297637963004,
+          "long": 39.72504436969758
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "685a5f91210a479bea61147c",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.58049966343139,
+          "long": 39.72041756233733
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6687b7ab99450be3496ad2a2",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 11,
+        "location": {
+          "lat": 43.600211,
+          "long": 39.729376
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "654b5d815b10b0d20b744a73",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 8,
+        "location": {
+          "lat": 43.58232217978282,
+          "long": 39.72103983163834
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "63e61ae56804de8bb8691d2e",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.59316869446212,
+          "long": 39.72781777381706
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdaff2b4d97d000016ecd2e",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 7,
+        "location": {
+          "lat": 43.58406204004386,
+          "long": 39.71765888577739
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5dc94cbc900ce00001613112",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.59381369761256,
+          "long": 39.72825765611956
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "654b57925b10b0d20b654bbe",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.58168797040053,
+          "long": 39.71934006549422
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6242ac64c354781a280b881b",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.58953009609424,
+          "long": 39.742293655872345
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "5fccaaffba85e50001d5e07a",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 6,
+        "location": {
+          "lat": 43.579370765019824,
+          "long": 39.723228514194496
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6037aac68c07c7d669e0707b",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.58227098044413,
+          "long": 39.71865400671976
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "5e2c329033763d000123bc90",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 12,
+        "location": {
+          "lat": 43.58396589380743,
+          "long": 39.715356230735786
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "65e43d128005d970d53a8917",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 8,
+        "location": {
+          "lat": 43.584715847708004,
+          "long": 39.718902111053474
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "61d81e370a42404b613cd11a",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 4,
+        "location": {
+          "lat": 43.58257857585889,
+          "long": 39.720138654075726
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "653a50c8802be9ec291194bc",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 8,
+        "location": {
+          "lat": 43.581405099971725,
+          "long": 39.72287982702256
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fcc936fba85e5000129664a",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 13,
+        "location": {
+          "lat": 43.606256518281604,
+          "long": 39.73454341292382
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6684361646484d98c4f2f2f1",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 5,
+        "location": {
+          "lat": 43.5925292578475,
+          "long": 39.725769907236
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fd9e72e959e380001778ea7",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.626420153322606,
+          "long": 39.716572969171786
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fd9f4cf959e380001e4c4b9",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 9,
+        "location": {
+          "lat": 43.61087678301031,
+          "long": 39.72981601953507
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "61d830f0486f04f46378a70e",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 5,
+        "location": {
+          "lat": 43.56927308090615,
+          "long": 39.739639874110004
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6684240e46484d98c4d29609",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 14,
+        "location": {
+          "lat": 43.571467,
+          "long": 39.729615
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "65be17dc1f1e8b3b90f987df",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 16,
+        "location": {
+          "lat": 43.59418078393467,
+          "long": 39.72268670797349
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fda27c4959e380001be0997",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 14,
+        "location": {
+          "lat": 43.60476487982182,
+          "long": 39.73297025046303
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdb66cf4d97d0000143d0e7",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 2,
+        "location": {
+          "lat": 43.59535676572375,
+          "long": 39.731516463112776
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5dc42bcd900ce000018ed86f",
+        "isEmpty": false,
+        "countBikes": 0,
+        "countScooters": 9,
+        "location": {
+          "lat": 43.5749521159471,
+          "long": 39.72891479730607
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdb74b84d97d0000135b45f",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.57937654744805,
+          "long": 39.72516339072141
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6684294346484d98c4da7448",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.590033,
+          "long": 39.720897
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6242d313205a94b3dfb221ce",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.57586929404805,
+          "long": 39.76372718811036
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "66842a1446484d98c4dc67da",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.5800361630069,
+          "long": 39.7285614574118
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6242d11ef66237c3a3c61643",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.56906785298127,
+          "long": 39.7554498910904
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdda5e4a3838d0001ecfe2e",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.58888802428233,
+          "long": 39.74723562598229
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "638ca48c3e212e42ddeda54f",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.581223206867335,
+          "long": 39.764934752242524
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "66842b2b46484d98c4de8fea",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.6140387372878,
+          "long": 39.7393752249494
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5d8100261ca295000113cd2b",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.59136544428877,
+          "long": 39.72184445716747
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6628f764bd43823488a90f83",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.66090011052914,
+          "long": 39.662414789199836
+        },
+        "radius": 25,
+        "polygon": null
+      },
+      {
+        "id": "5fd9f40a959e380001d5a1b4",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.61334699332115,
+          "long": 39.72783789038659
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdb6db94d97d00001d618b7",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.58156442416189,
+          "long": 39.723003208637245
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6800aead5328e300e38ce534",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.596633226249274,
+          "long": 39.72219720482827
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "6242fff990176245fe5d37f3",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.60822973907107,
+          "long": 39.74798262119294
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "62ad7777fa28e0ce0ae02c66",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.658831697665576,
+          "long": 39.651235526562786
+        },
+        "radius": null,
+        "polygon": [
+          {
+            "lat": 43.65890203318185,
+            "long": 39.65126954019226
+          },
+          {
+            "lat": 43.65878414739111,
+            "long": 39.65132123975245
+          },
+          {
+            "lat": 43.65876018499281,
+            "long": 39.65120141206248
+          },
+          {
+            "lat": 43.65888156136399,
+            "long": 39.65115058412934
+          },
+          {
+            "lat": 43.65890203318185,
+            "long": 39.65126954019226
+          }
+        ]
+      },
+      {
+        "id": "5fdde8eda3838d0001f2c5c9",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.5501752085784,
+          "long": 39.78040798093966
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdb65c84d97d000012c830e",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.62959308856761,
+          "long": 39.747727811336524
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "62245ee62c62deae8055b819",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.59095683371183,
+          "long": 39.73509343145382
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdde505a3838d00019058d3",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.561173331782435,
+          "long": 39.75999087095261
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "624165aae50967315e8b6a8c",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.63177836301978,
+          "long": 39.695287713151885
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "661fa5f37208c98d9ea62d47",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.66551229538058,
+          "long": 39.65096309781075
+        },
+        "radius": 30,
+        "polygon": null
+      },
+      {
+        "id": "5fdda059a3838d00017f59f2",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.57836425870083,
+          "long": 39.73168283700944
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fddcf12a3838d00010fa3ce",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.56971563934908,
+          "long": 39.73929601520186
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "5fdda0bca3838d00018755c8",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.57745385000552,
+          "long": 39.7319563159064
+        },
+        "radius": 50,
+        "polygon": null
+      },
+      {
+        "id": "5fdda541a3838d0001dff01e",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.58640759308343,
+          "long": 39.7531557909015
+        },
+        "radius": 15,
+        "polygon": null
+      },
+      {
+        "id": "63e9277a78733d1f0c4e21a6",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.61829681850864,
+          "long": 39.72340017557145
+        },
+        "radius": 20,
+        "polygon": null
+      },
+      {
+        "id": "5fcc9229ba85e500010164ca",
+        "isEmpty": true,
+        "countBikes": 0,
+        "countScooters": 0,
+        "location": {
+          "lat": 43.59781716163681,
+          "long": 39.725360870361335
+        },
+        "radius": 15,
+        "polygon": null
+      }
+    ],
+    "transports": [
+      {
+        "batteryPercent": 33,
+        "identifier": "S.449151",
+        "displayedIdentifier": "449-151",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5815315246582,
+          "long": 39.733421325683594
+        }
+      },
+      {
+        "batteryPercent": 74,
+        "identifier": "S.472535",
+        "displayedIdentifier": "472-535",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58399200439453,
+          "long": 39.718170166015625
+        }
+      },
+      {
+        "batteryPercent": 47,
+        "identifier": "S.477650",
+        "displayedIdentifier": "477-650",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58600997924805,
+          "long": 39.74618148803711
+        }
+      },
+      {
+        "batteryPercent": 53,
+        "identifier": "S.504162",
+        "displayedIdentifier": "504-162",
+        "type": "EBike",
+        "location": {
+          "lat": 43.60310233333333,
+          "long": 39.731175666666665
+        }
+      },
+      {
+        "batteryPercent": 17,
+        "identifier": "S.487877",
+        "displayedIdentifier": "487-877",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57417297363281,
+          "long": 39.73203659057617
+        }
+      },
+      {
+        "batteryPercent": 46,
+        "identifier": "S.175550",
+        "displayedIdentifier": "175-550",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60230255126953,
+          "long": 39.73495101928711
+        }
+      },
+      {
+        "batteryPercent": 94,
+        "identifier": "S.472610",
+        "displayedIdentifier": "472-610",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.608272552490234,
+          "long": 39.72336196899414
+        }
+      },
+      {
+        "batteryPercent": 36,
+        "identifier": "S.477508",
+        "displayedIdentifier": "477-508",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.607601165771484,
+          "long": 39.721153259277344
+        }
+      },
+      {
+        "batteryPercent": 43,
+        "identifier": "S.148767",
+        "displayedIdentifier": "148-767",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59111785888672,
+          "long": 39.73973846435547
+        }
+      },
+      {
+        "batteryPercent": 98,
+        "identifier": "S.487809",
+        "displayedIdentifier": "487-809",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60528564453125,
+          "long": 39.72692108154297
+        }
+      },
+      {
+        "batteryPercent": 97,
+        "identifier": "S.474168",
+        "displayedIdentifier": "474-168",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.589115142822266,
+          "long": 39.719825744628906
+        }
+      },
+      {
+        "batteryPercent": 66,
+        "identifier": "S.505145",
+        "displayedIdentifier": "505-145",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59245183333334,
+          "long": 39.7252445
+        }
+      },
+      {
+        "batteryPercent": 62,
+        "identifier": "S.178292",
+        "displayedIdentifier": "178-292",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.592594146728516,
+          "long": 39.7340087890625
+        }
+      },
+      {
+        "batteryPercent": 77,
+        "identifier": "S.504485",
+        "displayedIdentifier": "504-485",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58724399999999,
+          "long": 39.7221595
+        }
+      },
+      {
+        "batteryPercent": 48,
+        "identifier": "S.505182",
+        "displayedIdentifier": "505-182",
+        "type": "EBike",
+        "location": {
+          "lat": 43.5688665,
+          "long": 39.740283999999996
+        }
+      },
+      {
+        "batteryPercent": 84,
+        "identifier": "S.505136",
+        "displayedIdentifier": "505-136",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58261383333333,
+          "long": 39.723956666666666
+        }
+      },
+      {
+        "batteryPercent": 62,
+        "identifier": "S.484513",
+        "displayedIdentifier": "484-513",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59696960449219,
+          "long": 39.74390411376953
+        }
+      },
+      {
+        "batteryPercent": 30,
+        "identifier": "S.481794",
+        "displayedIdentifier": "481-794",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60428237915039,
+          "long": 39.72513961791992
+        }
+      },
+      {
+        "batteryPercent": 90,
+        "identifier": "S.478255",
+        "displayedIdentifier": "478-255",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.606048583984375,
+          "long": 39.73917770385742
+        }
+      },
+      {
+        "batteryPercent": 45,
+        "identifier": "S.480893",
+        "displayedIdentifier": "480-893",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59299850463867,
+          "long": 39.72795104980469
+        }
+      },
+      {
+        "batteryPercent": 17,
+        "identifier": "S.472511",
+        "displayedIdentifier": "472-511",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58945083618164,
+          "long": 39.738460540771484
+        }
+      },
+      {
+        "batteryPercent": 25,
+        "identifier": "S.501287",
+        "displayedIdentifier": "501-287",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58112733333334,
+          "long": 39.73565
+        }
+      },
+      {
+        "batteryPercent": 58,
+        "identifier": "S.615265",
+        "displayedIdentifier": "615-265",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62157440185547,
+          "long": 39.71796417236328
+        }
+      },
+      {
+        "batteryPercent": 74,
+        "identifier": "S.502539",
+        "displayedIdentifier": "502-539",
+        "type": "EBike",
+        "location": {
+          "lat": 43.580536,
+          "long": 39.719885
+        }
+      },
+      {
+        "batteryPercent": 33,
+        "identifier": "S.472100",
+        "displayedIdentifier": "472-100",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5996208190918,
+          "long": 39.723873138427734
+        }
+      },
+      {
+        "batteryPercent": 75,
+        "identifier": "S.480913",
+        "displayedIdentifier": "480-913",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57522964477539,
+          "long": 39.73142623901367
+        }
+      },
+      {
+        "batteryPercent": 56,
+        "identifier": "S.472988",
+        "displayedIdentifier": "472-988",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57435989379883,
+          "long": 39.736446380615234
+        }
+      },
+      {
+        "batteryPercent": 44,
+        "identifier": "S.620098",
+        "displayedIdentifier": "620-098",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.576377868652344,
+          "long": 39.7243537902832
+        }
+      },
+      {
+        "batteryPercent": 12,
+        "identifier": "S.473268",
+        "displayedIdentifier": "473-268",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59031295776367,
+          "long": 39.726924896240234
+        }
+      },
+      {
+        "batteryPercent": 20,
+        "identifier": "S.501760",
+        "displayedIdentifier": "501-760",
+        "type": "EBike",
+        "location": {
+          "lat": 43.57362383333334,
+          "long": 39.73673516666667
+        }
+      },
+      {
+        "batteryPercent": 17,
+        "identifier": "S.477729",
+        "displayedIdentifier": "477-729",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59031677246094,
+          "long": 39.72694396972656
+        }
+      },
+      {
+        "batteryPercent": 93,
+        "identifier": "S.479774",
+        "displayedIdentifier": "479-774",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58437728881836,
+          "long": 39.72056579589844
+        }
+      },
+      {
+        "batteryPercent": 36,
+        "identifier": "S.472408",
+        "displayedIdentifier": "472-408",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.55039978027344,
+          "long": 39.79472732543945
+        }
+      },
+      {
+        "batteryPercent": 81,
+        "identifier": "S.481033",
+        "displayedIdentifier": "481-033",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.578758239746094,
+          "long": 39.729183197021484
+        }
+      },
+      {
+        "batteryPercent": 83,
+        "identifier": "S.504082",
+        "displayedIdentifier": "504-082",
+        "type": "EBike",
+        "location": {
+          "lat": 43.56497266666667,
+          "long": 39.80021033333333
+        }
+      },
+      {
+        "batteryPercent": 96,
+        "identifier": "S.475483",
+        "displayedIdentifier": "475-483",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58397674560547,
+          "long": 39.71821594238281
+        }
+      },
+      {
+        "batteryPercent": 53,
+        "identifier": "S.504902",
+        "displayedIdentifier": "504-902",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59459016666666,
+          "long": 39.75077733333333
+        }
+      },
+      {
+        "batteryPercent": 30,
+        "identifier": "S.137281",
+        "displayedIdentifier": "137-281",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62310028076172,
+          "long": 39.72178268432617
+        }
+      },
+      {
+        "batteryPercent": 15,
+        "identifier": "S.617019",
+        "displayedIdentifier": "617-019",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.597251892089844,
+          "long": 39.73395919799805
+        }
+      },
+      {
+        "batteryPercent": 97,
+        "identifier": "S.494079",
+        "displayedIdentifier": "494-079",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61289978027344,
+          "long": 39.7298469543457
+        }
+      },
+      {
+        "batteryPercent": 15,
+        "identifier": "S.475705",
+        "displayedIdentifier": "475-705",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62263870239258,
+          "long": 39.716373443603516
+        }
+      },
+      {
+        "batteryPercent": 41,
+        "identifier": "S.503120",
+        "displayedIdentifier": "503-120",
+        "type": "EBike",
+        "location": {
+          "lat": 43.61484116666667,
+          "long": 39.74468366666667
+        }
+      },
+      {
+        "batteryPercent": 23,
+        "identifier": "S.480920",
+        "displayedIdentifier": "480-920",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59288024902344,
+          "long": 39.72486114501953
+        }
+      },
+      {
+        "batteryPercent": 41,
+        "identifier": "S.488278",
+        "displayedIdentifier": "488-278",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58369064331055,
+          "long": 39.72128677368164
+        }
+      },
+      {
+        "batteryPercent": 100,
+        "identifier": "S.489563",
+        "displayedIdentifier": "489-563",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.581764221191406,
+          "long": 39.71956253051758
+        }
+      },
+      {
+        "batteryPercent": 81,
+        "identifier": "S.501916",
+        "displayedIdentifier": "501-916",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58610133333333,
+          "long": 39.72550833333333
+        }
+      },
+      {
+        "batteryPercent": 33,
+        "identifier": "S.620350",
+        "displayedIdentifier": "620-350",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61943054199219,
+          "long": 39.715049743652344
+        }
+      },
+      {
+        "batteryPercent": 60,
+        "identifier": "S.504320",
+        "displayedIdentifier": "504-320",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58649833333334,
+          "long": 39.75848800000001
+        }
+      },
+      {
+        "batteryPercent": 48,
+        "identifier": "S.617683",
+        "displayedIdentifier": "617-683",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.588130950927734,
+          "long": 39.7174072265625
+        }
+      },
+      {
+        "batteryPercent": 30,
+        "identifier": "S.157623",
+        "displayedIdentifier": "157-623",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58644104003906,
+          "long": 39.75751876831055
+        }
+      },
+      {
+        "batteryPercent": 89,
+        "identifier": "S.614794",
+        "displayedIdentifier": "614-794",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.609107971191406,
+          "long": 39.728515625
+        }
+      },
+      {
+        "batteryPercent": 33,
+        "identifier": "S.504457",
+        "displayedIdentifier": "504-457",
+        "type": "EBike",
+        "location": {
+          "lat": 43.57239533333333,
+          "long": 39.759769666666664
+        }
+      },
+      {
+        "batteryPercent": 45,
+        "identifier": "S.479401",
+        "displayedIdentifier": "479-401",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56513214111328,
+          "long": 39.749488830566406
+        }
+      },
+      {
+        "batteryPercent": 78,
+        "identifier": "S.501682",
+        "displayedIdentifier": "501-682",
+        "type": "EBike",
+        "location": {
+          "lat": 43.633395,
+          "long": 39.75013033333333
+        }
+      },
+      {
+        "batteryPercent": 23,
+        "identifier": "S.457202",
+        "displayedIdentifier": "457-202",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.597686767578125,
+          "long": 39.715579986572266
+        }
+      },
+      {
+        "batteryPercent": 65,
+        "identifier": "S.450319",
+        "displayedIdentifier": "450-319",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5881233215332,
+          "long": 39.7174186706543
+        }
+      },
+      {
+        "batteryPercent": 27,
+        "identifier": "S.478984",
+        "displayedIdentifier": "478-984",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58905792236328,
+          "long": 39.760074615478516
+        }
+      },
+      {
+        "batteryPercent": 36,
+        "identifier": "S.484881",
+        "displayedIdentifier": "484-881",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57130813598633,
+          "long": 39.72960662841797
+        }
+      },
+      {
+        "batteryPercent": 90,
+        "identifier": "S.501601",
+        "displayedIdentifier": "501-601",
+        "type": "EBike",
+        "location": {
+          "lat": 43.60782866666667,
+          "long": 39.72677233333333
+        }
+      },
+      {
+        "batteryPercent": 17,
+        "identifier": "S.480951",
+        "displayedIdentifier": "480-951",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.591644287109375,
+          "long": 39.73529052734375
+        }
+      },
+      {
+        "batteryPercent": 73,
+        "identifier": "S.475494",
+        "displayedIdentifier": "475-494",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59027862548828,
+          "long": 39.722930908203125
+        }
+      },
+      {
+        "batteryPercent": 10,
+        "identifier": "S.480014",
+        "displayedIdentifier": "480-014",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61565399169922,
+          "long": 39.72591781616211
+        }
+      },
+      {
+        "batteryPercent": 79,
+        "identifier": "S.502540",
+        "displayedIdentifier": "502-540",
+        "type": "EBike",
+        "location": {
+          "lat": 43.57137550000001,
+          "long": 39.74944283333333
+        }
+      },
+      {
+        "batteryPercent": 51,
+        "identifier": "S.473541",
+        "displayedIdentifier": "473-541",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56953048706055,
+          "long": 39.739501953125
+        }
+      },
+      {
+        "batteryPercent": 38,
+        "identifier": "S.478187",
+        "displayedIdentifier": "478-187",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.593231201171875,
+          "long": 39.72146987915039
+        }
+      },
+      {
+        "batteryPercent": 38,
+        "identifier": "S.615861",
+        "displayedIdentifier": "615-861",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58371353149414,
+          "long": 39.72138214111328
+        }
+      },
+      {
+        "batteryPercent": 39,
+        "identifier": "S.481035",
+        "displayedIdentifier": "481-035",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57594299316406,
+          "long": 39.7362060546875
+        }
+      },
+      {
+        "batteryPercent": 68,
+        "identifier": "S.140009",
+        "displayedIdentifier": "140-009",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60358428955078,
+          "long": 39.735538482666016
+        }
+      },
+      {
+        "batteryPercent": 79,
+        "identifier": "S.500696",
+        "displayedIdentifier": "500-696",
+        "type": "EBike",
+        "location": {
+          "lat": 43.589681166666665,
+          "long": 39.728761
+        }
+      },
+      {
+        "batteryPercent": 81,
+        "identifier": "S.481195",
+        "displayedIdentifier": "481-195",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.588504791259766,
+          "long": 39.71658706665039
+        }
+      },
+      {
+        "batteryPercent": 55,
+        "identifier": "S.503180",
+        "displayedIdentifier": "503-180",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59162566666667,
+          "long": 39.73531416666666
+        }
+      },
+      {
+        "batteryPercent": 34,
+        "identifier": "S.155570",
+        "displayedIdentifier": "155-570",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61563491821289,
+          "long": 39.72592544555664
+        }
+      },
+      {
+        "batteryPercent": 70,
+        "identifier": "S.479835",
+        "displayedIdentifier": "479-835",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.622066497802734,
+          "long": 39.74519348144531
+        }
+      },
+      {
+        "batteryPercent": 82,
+        "identifier": "S.148060",
+        "displayedIdentifier": "148-060",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59577178955078,
+          "long": 39.732017517089844
+        }
+      },
+      {
+        "batteryPercent": 92,
+        "identifier": "S.138121",
+        "displayedIdentifier": "138-121",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5811882019043,
+          "long": 39.738670349121094
+        }
+      },
+      {
+        "batteryPercent": 89,
+        "identifier": "S.158483",
+        "displayedIdentifier": "158-483",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62723159790039,
+          "long": 39.716064453125
+        }
+      },
+      {
+        "batteryPercent": 60,
+        "identifier": "S.617998",
+        "displayedIdentifier": "617-998",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56644821166992,
+          "long": 39.74477005004883
+        }
+      },
+      {
+        "batteryPercent": 46,
+        "identifier": "S.472895",
+        "displayedIdentifier": "472-895",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62097930908203,
+          "long": 39.74273681640625
+        }
+      },
+      {
+        "batteryPercent": 98,
+        "identifier": "S.472996",
+        "displayedIdentifier": "472-996",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59736633300781,
+          "long": 39.71686553955078
+        }
+      },
+      {
+        "batteryPercent": 46,
+        "identifier": "S.454459",
+        "displayedIdentifier": "454-459",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58564758300781,
+          "long": 39.725040435791016
+        }
+      },
+      {
+        "batteryPercent": 82,
+        "identifier": "S.472517",
+        "displayedIdentifier": "472-517",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58103561401367,
+          "long": 39.73371124267578
+        }
+      },
+      {
+        "batteryPercent": 64,
+        "identifier": "S.417709",
+        "displayedIdentifier": "417-709",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60771179199219,
+          "long": 39.73411178588867
+        }
+      },
+      {
+        "batteryPercent": 98,
+        "identifier": "S.152186",
+        "displayedIdentifier": "152-186",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.593563079833984,
+          "long": 39.732696533203125
+        }
+      },
+      {
+        "batteryPercent": 98,
+        "identifier": "S.486435",
+        "displayedIdentifier": "486-435",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.603485107421875,
+          "long": 39.72224426269531
+        }
+      },
+      {
+        "batteryPercent": 39,
+        "identifier": "S.504418",
+        "displayedIdentifier": "504-418",
+        "type": "EBike",
+        "location": {
+          "lat": 43.592059166666665,
+          "long": 39.74114616666667
+        }
+      },
+      {
+        "batteryPercent": 16,
+        "identifier": "S.504417",
+        "displayedIdentifier": "504-417",
+        "type": "EBike",
+        "location": {
+          "lat": 43.57362666666666,
+          "long": 39.73674416666667
+        }
+      },
+      {
+        "batteryPercent": 17,
+        "identifier": "S.501475",
+        "displayedIdentifier": "501-475",
+        "type": "EBike",
+        "location": {
+          "lat": 43.621015166666666,
+          "long": 39.74415166666667
+        }
+      },
+      {
+        "batteryPercent": 72,
+        "identifier": "S.479670",
+        "displayedIdentifier": "479-670",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.578800201416016,
+          "long": 39.729705810546875
+        }
+      },
+      {
+        "batteryPercent": 24,
+        "identifier": "S.472628",
+        "displayedIdentifier": "472-628",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.581302642822266,
+          "long": 39.72269821166992
+        }
+      },
+      {
+        "batteryPercent": 59,
+        "identifier": "S.617965",
+        "displayedIdentifier": "617-965",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60091018676758,
+          "long": 39.73143005371094
+        }
+      },
+      {
+        "batteryPercent": 44,
+        "identifier": "S.482000",
+        "displayedIdentifier": "482-000",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60129928588867,
+          "long": 39.731815338134766
+        }
+      },
+      {
+        "batteryPercent": 41,
+        "identifier": "S.481004",
+        "displayedIdentifier": "481-004",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.573997497558594,
+          "long": 39.735618591308594
+        }
+      },
+      {
+        "batteryPercent": 34,
+        "identifier": "S.503857",
+        "displayedIdentifier": "503-857",
+        "type": "EBike",
+        "location": {
+          "lat": 43.590457,
+          "long": 39.72676883333334
+        }
+      },
+      {
+        "batteryPercent": 39,
+        "identifier": "S.476567",
+        "displayedIdentifier": "476-567",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.587772369384766,
+          "long": 39.717803955078125
+        }
+      },
+      {
+        "batteryPercent": 93,
+        "identifier": "S.501374",
+        "displayedIdentifier": "501-374",
+        "type": "EBike",
+        "location": {
+          "lat": 43.601815,
+          "long": 39.727075
+        }
+      },
+      {
+        "batteryPercent": 78,
+        "identifier": "S.478101",
+        "displayedIdentifier": "478-101",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60184097290039,
+          "long": 39.73090744018555
+        }
+      },
+      {
+        "batteryPercent": 66,
+        "identifier": "S.618531",
+        "displayedIdentifier": "618-531",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58634948730469,
+          "long": 39.72464370727539
+        }
+      },
+      {
+        "batteryPercent": 15,
+        "identifier": "S.472383",
+        "displayedIdentifier": "472-383",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61555480957031,
+          "long": 39.74221420288086
+        }
+      },
+      {
+        "batteryPercent": 20,
+        "identifier": "S.481354",
+        "displayedIdentifier": "481-354",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.55419158935547,
+          "long": 39.79399871826172
+        }
+      },
+      {
+        "batteryPercent": 53,
+        "identifier": "S.489348",
+        "displayedIdentifier": "489-348",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58791732788086,
+          "long": 39.717891693115234
+        }
+      },
+      {
+        "batteryPercent": 18,
+        "identifier": "S.479915",
+        "displayedIdentifier": "479-915",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60400390625,
+          "long": 39.7280158996582
+        }
+      },
+      {
+        "batteryPercent": 68,
+        "identifier": "S.479971",
+        "displayedIdentifier": "479-971",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5772590637207,
+          "long": 39.742855072021484
+        }
+      },
+      {
+        "batteryPercent": 48,
+        "identifier": "S.490567",
+        "displayedIdentifier": "490-567",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60612106323242,
+          "long": 39.73359680175781
+        }
+      },
+      {
+        "batteryPercent": 68,
+        "identifier": "S.471460",
+        "displayedIdentifier": "471-460",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60318374633789,
+          "long": 39.71446228027344
+        }
+      },
+      {
+        "batteryPercent": 73,
+        "identifier": "S.500541",
+        "displayedIdentifier": "500-541",
+        "type": "EBike",
+        "location": {
+          "lat": 43.620207,
+          "long": 39.74265783333333
+        }
+      },
+      {
+        "batteryPercent": 50,
+        "identifier": "S.474426",
+        "displayedIdentifier": "474-426",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.620994567871094,
+          "long": 39.742713928222656
+        }
+      },
+      {
+        "batteryPercent": 92,
+        "identifier": "S.614712",
+        "displayedIdentifier": "614-712",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.593650817871094,
+          "long": 39.722633361816406
+        }
+      },
+      {
+        "batteryPercent": 34,
+        "identifier": "S.503716",
+        "displayedIdentifier": "503-716",
+        "type": "EBike",
+        "location": {
+          "lat": 43.610110333333324,
+          "long": 39.730670333333336
+        }
+      },
+      {
+        "batteryPercent": 16,
+        "identifier": "S.619836",
+        "displayedIdentifier": "619-836",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62788009643555,
+          "long": 39.71729278564453
+        }
+      },
+      {
+        "batteryPercent": 49,
+        "identifier": "S.481202",
+        "displayedIdentifier": "481-202",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.586647033691406,
+          "long": 39.731666564941406
+        }
+      },
+      {
+        "batteryPercent": 53,
+        "identifier": "S.479713",
+        "displayedIdentifier": "479-713",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.576141357421875,
+          "long": 39.73014450073242
+        }
+      },
+      {
+        "batteryPercent": 54,
+        "identifier": "S.614526",
+        "displayedIdentifier": "614-526",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61263656616211,
+          "long": 39.721370697021484
+        }
+      },
+      {
+        "batteryPercent": 35,
+        "identifier": "S.480677",
+        "displayedIdentifier": "480-677",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61722183227539,
+          "long": 39.74205017089844
+        }
+      },
+      {
+        "batteryPercent": 8,
+        "identifier": "S.504434",
+        "displayedIdentifier": "504-434",
+        "type": "EBike",
+        "location": {
+          "lat": 43.5911425,
+          "long": 39.721633833333335
+        }
+      },
+      {
+        "batteryPercent": 23,
+        "identifier": "S.615268",
+        "displayedIdentifier": "615-268",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57862091064453,
+          "long": 39.73191833496094
+        }
+      },
+      {
+        "batteryPercent": 35,
+        "identifier": "S.478180",
+        "displayedIdentifier": "478-180",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61153793334961,
+          "long": 39.74088668823242
+        }
+      },
+      {
+        "batteryPercent": 62,
+        "identifier": "S.489259",
+        "displayedIdentifier": "489-259",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60746765136719,
+          "long": 39.725120544433594
+        }
+      },
+      {
+        "batteryPercent": 49,
+        "identifier": "S.473383",
+        "displayedIdentifier": "473-383",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59641647338867,
+          "long": 39.73291015625
+        }
+      },
+      {
+        "batteryPercent": 35,
+        "identifier": "S.475485",
+        "displayedIdentifier": "475-485",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58210754394531,
+          "long": 39.73420715332031
+        }
+      },
+      {
+        "batteryPercent": 93,
+        "identifier": "S.480757",
+        "displayedIdentifier": "480-757",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.629356384277344,
+          "long": 39.6992073059082
+        }
+      },
+      {
+        "batteryPercent": 44,
+        "identifier": "S.501742",
+        "displayedIdentifier": "501-742",
+        "type": "EBike",
+        "location": {
+          "lat": 43.595504,
+          "long": 39.73138433333334
+        }
+      },
+      {
+        "batteryPercent": 67,
+        "identifier": "S.504163",
+        "displayedIdentifier": "504-163",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58665366666667,
+          "long": 39.733215
+        }
+      },
+      {
+        "batteryPercent": 47,
+        "identifier": "S.617972",
+        "displayedIdentifier": "617-972",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62109375,
+          "long": 39.721439361572266
+        }
+      },
+      {
+        "batteryPercent": 89,
+        "identifier": "S.617962",
+        "displayedIdentifier": "617-962",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.589752197265625,
+          "long": 39.7530632019043
+        }
+      },
+      {
+        "batteryPercent": 8,
+        "identifier": "S.620319",
+        "displayedIdentifier": "620-319",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5504264831543,
+          "long": 39.79469299316406
+        }
+      },
+      {
+        "batteryPercent": 93,
+        "identifier": "S.481694",
+        "displayedIdentifier": "481-694",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5687255859375,
+          "long": 39.739112854003906
+        }
+      },
+      {
+        "batteryPercent": 81,
+        "identifier": "S.484835",
+        "displayedIdentifier": "484-835",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59113311767578,
+          "long": 39.72169494628906
+        }
+      },
+      {
+        "batteryPercent": 47,
+        "identifier": "S.478357",
+        "displayedIdentifier": "478-357",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56465148925781,
+          "long": 39.73838424682617
+        }
+      },
+      {
+        "batteryPercent": 83,
+        "identifier": "S.471431",
+        "displayedIdentifier": "471-431",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58507537841797,
+          "long": 39.74578094482422
+        }
+      },
+      {
+        "batteryPercent": 35,
+        "identifier": "S.502882",
+        "displayedIdentifier": "502-882",
+        "type": "EBike",
+        "location": {
+          "lat": 43.62663883333333,
+          "long": 39.724505
+        }
+      },
+      {
+        "batteryPercent": 46,
+        "identifier": "S.481940",
+        "displayedIdentifier": "481-940",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61979675292969,
+          "long": 39.72077941894531
+        }
+      },
+      {
+        "batteryPercent": 33,
+        "identifier": "S.472632",
+        "displayedIdentifier": "472-632",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.63395309448242,
+          "long": 39.70004653930664
+        }
+      },
+      {
+        "batteryPercent": 62,
+        "identifier": "S.488008",
+        "displayedIdentifier": "488-008",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.575927734375,
+          "long": 39.7303466796875
+        }
+      },
+      {
+        "batteryPercent": 23,
+        "identifier": "S.502045",
+        "displayedIdentifier": "502-045",
+        "type": "EBike",
+        "location": {
+          "lat": 43.63667266666666,
+          "long": 39.701951333333334
+        }
+      },
+      {
+        "batteryPercent": 22,
+        "identifier": "S.140868",
+        "displayedIdentifier": "140-868",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60498809814453,
+          "long": 39.728172302246094
+        }
+      },
+      {
+        "batteryPercent": 15,
+        "identifier": "S.472955",
+        "displayedIdentifier": "472-955",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58654022216797,
+          "long": 39.74483108520508
+        }
+      },
+      {
+        "batteryPercent": 49,
+        "identifier": "S.472803",
+        "displayedIdentifier": "472-803",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.590919494628906,
+          "long": 39.73486328125
+        }
+      },
+      {
+        "batteryPercent": 89,
+        "identifier": "S.504173",
+        "displayedIdentifier": "504-173",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59196983333333,
+          "long": 39.730737500000004
+        }
+      },
+      {
+        "batteryPercent": 30,
+        "identifier": "S.614890",
+        "displayedIdentifier": "614-890",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58336639404297,
+          "long": 39.76084899902344
+        }
+      },
+      {
+        "batteryPercent": 92,
+        "identifier": "S.500104",
+        "displayedIdentifier": "500-104",
+        "type": "EBike",
+        "location": {
+          "lat": 43.5881065,
+          "long": 39.71742783333333
+        }
+      },
+      {
+        "batteryPercent": 33,
+        "identifier": "S.148200",
+        "displayedIdentifier": "148-200",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.566375732421875,
+          "long": 39.737449645996094
+        }
+      },
+      {
+        "batteryPercent": 62,
+        "identifier": "S.504291",
+        "displayedIdentifier": "504-291",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58723066666666,
+          "long": 39.732242
+        }
+      },
+      {
+        "batteryPercent": 100,
+        "identifier": "S.456766",
+        "displayedIdentifier": "456-766",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.601600646972656,
+          "long": 39.72562789916992
+        }
+      },
+      {
+        "batteryPercent": 50,
+        "identifier": "S.478121",
+        "displayedIdentifier": "478-121",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59286117553711,
+          "long": 39.724876403808594
+        }
+      },
+      {
+        "batteryPercent": 63,
+        "identifier": "S.500292",
+        "displayedIdentifier": "500-292",
+        "type": "EBike",
+        "location": {
+          "lat": 43.6171425,
+          "long": 39.744958
+        }
+      },
+      {
+        "batteryPercent": 82,
+        "identifier": "S.475413",
+        "displayedIdentifier": "475-413",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.600242614746094,
+          "long": 39.7221565246582
+        }
+      },
+      {
+        "batteryPercent": 81,
+        "identifier": "S.475875",
+        "displayedIdentifier": "475-875",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60297393798828,
+          "long": 39.72896957397461
+        }
+      },
+      {
+        "batteryPercent": 16,
+        "identifier": "S.154273",
+        "displayedIdentifier": "154-273",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.54840087890625,
+          "long": 39.79282760620117
+        }
+      },
+      {
+        "batteryPercent": 75,
+        "identifier": "S.501648",
+        "displayedIdentifier": "501-648",
+        "type": "EBike",
+        "location": {
+          "lat": 43.592963499999996,
+          "long": 39.724798166666666
+        }
+      },
+      {
+        "batteryPercent": 43,
+        "identifier": "S.457895",
+        "displayedIdentifier": "457-895",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56512451171875,
+          "long": 39.74955749511719
+        }
+      },
+      {
+        "batteryPercent": 34,
+        "identifier": "S.618590",
+        "displayedIdentifier": "618-590",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56632995605469,
+          "long": 39.737518310546875
+        }
+      },
+      {
+        "batteryPercent": 48,
+        "identifier": "S.480053",
+        "displayedIdentifier": "480-053",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58811569213867,
+          "long": 39.719181060791016
+        }
+      },
+      {
+        "batteryPercent": 80,
+        "identifier": "S.147580",
+        "displayedIdentifier": "147-580",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.617183685302734,
+          "long": 39.73725891113281
+        }
+      },
+      {
+        "batteryPercent": 38,
+        "identifier": "S.138763",
+        "displayedIdentifier": "138-763",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.608856201171875,
+          "long": 39.72468566894531
+        }
+      },
+      {
+        "batteryPercent": 56,
+        "identifier": "S.478434",
+        "displayedIdentifier": "478-434",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60634994506836,
+          "long": 39.738040924072266
+        }
+      },
+      {
+        "batteryPercent": 34,
+        "identifier": "S.478370",
+        "displayedIdentifier": "478-370",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5894660949707,
+          "long": 39.73857116699219
+        }
+      },
+      {
+        "batteryPercent": 61,
+        "identifier": "S.459194",
+        "displayedIdentifier": "459-194",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5944938659668,
+          "long": 39.741939544677734
+        }
+      },
+      {
+        "batteryPercent": 93,
+        "identifier": "S.503093",
+        "displayedIdentifier": "503-093",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58123166666666,
+          "long": 39.72749616666667
+        }
+      },
+      {
+        "batteryPercent": 39,
+        "identifier": "S.503443",
+        "displayedIdentifier": "503-443",
+        "type": "EBike",
+        "location": {
+          "lat": 43.596026833333326,
+          "long": 39.71802483333333
+        }
+      },
+      {
+        "batteryPercent": 93,
+        "identifier": "S.478334",
+        "displayedIdentifier": "478-334",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59300231933594,
+          "long": 39.727783203125
+        }
+      },
+      {
+        "batteryPercent": 59,
+        "identifier": "S.500125",
+        "displayedIdentifier": "500-125",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58848616666668,
+          "long": 39.717604666666666
+        }
+      },
+      {
+        "batteryPercent": 18,
+        "identifier": "S.505190",
+        "displayedIdentifier": "505-190",
+        "type": "EBike",
+        "location": {
+          "lat": 43.569636499999994,
+          "long": 39.75172383333334
+        }
+      },
+      {
+        "batteryPercent": 41,
+        "identifier": "S.614650",
+        "displayedIdentifier": "614-650",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61494445800781,
+          "long": 39.73684310913086
+        }
+      },
+      {
+        "batteryPercent": 22,
+        "identifier": "S.486033",
+        "displayedIdentifier": "486-033",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59482955932617,
+          "long": 39.72282028198242
+        }
+      },
+      {
+        "batteryPercent": 6,
+        "identifier": "S.154751",
+        "displayedIdentifier": "154-751",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58296585083008,
+          "long": 39.74562454223633
+        }
+      },
+      {
+        "batteryPercent": 27,
+        "identifier": "S.504725",
+        "displayedIdentifier": "504-725",
+        "type": "EBike",
+        "location": {
+          "lat": 43.619466333333335,
+          "long": 39.7221195
+        }
+      },
+      {
+        "batteryPercent": 59,
+        "identifier": "S.473916",
+        "displayedIdentifier": "473-916",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.614070892333984,
+          "long": 39.7437858581543
+        }
+      },
+      {
+        "batteryPercent": 89,
+        "identifier": "S.175786",
+        "displayedIdentifier": "175-786",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.624942779541016,
+          "long": 39.71782302856445
+        }
+      },
+      {
+        "batteryPercent": 62,
+        "identifier": "S.489341",
+        "displayedIdentifier": "489-341",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59001159667969,
+          "long": 39.718711853027344
+        }
+      },
+      {
+        "batteryPercent": 40,
+        "identifier": "S.503679",
+        "displayedIdentifier": "503-679",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59500483333333,
+          "long": 39.7233065
+        }
+      },
+      {
+        "batteryPercent": 74,
+        "identifier": "S.450383",
+        "displayedIdentifier": "450-383",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.599727630615234,
+          "long": 39.724239349365234
+        }
+      },
+      {
+        "batteryPercent": 73,
+        "identifier": "S.620138",
+        "displayedIdentifier": "620-138",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.604942321777344,
+          "long": 39.73304748535156
+        }
+      },
+      {
+        "batteryPercent": 24,
+        "identifier": "S.472494",
+        "displayedIdentifier": "472-494",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59326934814453,
+          "long": 39.731895446777344
+        }
+      },
+      {
+        "batteryPercent": 58,
+        "identifier": "S.480057",
+        "displayedIdentifier": "480-057",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60064697265625,
+          "long": 39.71918487548828
+        }
+      },
+      {
+        "batteryPercent": 21,
+        "identifier": "S.472048",
+        "displayedIdentifier": "472-048",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56788635253906,
+          "long": 39.74933624267578
+        }
+      },
+      {
+        "batteryPercent": 43,
+        "identifier": "S.500368",
+        "displayedIdentifier": "500-368",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59993299999999,
+          "long": 39.73160033333333
+        }
+      },
+      {
+        "batteryPercent": 97,
+        "identifier": "S.457221",
+        "displayedIdentifier": "457-221",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.635501861572266,
+          "long": 39.69941711425781
+        }
+      },
+      {
+        "batteryPercent": 75,
+        "identifier": "S.489030",
+        "displayedIdentifier": "489-030",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59013748168945,
+          "long": 39.72757339477539
+        }
+      },
+      {
+        "batteryPercent": 96,
+        "identifier": "S.178751",
+        "displayedIdentifier": "178-751",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.591094970703125,
+          "long": 39.721702575683594
+        }
+      },
+      {
+        "batteryPercent": 54,
+        "identifier": "S.614544",
+        "displayedIdentifier": "614-544",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62849044799805,
+          "long": 39.70352554321289
+        }
+      },
+      {
+        "batteryPercent": 58,
+        "identifier": "S.483340",
+        "displayedIdentifier": "483-340",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.63288879394531,
+          "long": 39.71427917480469
+        }
+      },
+      {
+        "batteryPercent": 56,
+        "identifier": "S.488844",
+        "displayedIdentifier": "488-844",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59703826904297,
+          "long": 39.7226676940918
+        }
+      },
+      {
+        "batteryPercent": 98,
+        "identifier": "S.617292",
+        "displayedIdentifier": "617-292",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60065460205078,
+          "long": 39.71923828125
+        }
+      },
+      {
+        "batteryPercent": 17,
+        "identifier": "S.502897",
+        "displayedIdentifier": "502-897",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59830466666667,
+          "long": 39.72046266666667
+        }
+      },
+      {
+        "batteryPercent": 39,
+        "identifier": "S.475880",
+        "displayedIdentifier": "475-880",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.607521057128906,
+          "long": 39.72698974609375
+        }
+      },
+      {
+        "batteryPercent": 88,
+        "identifier": "S.472684",
+        "displayedIdentifier": "472-684",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56521987915039,
+          "long": 39.74991226196289
+        }
+      },
+      {
+        "batteryPercent": 58,
+        "identifier": "S.620225",
+        "displayedIdentifier": "620-225",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59602355957031,
+          "long": 39.719078063964844
+        }
+      },
+      {
+        "batteryPercent": 53,
+        "identifier": "S.503677",
+        "displayedIdentifier": "503-677",
+        "type": "EBike",
+        "location": {
+          "lat": 43.61966816666666,
+          "long": 39.72624033333333
+        }
+      },
+      {
+        "batteryPercent": 92,
+        "identifier": "S.502552",
+        "displayedIdentifier": "502-552",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58884249999999,
+          "long": 39.722987333333336
+        }
+      },
+      {
+        "batteryPercent": 24,
+        "identifier": "S.479736",
+        "displayedIdentifier": "479-736",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5765266418457,
+          "long": 39.73310089111328
+        }
+      },
+      {
+        "batteryPercent": 53,
+        "identifier": "S.617392",
+        "displayedIdentifier": "617-392",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57278060913086,
+          "long": 39.73863983154297
+        }
+      },
+      {
+        "batteryPercent": 30,
+        "identifier": "S.481194",
+        "displayedIdentifier": "481-194",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61644744873047,
+          "long": 39.720985412597656
+        }
+      },
+      {
+        "batteryPercent": 96,
+        "identifier": "S.481395",
+        "displayedIdentifier": "481-395",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.634727478027344,
+          "long": 39.69792938232422
+        }
+      },
+      {
+        "batteryPercent": 12,
+        "identifier": "S.485073",
+        "displayedIdentifier": "485-073",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59002685546875,
+          "long": 39.71869659423828
+        }
+      },
+      {
+        "batteryPercent": 36,
+        "identifier": "S.503579",
+        "displayedIdentifier": "503-579",
+        "type": "EBike",
+        "location": {
+          "lat": 43.61549766666667,
+          "long": 39.726031
+        }
+      },
+      {
+        "batteryPercent": 36,
+        "identifier": "S.486533",
+        "displayedIdentifier": "486-533",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60398483276367,
+          "long": 39.717369079589844
+        }
+      },
+      {
+        "batteryPercent": 95,
+        "identifier": "S.503827",
+        "displayedIdentifier": "503-827",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59878966666667,
+          "long": 39.715852166666664
+        }
+      },
+      {
+        "batteryPercent": 37,
+        "identifier": "S.480840",
+        "displayedIdentifier": "480-840",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60099792480469,
+          "long": 39.71903991699219
+        }
+      },
+      {
+        "batteryPercent": 94,
+        "identifier": "S.501705",
+        "displayedIdentifier": "501-705",
+        "type": "EBike",
+        "location": {
+          "lat": 43.5911205,
+          "long": 39.721656333333335
+        }
+      },
+      {
+        "batteryPercent": 21,
+        "identifier": "S.475489",
+        "displayedIdentifier": "475-489",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.6010627746582,
+          "long": 39.72868347167969
+        }
+      },
+      {
+        "batteryPercent": 62,
+        "identifier": "S.504222",
+        "displayedIdentifier": "504-222",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59178383333333,
+          "long": 39.72780133333333
+        }
+      },
+      {
+        "batteryPercent": 74,
+        "identifier": "S.614906",
+        "displayedIdentifier": "614-906",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59697341918945,
+          "long": 39.73591613769531
+        }
+      },
+      {
+        "batteryPercent": 43,
+        "identifier": "S.489246",
+        "displayedIdentifier": "489-246",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.618526458740234,
+          "long": 39.72410202026367
+        }
+      },
+      {
+        "batteryPercent": 38,
+        "identifier": "S.147520",
+        "displayedIdentifier": "147-520",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59614181518555,
+          "long": 39.72282409667969
+        }
+      },
+      {
+        "batteryPercent": 23,
+        "identifier": "S.503026",
+        "displayedIdentifier": "503-026",
+        "type": "EBike",
+        "location": {
+          "lat": 43.571400499999996,
+          "long": 39.73838816666667
+        }
+      },
+      {
+        "batteryPercent": 50,
+        "identifier": "S.615922",
+        "displayedIdentifier": "615-922",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57835388183594,
+          "long": 39.729583740234375
+        }
+      },
+      {
+        "batteryPercent": 75,
+        "identifier": "S.487680",
+        "displayedIdentifier": "487-680",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5975227355957,
+          "long": 39.71695327758789
+        }
+      },
+      {
+        "batteryPercent": 66,
+        "identifier": "S.618390",
+        "displayedIdentifier": "618-390",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.571136474609375,
+          "long": 39.74619674682617
+        }
+      },
+      {
+        "batteryPercent": 51,
+        "identifier": "S.502420",
+        "displayedIdentifier": "502-420",
+        "type": "EBike",
+        "location": {
+          "lat": 43.632658000000006,
+          "long": 39.700840666666664
+        }
+      },
+      {
+        "batteryPercent": 23,
+        "identifier": "S.503603",
+        "displayedIdentifier": "503-603",
+        "type": "EBike",
+        "location": {
+          "lat": 43.630162500000004,
+          "long": 39.69996533333333
+        }
+      },
+      {
+        "batteryPercent": 44,
+        "identifier": "S.614693",
+        "displayedIdentifier": "614-693",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.585147857666016,
+          "long": 39.71781539916992
+        }
+      },
+      {
+        "batteryPercent": 13,
+        "identifier": "S.477389",
+        "displayedIdentifier": "477-389",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.591461181640625,
+          "long": 39.73476791381836
+        }
+      },
+      {
+        "batteryPercent": 30,
+        "identifier": "S.486064",
+        "displayedIdentifier": "486-064",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5844841003418,
+          "long": 39.71739959716797
+        }
+      },
+      {
+        "batteryPercent": 41,
+        "identifier": "S.481247",
+        "displayedIdentifier": "481-247",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59904479980469,
+          "long": 39.71902847290039
+        }
+      },
+      {
+        "batteryPercent": 55,
+        "identifier": "S.614619",
+        "displayedIdentifier": "614-619",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.611602783203125,
+          "long": 39.744667053222656
+        }
+      },
+      {
+        "batteryPercent": 43,
+        "identifier": "S.503885",
+        "displayedIdentifier": "503-885",
+        "type": "EBike",
+        "location": {
+          "lat": 43.61474916666666,
+          "long": 39.72660183333333
+        }
+      },
+      {
+        "batteryPercent": 9,
+        "identifier": "S.503062",
+        "displayedIdentifier": "503-062",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59578333333334,
+          "long": 39.73876633333334
+        }
+      },
+      {
+        "batteryPercent": 77,
+        "identifier": "S.481188",
+        "displayedIdentifier": "481-188",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62099838256836,
+          "long": 39.74274444580078
+        }
+      },
+      {
+        "batteryPercent": 87,
+        "identifier": "S.486431",
+        "displayedIdentifier": "486-431",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60117721557617,
+          "long": 39.72481918334961
+        }
+      },
+      {
+        "batteryPercent": 86,
+        "identifier": "S.617284",
+        "displayedIdentifier": "617-284",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.63455581665039,
+          "long": 39.696231842041016
+        }
+      },
+      {
+        "batteryPercent": 20,
+        "identifier": "S.142012",
+        "displayedIdentifier": "142-012",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59503173828125,
+          "long": 39.726959228515625
+        }
+      },
+      {
+        "batteryPercent": 26,
+        "identifier": "S.502708",
+        "displayedIdentifier": "502-708",
+        "type": "EBike",
+        "location": {
+          "lat": 43.56641016666667,
+          "long": 39.739904
+        }
+      },
+      {
+        "batteryPercent": 36,
+        "identifier": "S.156146",
+        "displayedIdentifier": "156-146",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59109115600586,
+          "long": 39.72172927856445
+        }
+      },
+      {
+        "batteryPercent": 89,
+        "identifier": "S.473962",
+        "displayedIdentifier": "473-962",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59387969970703,
+          "long": 39.72244644165039
+        }
+      },
+      {
+        "batteryPercent": 11,
+        "identifier": "S.489374",
+        "displayedIdentifier": "489-374",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.58036804199219,
+          "long": 39.71992111206055
+        }
+      },
+      {
+        "batteryPercent": 84,
+        "identifier": "S.500278",
+        "displayedIdentifier": "500-278",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59080683333333,
+          "long": 39.72989433333333
+        }
+      },
+      {
+        "batteryPercent": 65,
+        "identifier": "S.478261",
+        "displayedIdentifier": "478-261",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.61628723144531,
+          "long": 39.73699188232422
+        }
+      },
+      {
+        "batteryPercent": 73,
+        "identifier": "S.479406",
+        "displayedIdentifier": "479-406",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62743377685547,
+          "long": 39.695045471191406
+        }
+      },
+      {
+        "batteryPercent": 54,
+        "identifier": "S.472911",
+        "displayedIdentifier": "472-911",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.597599029541016,
+          "long": 39.71554183959961
+        }
+      },
+      {
+        "batteryPercent": 56,
+        "identifier": "S.472633",
+        "displayedIdentifier": "472-633",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.63312911987305,
+          "long": 39.71719741821289
+        }
+      },
+      {
+        "batteryPercent": 8,
+        "identifier": "S.459560",
+        "displayedIdentifier": "459-560",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59029769897461,
+          "long": 39.72288131713867
+        }
+      },
+      {
+        "batteryPercent": 10,
+        "identifier": "S.472462",
+        "displayedIdentifier": "472-462",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.601600646972656,
+          "long": 39.727447509765625
+        }
+      },
+      {
+        "batteryPercent": 93,
+        "identifier": "S.501659",
+        "displayedIdentifier": "501-659",
+        "type": "EBike",
+        "location": {
+          "lat": 43.59498566666666,
+          "long": 39.72330533333333
+        }
+      },
+      {
+        "batteryPercent": 95,
+        "identifier": "S.479747",
+        "displayedIdentifier": "479-747",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.618770599365234,
+          "long": 39.72377395629883
+        }
+      },
+      {
+        "batteryPercent": 33,
+        "identifier": "S.502077",
+        "displayedIdentifier": "502-077",
+        "type": "EBike",
+        "location": {
+          "lat": 43.60263450000001,
+          "long": 39.725982
+        }
+      },
+      {
+        "batteryPercent": 37,
+        "identifier": "S.454420",
+        "displayedIdentifier": "454-420",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.6171875,
+          "long": 39.726287841796875
+        }
+      },
+      {
+        "batteryPercent": 61,
+        "identifier": "S.486878",
+        "displayedIdentifier": "486-878",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59410095214844,
+          "long": 39.72215270996094
+        }
+      },
+      {
+        "batteryPercent": 78,
+        "identifier": "S.500122",
+        "displayedIdentifier": "500-122",
+        "type": "EBike",
+        "location": {
+          "lat": 43.589961833333334,
+          "long": 39.72512716666667
+        }
+      },
+      {
+        "batteryPercent": 8,
+        "identifier": "S.478925",
+        "displayedIdentifier": "478-925",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.62931442260742,
+          "long": 39.70642852783203
+        }
+      },
+      {
+        "batteryPercent": 44,
+        "identifier": "S.485248",
+        "displayedIdentifier": "485-248",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.57616424560547,
+          "long": 39.73017883300781
+        }
+      },
+      {
+        "batteryPercent": 17,
+        "identifier": "S.475720",
+        "displayedIdentifier": "475-720",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60165786743164,
+          "long": 39.727535247802734
+        }
+      },
+      {
+        "batteryPercent": 54,
+        "identifier": "S.476589",
+        "displayedIdentifier": "476-589",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59759521484375,
+          "long": 39.71549987792969
+        }
+      },
+      {
+        "batteryPercent": 23,
+        "identifier": "S.135482",
+        "displayedIdentifier": "135-482",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.59110641479492,
+          "long": 39.721683502197266
+        }
+      },
+      {
+        "batteryPercent": 40,
+        "identifier": "S.178223",
+        "displayedIdentifier": "178-223",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.572288513183594,
+          "long": 39.73476791381836
+        }
+      },
+      {
+        "batteryPercent": 98,
+        "identifier": "S.477514",
+        "displayedIdentifier": "477-514",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.60228729248047,
+          "long": 39.731075286865234
+        }
+      },
+      {
+        "batteryPercent": 86,
+        "identifier": "S.502756",
+        "displayedIdentifier": "502-756",
+        "type": "EBike",
+        "location": {
+          "lat": 43.58297016666667,
+          "long": 39.72291433333333
+        }
+      },
+      {
+        "batteryPercent": 38,
+        "identifier": "S.617688",
+        "displayedIdentifier": "617-688",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.593345642089844,
+          "long": 39.73195266723633
+        }
+      },
+      {
+        "batteryPercent": 9,
+        "identifier": "S.614787",
+        "displayedIdentifier": "614-787",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.5977668762207,
+          "long": 39.71965789794922
+        }
+      },
+      {
+        "batteryPercent": 41,
+        "identifier": "S.472113",
+        "displayedIdentifier": "472-113",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.6074104309082,
+          "long": 39.733978271484375
+        }
+      },
+      {
+        "batteryPercent": 67,
+        "identifier": "S.140450",
+        "displayedIdentifier": "140-450",
+        "type": "Scooter",
+        "location": {
+          "lat": 43.56648254394531,
+          "long": 39.74479675292969
+        }
+      }
+    ]
+  },
+  "useZoneId": "608bc0e3e158803bfd7b93b3",
+  "useZoneIds": [
+    "608bc0e3e158803bfd7b93b3"
+  ],
+  "errors": [],
+  "succeeded": true
+}

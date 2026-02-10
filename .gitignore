@@ -1,0 +1,20 @@
+# Конфигурация с токенами
+config.json
+
+# Временные файлы
+*.pyc
+__pycache__/
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+venv/
+env/
+*.egg-info/
+dist/
+build/
