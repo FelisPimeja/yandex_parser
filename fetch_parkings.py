@@ -17,6 +17,10 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 import requests
+import urllib3
+
+# Отключаем предупреждения о небезопасном SSL
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def load_config():
@@ -63,28 +67,37 @@ def get_cities():
         data = json.load(f)
     
     cities = data.get('data', [])
-    available_cities = [c for c in cities if c.get('status') == 'AVAILABLE']
+    available_cities = [c for c in cities if c.get('cityAvailabilityStatus') == 'AVAILABLE']
     
     print(f"📋 Найдено городов: {len(available_cities)} (AVAILABLE)")
     return available_cities
 
 
 def calculate_center(coordinates):
-    """Вычисление центра полигона."""
+    """Вычисление центра полигона. Поддерживает оба формата координат."""
     if not coordinates:
         return None
     
-    # Координаты в формате [[lat, lng], ...]
-    lats = [point[0] for point in coordinates]
-    lngs = [point[1] for point in coordinates]
-    
-    center_lat = sum(lats) / len(lats)
-    center_lng = sum(lngs) / len(lngs)
-    
-    return {
-        "latitude": center_lat,
-        "longitude": center_lng
-    }
+    try:
+        if isinstance(coordinates[0], dict):
+            # Новый формат: {lat: ..., lng: ...}
+            lats = [point['lat'] for point in coordinates]
+            lngs = [point['lng'] for point in coordinates]
+        else:
+            # Старый формат: [lat, lng]
+            lats = [point[0] for point in coordinates]
+            lngs = [point[1] for point in coordinates]
+        
+        center_lat = sum(lats) / len(lats)
+        center_lng = sum(lngs) / len(lngs)
+        
+        return {
+            "latitude": center_lat,
+            "longitude": center_lng
+        }
+    except (KeyError, IndexError, TypeError) as e:
+        print(f"⚠️  Ошибка вычисления центра: {e}")
+        return None
 
 
 def fetch_rent_zones(city_id, token):
@@ -100,7 +113,7 @@ def fetch_rent_zones(city_id, token):
         'UR-Platform': 'iOS'
     }
     
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, verify=False, timeout=30)
     
     if response.status_code == 403:
         print("❌ Ошибка 403: Токен истёк или недействителен")
@@ -139,7 +152,7 @@ def fetch_transports(center, token, radius_meters=10000):
         "radius": radius_meters
     }
     
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers, params=params, verify=False, timeout=30)
     response.raise_for_status()
     return response.json()
 

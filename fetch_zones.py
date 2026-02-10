@@ -16,6 +16,31 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 import requests
+import urllib3
+
+# Отключаем предупреждения о небезопасном SSL
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+
+def convert_coordinates_to_geojson(coordinates):
+    """
+    Универсальная функция для конвертации координат в GeoJSON формат.
+    Поддерживает оба формата: [{lat, lng}, ...] и [[lat, lng], ...]
+    Возвращает: [[[lng, lat], ...]] для GeoJSON Polygon
+    """
+    if not coordinates:
+        return None
+    
+    try:
+        if isinstance(coordinates[0], dict):
+            # Новый формат: {lat: ..., lng: ...}
+            return [[[point['lng'], point['lat']] for point in coordinates]]
+        else:
+            # Старый формат: [lat, lng]
+            return [[[point[1], point[0]] for point in coordinates]]
+    except (KeyError, IndexError, TypeError) as e:
+        print(f"⚠️  Ошибка конвертации координат: {e}")
+        return None
 
 
 def load_config():
@@ -62,7 +87,7 @@ def get_cities():
         data = json.load(f)
     
     cities = data.get('data', [])
-    available_cities = [c for c in cities if c.get('status') == 'AVAILABLE']
+    available_cities = [c for c in cities if c.get('cityAvailabilityStatus') == 'AVAILABLE']
     
     print(f"📋 Найдено городов: {len(available_cities)} (AVAILABLE)")
     return available_cities
@@ -81,7 +106,7 @@ def fetch_rent_zones(city_id, token):
         'UR-Platform': 'iOS'
     }
     
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, verify=False, timeout=30)
     
     if response.status_code == 403:
         print("❌ Ошибка 403: Токен истёк или недействителен")
@@ -104,7 +129,7 @@ def fetch_restriction_zones(rent_zone_id, token):
         'UR-Platform': 'iOS'
     }
     
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, verify=False, timeout=30)
     response.raise_for_status()
     return response.json()
 
@@ -127,11 +152,9 @@ def convert_zones_to_geojson(all_zones_data, output_path):
         # Обработка rent zones
         for rent_zone in city_data.get('rent_zones', []):
             coordinates = rent_zone.get('coordinates', [])
-            if not coordinates:
+            geojson_coords = convert_coordinates_to_geojson(coordinates)
+            if not geojson_coords:
                 continue
-            
-            # Преобразование [[lat, lng], ...] -> [[lng, lat], ...]
-            geojson_coords = [[[point[1], point[0]] for point in coordinates]]
             
             feature = {
                 "type": "Feature",
@@ -158,10 +181,9 @@ def convert_zones_to_geojson(all_zones_data, output_path):
             # Low speed zones
             for zone in general_zones.get('lowSpeedZones', []):
                 coordinates = zone.get('coordinates', [])
-                if not coordinates:
+                geojson_coords = convert_coordinates_to_geojson(coordinates)
+                if not geojson_coords:
                     continue
-                
-                geojson_coords = [[[point[1], point[0]] for point in coordinates]]
                 
                 feature = {
                     "type": "Feature",
@@ -206,10 +228,9 @@ def convert_zones_to_geojson(all_zones_data, output_path):
             # Not allowed zones (запрет поездок)
             for zone in general_zones.get('notAllowedZones', []):
                 coordinates = zone.get('coordinates', [])
-                if not coordinates:
+                geojson_coords = convert_coordinates_to_geojson(coordinates)
+                if not geojson_coords:
                     continue
-                
-                geojson_coords = [[[point[1], point[0]] for point in coordinates]]
                 
                 feature = {
                     "type": "Feature",
