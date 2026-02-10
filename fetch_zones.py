@@ -277,13 +277,15 @@ def main():
     
     # Обработка каждого города
     for i, city in enumerate(cities, 1):
-        city_id = city['id']
-        city_name = city['name']
+        city_id = city['cityId']  # ID города для запроса rent zones
+        city_boundary_id = city['id']  # ID границы города
+        city_name = city.get('name', city_id)  # Используем cityId если name нет
         
         print(f"\n[{i}/{len(cities)}] 🏙️  {city_name}")
         
         city_data = {
             'city_id': city_id,
+            'city_boundary_id': city_boundary_id,
             'city_name': city_name,
             'rent_zones': [],
             'restrictions': []
