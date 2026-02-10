@@ -7,13 +7,15 @@
 Сохраняет JSON в output/tmp/ и конвертирует в GeoJSON в output/.
 
 Использование:
-    python3 fetch_parkings.py
+    python3 fetch_parkings.py                      # Все города
+    python3 fetch_parkings.py --city_id <cityId>   # Конкретный город
 """
 
 import json
 import os
 import sys
 import subprocess
+import argparse
 from pathlib import Path
 from datetime import datetime
 import requests
@@ -280,13 +282,36 @@ def convert_vehicles_to_geojson(all_parkings_data, output_path):
 
 
 def main():
-    print("🚀 Начинаю загрузку парковок и транспорта...\n")
+    parser = argparse.ArgumentParser(
+        description='Загрузка парковок и транспорта Urent'
+    )
+    parser.add_argument(
+        '--city_id',
+        type=str,
+        help='ID города (cityId из cities.json) для загрузки. Если не указан, загружаются все города'
+    )
+    args = parser.parse_args()
+    
+    if args.city_id:
+        print(f"🚀 Загрузка парковок и транспорта для города {args.city_id}...\n")
+    else:
+        print("🚀 Начинаю загрузку парковок и транспорта для всех городов...\n")
     
     # Загрузка токена
     token = load_config()
     
     # Получение списка городов
     cities = get_cities()
+    
+    # Фильтрация по city_id если указан
+    if args.city_id:
+        cities = [c for c in cities if c['cityId'] == args.city_id]
+        if not cities:
+            print(f"❌ Город с cityId={args.city_id} не найден среди AVAILABLE городов")
+            sys.exit(1)
+        print(f"✅ Найден город: {cities[0]['cityId']}")
+    else:
+        print(f"📋 Будет обработано городов: {len(cities)}")
     
     # Структура для хранения всех данных
     all_parkings_data = []
@@ -372,7 +397,13 @@ def main():
     
     # Сохранение объединённых данных
     print("\n💾 Сохраняю данные...")
-    all_data_path = tmp_dir / 'all_parkings.json'
+    
+    # Формируем имя файла в зависимости от режима
+    if args.city_id:
+        all_data_path = tmp_dir / f'parkings_{args.city_id}.json'
+    else:
+        all_data_path = tmp_dir / 'all_parkings.json'
+    
     save_json(all_parkings_data, all_data_path)
     print(f"💾 Сохранено: {all_data_path}")
     
@@ -380,12 +411,18 @@ def main():
     print("\n📍 Конвертирую в GeoJSON...")
     output_dir = base_dir / 'output'
     
+    # Формируем имена выходных файлов
+    if args.city_id:
+        parkings_geojson_path = output_dir / f'parkings_{args.city_id}.geojson'
+        vehicles_geojson_path = output_dir / f'vehicles_{args.city_id}.geojson'
+    else:
+        parkings_geojson_path = output_dir / 'parkings.geojson'
+        vehicles_geojson_path = output_dir / 'vehicles.geojson'
+    
     # Парковки
-    parkings_geojson_path = output_dir / 'parkings.geojson'
     convert_parkings_to_geojson(all_parkings_data, parkings_geojson_path)
     
     # Транспорт
-    vehicles_geojson_path = output_dir / 'vehicles.geojson'
     convert_vehicles_to_geojson(all_parkings_data, vehicles_geojson_path)
     
     print("\n✅ Готово!")
