@@ -1,360 +1,551 @@
 #!/usr/bin/env python3
 """
-Скрипт для загрузки всех зон (аренды и ограничений) для всех городов.
-Использует fetch_cities.py для получения списка городов.
+Скрипт для автоматической загрузки детальных зон (ограничений) для всех городов.
 
-Сохраняет JSON в output/tmp/ и конвертирует в GeoJSON в output/.
+Использует данные из output/cities.geojson (результат fetch_cities.py)
+и загружает детальные зоны для каждого города.
 
 Использование:
-    python3 fetch_zones.py
+    python3 fetch_zones.py                  # Все города
+    python3 fetch_zones.py --continue_from 15  # Продолжить с города N
 """
 
 import json
 import os
 import sys
-import subprocess
+import argparse
+import time
 from pathlib import Path
 from datetime import datetime
 import requests
-import urllib3
 
-# Отключаем предупреждения о небезопасном SSL
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-
-def convert_coordinates_to_geojson(coordinates):
-    """
-    Универсальная функция для конвертации координат в GeoJSON формат.
-    Поддерживает оба формата: [{lat, lng}, ...] и [[lat, lng], ...]
-    Возвращает: [[[lng, lat], ...]] для GeoJSON Polygon
-    """
-    if not coordinates:
-        return None
-    
-    try:
-        if isinstance(coordinates[0], dict):
-            # Новый формат: {lat: ..., lng: ...}
-            return [[[point['lng'], point['lat']] for point in coordinates]]
-        else:
-            # Старый формат: [lat, lng]
-            return [[[point[1], point[0]] for point in coordinates]]
-    except (KeyError, IndexError, TypeError) as e:
-        print(f"⚠️  Ошибка конвертации координат: {e}")
-        return None
+# Базовый URL API Yandex
+BASE_URL = "https://tc.mobile.yandex.net"
 
 
 def load_config():
-    """Загрузка токена из config.json или переменной окружения."""
-    token = os.environ.get('URENT_TOKEN')
+    """Загрузка заголовков из config.json."""
+    config_path = Path(__file__).parent / 'config.json'
     
-    if not token:
-        config_path = Path(__file__).parent / 'config.json'
-        if config_path.exists():
-            with open(config_path) as f:
-                config = json.load(f)
-                token = config.get('bearer_token')
-    
-    if not token:
-        print("❌ Ошибка: токен не найден!")
-        print("Создайте config.json или установите переменную URENT_TOKEN")
+    if not config_path.exists():
+        print("❌ Ошибка: файл config.json не найден!")
         sys.exit(1)
     
-    return token
+    with open(config_path, 'r', encoding='utf-8') as f:
+        config = json.load(f)
+    
+    headers = config.get('yandex_headers')
+    
+    if not headers:
+        print("❌ Ошибка: заголовки не найдены в config.json!")
+        sys.exit(1)
+    
+    return headers
 
 
-def get_cities():
-    """Получение списка городов через fetch_cities.py."""
-    base_dir = Path(__file__).parent
-    cities_json_path = base_dir / 'output' / 'tmp' / 'cities.json'
+def calculate_polygon_bounds(coordinates):
+    """
+    Вычисление границ полигона (bbox).
     
-    # Проверяем наличие файла
-    if not cities_json_path.exists():
-        print("📥 Файл cities.json не найден, загружаю...")
-        # Запускаем fetch_cities.py с флагом --noexport
-        result = subprocess.run(
-            [sys.executable, 'fetch_cities.py', '--noexport'],
-            cwd=base_dir,
-            capture_output=True,
-            text=True
-        )
-        if result.returncode != 0:
-            print(f"❌ Ошибка при загрузке городов:\n{result.stderr}")
-            sys.exit(1)
-        print(result.stdout)
+    Args:
+        coordinates: массив координат полигона [[lon, lat], ...]
     
-    # Загружаем список городов
-    with open(cities_json_path, 'r', encoding='utf-8') as f:
+    Returns:
+        list: [min_lon, min_lat, max_lon, max_lat]
+    """
+    # Полигон может быть многоуровневым (с дырками)
+    # Берём первое кольцо (внешний контур)
+    if isinstance(coordinates[0][0], list):
+        # MultiPolygon или Polygon с дырками
+        ring = coordinates[0]
+    else:
+        ring = coordinates
+    
+    lons = [coord[0] for coord in ring]
+    lats = [coord[1] for coord in ring]
+    
+    return [min(lons), min(lats), max(lons), max(lats)]
+
+
+def calculate_polygon_centroid(coordinates):
+    """
+    Вычисление центроида полигона (упрощённый метод - среднее координат).
+    
+    Args:
+        coordinates: массив координат полигона [[lon, lat], ...]
+    
+    Returns:
+        list: [lon, lat]
+    """
+    # Берём первое кольцо (внешний контур)
+    if isinstance(coordinates[0][0], list):
+        ring = coordinates[0]
+    else:
+        ring = coordinates
+    
+    lons = [coord[0] for coord in ring]
+    lats = [coord[1] for coord in ring]
+    
+    # Простой центроид - среднее арифметическое
+    # Для более точного расчёта нужен weighted centroid, но для наших целей достаточно
+    return [sum(lons) / len(lons), sum(lats) / len(lats)]
+
+
+def simplify_zone_feature(feature, city_polygon_id):
+    """
+    Упрощение структуры зоны: оставляем только id, city_id, type, speed_limit.
+    
+    Args:
+        feature: dict, GeoJSON feature с зоной
+        city_polygon_id: str, ID полигона города
+    
+    Returns:
+        dict: упрощённый GeoJSON feature
+    """
+    props = feature.get('properties', {})
+    
+    # Извлекаем zone_type из options
+    zone_type = None
+    options = props.get('options', [])
+    for opt in options:
+        for action in opt.get('actions', []):
+            if action.get('zone_type'):
+                zone_type = action['zone_type']
+                break
+        if zone_type:
+            break
+    
+    # Извлекаем speed_limit из centroid.style.image.name
+    # Пример: "scooters_zone_restrictions_speed_limit_15" -> 15
+    speed_limit = None
+    centroid = props.get('centroid', {})
+    if centroid and zone_type == 'speed_limit':
+        style = centroid.get('style', {})
+        image = style.get('image', {})
+        image_name = image.get('name', '')
+        
+        # Извлекаем число из конца строки после последнего "_"
+        if image_name and 'speed_limit_' in image_name:
+            parts = image_name.split('_')
+            if parts and parts[-1].isdigit():
+                speed_limit = int(parts[-1])
+    
+    # Создаём упрощённую структуру
+    simplified = {
+        'id': feature.get('id'),
+        'type': 'Feature',
+        'geometry': feature.get('geometry'),
+        'properties': {
+            'city_id': city_polygon_id
+        }
+    }
+    
+    # Добавляем type и speed_limit только если они есть
+    if zone_type:
+        simplified['properties']['type'] = zone_type
+    if speed_limit is not None:
+        simplified['properties']['speed_limit'] = speed_limit
+    
+    return simplified
+
+
+def load_city_polygons(geojson_path):
+    """
+    Загрузка полигонов городов из cities.geojson.
+    
+    Returns:
+        list of dict: [{id, geometry, bbox, centroid}, ...]
+    """
+    if not geojson_path.exists():
+        print(f"❌ Ошибка: файл {geojson_path} не найден!")
+        print("Сначала запустите: python3 fetch_cities.py")
+        sys.exit(1)
+    
+    with open(geojson_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    cities = data.get('data', [])
-    available_cities = [c for c in cities if c.get('cityAvailabilityStatus') == 'AVAILABLE']
+    cities = []
     
-    print(f"📋 Найдено городов: {len(available_cities)} (AVAILABLE)")
-    return available_cities
+    for feature in data.get('features', []):
+        polygon_id = feature.get('id')
+        geometry = feature.get('geometry')
+        
+        if not geometry or geometry.get('type') != 'Polygon':
+            continue
+        
+        coordinates = geometry.get('coordinates')
+        if not coordinates:
+            continue
+        
+        try:
+            bbox = calculate_polygon_bounds(coordinates)
+            centroid = calculate_polygon_centroid(coordinates)
+            
+            cities.append({
+                'id': polygon_id,
+                'geometry': geometry,
+                'bbox': bbox,  # [min_lon, min_lat, max_lon, max_lat]
+                'centroid': centroid  # [lon, lat]
+            })
+        except Exception as e:
+            print(f"⚠️  Пропущен полигон {polygon_id}: {e}")
+            continue
+    
+    return cities
 
 
-def fetch_rent_zones(city_id, token):
-    """Загрузка зон аренды для города."""
-    url = f"https://backyard.urentbike.ru/gatewayclient/api/v3/zones/rent?cityId={city_id}"
-    headers = {
-        'Host': 'backyard.urentbike.ru',
-        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'UR-Client-Id': 'mobile.client.ios',
-        'UR-Platform': 'iOS'
+def fetch_city_zones(city_id, location, bbox, zoom=16.7, headers=None):
+    """
+    Загрузка детальных зон для города.
+    
+    Args:
+        city_id: str, ID полигона города
+        location: list [lon, lat]
+        bbox: list [min_lon, min_lat, max_lon, max_lat]
+        zoom: float
+        headers: dict
+    
+    Returns:
+        dict с GeoJSON FeatureCollection или None при ошибке
+    """
+    endpoint = "/4.0/layers/v1/polygons"
+    url = f"{BASE_URL}{endpoint}"
+    
+    params = {
+        "mobcf": "russia%25go_ru_by_geo_hosts_2%25default",
+        "mobpr": "go_ru_by_geo_hosts_2_TAXI_V4_0"
     }
     
-    response = requests.get(url, headers=headers, verify=False, timeout=30)
-    
-    if response.status_code == 403:
-        print("❌ Ошибка 403: Токен истёк или недействителен")
-        sys.exit(1)
-    
-    response.raise_for_status()
-    return response.json()
-
-
-def fetch_restriction_zones(rent_zone_id, token):
-    """Загрузка зон ограничений для rent zone."""
-    url = f"https://backyard.urentbike.ru/gatewayclient/api/v5/zones/general?rentZoneId={rent_zone_id}"
-    headers = {
-        'Host': 'backyard.urentbike.ru',
-        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'UR-Client-Id': 'mobile.client.ios',
-        'UR-Platform': 'iOS'
+    data = {
+        "state": {
+            "location": location,
+            "bbox": bbox,
+            "zoom": zoom,
+            "night_mode": False,  # КРИТИЧНО! Без этого может вернуть пустой ответ
+            "screen": "discovery",
+            "mode": "scooters",
+            "known_orders_info": [],
+            "multiclass_options": {"selected": False},
+            "scooters": {"autoselect": False},
+            "known_orders": []
+        },
+        "known_versions": {}
     }
     
-    response = requests.get(url, headers=headers, verify=False, timeout=30)
-    response.raise_for_status()
-    return response.json()
-
-
-def save_json(data, output_path):
-    """Сохранение данных в JSON файл."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-
-def convert_zones_to_geojson(all_zones_data, output_path):
-    """Конвертация зон аренды и ограничений в GeoJSON."""
-    features = []
-    
-    for city_data in all_zones_data:
-        city_name = city_data['city_name']
+    try:
+        response = requests.post(url, headers=headers, json=data, params=params, timeout=30)
         
-        # Обработка rent zones
-        for rent_zone in city_data.get('rent_zones', []):
-            coordinates = rent_zone.get('coordinates', [])
-            geojson_coords = convert_coordinates_to_geojson(coordinates)
-            if not geojson_coords:
-                continue
-            
-            feature = {
-                "type": "Feature",
-                "id": rent_zone.get('id'),
-                "properties": {
-                    "id": rent_zone.get('id'),
-                    "name": rent_zone.get('name'),
-                    "city": city_name,
-                    "type": "rentZone",
-                    "status": rent_zone.get('status')
-                },
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": geojson_coords
-                }
-            }
-            features.append(feature)
+        if response.status_code == 405:
+            print(f"      ❌ HTTP 405: JWT токен истёк!")
+            return None
+        elif response.status_code == 401:
+            print(f"      ❌ HTTP 401: Не авторизован")
+            return None
+        elif response.status_code == 403:
+            print(f"      ❌ HTTP 403: Доступ запрещен")
+            return None
         
-        # Обработка restriction zones
-        for restriction_data in city_data.get('restrictions', []):
-            rent_zone_id = restriction_data['rent_zone_id']
-            general_zones = restriction_data.get('general_zones', {}).get('data', {})
-            
-            # Low speed zones
-            for zone in general_zones.get('lowSpeedZones', []):
-                coordinates = zone.get('coordinates', [])
-                geojson_coords = convert_coordinates_to_geojson(coordinates)
-                if not geojson_coords:
-                    continue
-                
-                feature = {
-                    "type": "Feature",
-                    "id": zone.get('id'),
-                    "properties": {
-                        "id": zone.get('id'),
-                        "city": city_name,
-                        "type": "lowSpeedZone",
-                        "rentZoneId": rent_zone_id,
-                        "speedLimitValue": zone.get('speedLimitValue')
-                    },
-                    "geometry": {
-                        "type": "Polygon",
-                        "coordinates": geojson_coords
-                    }
-                }
-                features.append(feature)
-            
-            # Restricted zones (запрет парковки)
-            for zone in general_zones.get('restrictedZones', []):
-                coordinates = zone.get('coordinates', [])
-                geojson_coords = convert_coordinates_to_geojson(coordinates)
-                if not geojson_coords:
-                    continue
-                
-                feature = {
-                    "type": "Feature",
-                    "id": zone.get('id'),
-                    "properties": {
-                        "id": zone.get('id'),
-                        "city": city_name,
-                        "type": "restrictedZone",
-                        "rentZoneId": rent_zone_id
-                    },
-                    "geometry": {
-                        "type": "Polygon",
-                        "coordinates": geojson_coords
-                    }
-                }
-                features.append(feature)
-            
-            # Not allowed zones (запрет поездок)
-            for zone in general_zones.get('notAllowedZones', []):
-                coordinates = zone.get('coordinates', [])
-                geojson_coords = convert_coordinates_to_geojson(coordinates)
-                if not geojson_coords:
-                    continue
-                
-                feature = {
-                    "type": "Feature",
-                    "id": zone.get('id'),
-                    "properties": {
-                        "id": zone.get('id'),
-                        "city": city_name,
-                        "type": "notAllowedZone",
-                        "rentZoneId": rent_zone_id
-                    },
-                    "geometry": {
-                        "type": "Polygon",
-                        "coordinates": geojson_coords
-                    }
-                }
-                features.append(feature)
+        response.raise_for_status()
+        result = response.json()
+        
+        # Проверяем, что вернулся GeoJSON
+        if result.get('type') != 'FeatureCollection':
+            print(f"      ⚠️  Неожиданная структура ответа")
+            return None
+        
+        return result
+        
+    except requests.exceptions.RequestException as e:
+        print(f"      ❌ Ошибка запроса: {e}")
+        return None
+
+
+def save_city_zones(city_id, zones_data, output_dir):
+    """Сохранение зон города в отдельный файл с упрощением структуры."""
+    output_dir.mkdir(parents=True, exist_ok=True)
     
-    geojson = {
+    # Упрощаем структуру всех зон
+    simplified_features = []
+    for feature in zones_data.get('features', []):
+        simplified = simplify_zone_feature(feature, city_id)
+        simplified_features.append(simplified)
+    
+    simplified_geojson = {
+        'type': 'FeatureCollection',
+        'features': simplified_features
+    }
+    
+    # Санитизируем ID для имени файла
+    safe_id = city_id.replace('/', '_').replace('\\', '_')
+    filename = f"{safe_id}.geojson"
+    filepath = output_dir / filename
+    
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(simplified_geojson, f, ensure_ascii=False, indent=2)
+    
+    return filepath
+
+
+def merge_all_city_zones(city_zones_dir, output_path):
+    """
+    Объединение всех файлов зон городов в один GeoJSON.
+    
+    Args:
+        city_zones_dir: Path, директория с файлами городов
+        output_path: Path, путь для сохранения объединённого файла
+    
+    Returns:
+        dict с статистикой: {cities_count, total_features, zone_types}
+    """
+    if not city_zones_dir.exists():
+        print("⚠️  Директория с зонами городов не найдена")
+        return None
+    
+    # Собираем все GeoJSON файлы
+    geojson_files = list(city_zones_dir.glob('*.geojson'))
+    
+    if not geojson_files:
+        print("⚠️  Файлы с зонами не найдены")
+        return None
+    
+    print()
+    print("🔗 Объединяю все зоны в один файл...")
+    print(f"   Найдено файлов: {len(geojson_files)}")
+    
+    # Используем dict для дедупликации по id
+    unique_features = {}
+    zone_types_total = {}
+    cities_processed = 0
+    duplicates_found = 0
+    
+    for geojson_file in geojson_files:
+        try:
+            with open(geojson_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            features = data.get('features', [])
+            cities_processed += 1
+            
+            for feature in features:
+                feature_id = feature.get('id')
+                
+                # Дедупликация: если зона уже есть, пропускаем
+                if feature_id in unique_features:
+                    duplicates_found += 1
+                    continue
+                
+                unique_features[feature_id] = feature
+                
+                # Подсчёт типов зон
+                zone_type = feature.get('properties', {}).get('type')
+                if zone_type:
+                    zone_types_total[zone_type] = zone_types_total.get(zone_type, 0) + 1
+            
+        except Exception as e:
+            print(f"   ⚠️  Ошибка при чтении {geojson_file.name}: {e}")
+            continue
+    
+    # Создаём объединённый GeoJSON из уникальных зон
+    all_features = list(unique_features.values())
+    merged_geojson = {
         "type": "FeatureCollection",
-        "features": features
+        "features": all_features
     }
     
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    # Сохраняем
     with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(geojson, f, ensure_ascii=False, indent=2)
+        json.dump(merged_geojson, f, ensure_ascii=False, indent=2)
     
-    print(f"📦 Создан GeoJSON: {output_path} ({len(features)} зон)")
+    file_size_mb = output_path.stat().st_size / 1024 / 1024
+    
+    print(f"   ✅ Объединено городов: {cities_processed}")
+    print(f"   ✅ Всего зон: {len(all_features)}")
+    if duplicates_found > 0:
+        print(f"   🔄 Дубликатов удалено: {duplicates_found}")
+    print(f"   📊 Типы зон:")
+    for zt, count in sorted(zone_types_total.items()):
+        print(f"      {zt}: {count}")
+    print(f"   💾 Размер файла: {file_size_mb:.1f} MB")
+    print(f"   📁 Сохранено: {output_path}")
+    
+    return {
+        'cities_count': cities_processed,
+        'total_features': len(all_features),
+        'zone_types': zone_types_total
+    }
+
+
+def parse_arguments():
+    """Парсинг аргументов командной строки."""
+    parser = argparse.ArgumentParser(
+        description='Загрузка детальных зон для всех городов из cities.geojson',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Примеры использования:
+  python3 fetch_zones.py                  # Все города
+  python3 fetch_zones.py --continue_from 15  # Продолжить с города #15
+        """
+    )
+    
+    parser.add_argument('--continue_from', type=int, metavar='N',
+                       help='Продолжить с города N')
+    
+    parser.add_argument('--zoom', type=float, default=16.7,
+                       help='Уровень зума для детализации (по умолчанию: 16.7)')
+    
+    parser.add_argument('--delay', type=float, default=0.15,
+                       help='Задержка между запросами в секундах (по умолчанию: 0.15)')
+    
+    return parser.parse_args()
 
 
 def main():
-    print("🚀 Начинаю загрузку зон аренды и ограничений...\n")
+    args = parse_arguments()
     
-    # Загрузка токена
-    token = load_config()
+    print("🚀 Загрузка детальных зон для всех городов")
+    print("="*80)
     
-    # Получение списка городов
-    cities = get_cities()
+    # Загрузка конфигурации
+    headers = load_config()
     
-    # Структура для хранения всех данных
-    all_zones_data = []
-    
+    # Пути к файлам
     base_dir = Path(__file__).parent
-    tmp_dir = base_dir / 'output' / 'tmp'
+    cities_geojson = base_dir / 'output' / 'cities.geojson'
+    output_dir = base_dir / 'output' / 'city_zones'
     
-    # Обработка каждого города
-    for i, city in enumerate(cities, 1):
-        city_id = city['cityId']  # ID города для запроса rent zones
-        city_boundary_id = city['id']  # ID границы города
-        city_name = city.get('name', city_id)  # Используем cityId если name нет
+    # Загрузка городов
+    print(f"📥 Загружаю список городов из {cities_geojson.name}...")
+    cities = load_city_polygons(cities_geojson)
+    print(f"✅ Найдено городов: {len(cities)}")
+    print()
+    
+    # Все города для обработки
+    cities_to_process = cities
+    
+    # Продолжение с указанного города
+    if args.continue_from:
+        start_idx = args.continue_from - 1
+        if start_idx >= len(cities):
+            print(f"❌ Ошибка: город #{args.continue_from} не существует (всего {len(cities)})")
+            sys.exit(1)
         
-        print(f"\n[{i}/{len(cities)}] 🏙️  {city_name}")
+        cities_to_process = cities[start_idx:]
+        print(f"🔄 Продолжение с города #{args.continue_from}")
+        print()
+    
+    print(f"📊 Параметры:")
+    print(f"   Городов для обработки: {len(cities_to_process)}")
+    print(f"   Zoom: {args.zoom}")
+    print(f"   Задержка между запросами: {args.delay}с")
+    print()
+    
+    # Статистика
+    total_cities = len(cities_to_process)
+    successful = 0
+    failed = 0
+    empty = 0
+    total_zones = 0
+    
+    start_time = time.time()
+    
+    print("="*80)
+    print()
+    
+    # Обработка городов
+    for idx, city in enumerate(cities_to_process, start=1):
+        city_id = city['id']
+        bbox = city['bbox']
+        location = city['centroid']
         
-        city_data = {
-            'city_id': city_id,
-            'city_boundary_id': city_boundary_id,
-            'city_name': city_name,
-            'rent_zones': [],
-            'restrictions': []
-        }
+        # Глобальный индекс (если используется --continue_from)
+        global_idx = cities.index(city) + 1
         
-        # Загрузка rent zones
-        try:
-            print(f"  📥 Загружаю rent zones...")
-            rent_zones_data = fetch_rent_zones(city_id, token)
-            rent_zones = rent_zones_data.get('data', [])
-            city_data['rent_zones'] = rent_zones
-            print(f"  ✅ Rent zones: {len(rent_zones)}")
+        print(f"[{idx}/{total_cities}] Город #{global_idx}: {city_id}")
+        print(f"   📍 Bbox: {bbox}")
+        print(f"   📍 Center: {location}")
+        
+        # Загрузка зон
+        zones = fetch_city_zones(city_id, location, bbox, args.zoom, headers)
+        
+        if zones is None:
+            print(f"   ❌ Не удалось загрузить зоны")
+            failed += 1
             
-            # Сохранение rent zones в tmp
-            rent_zones_path = tmp_dir / f'rent_zones_{city_id}.json'
-            save_json(rent_zones_data, rent_zones_path)
+            # При HTTP 405 останавливаемся
+            if failed > 0 and idx > 1:
+                print()
+                print("⚠️  Возможно истёк JWT токен. Остановка.")
+                print(f"   Для продолжения обновите токен и используйте:")
+                print(f"   python3 fetch_zones.py --continue_from {global_idx}")
+                break
             
-        except Exception as e:
-            print(f"  ⚠️  Ошибка при загрузке rent zones: {e}")
+            time.sleep(args.delay)
             continue
         
-        # Загрузка restriction zones для каждой rent zone
-        if rent_zones:
-            print(f"  📥 Загружаю restriction zones...")
-            for rent_zone in rent_zones:
-                rent_zone_id = rent_zone['id']
-                
-                try:
-                    restriction_data = fetch_restriction_zones(rent_zone_id, token)
-                    city_data['restrictions'].append({
-                        'rent_zone_id': rent_zone_id,
-                        'general_zones': restriction_data
-                    })
-                    
-                    # Сохранение restriction zones в tmp
-                    restriction_path = tmp_dir / f'restrictions_{rent_zone_id}.json'
-                    save_json(restriction_data, restriction_path)
-                    
-                except Exception as e:
-                    print(f"  ⚠️  Ошибка для rent zone {rent_zone_id}: {e}")
-                    continue
-            
-            # Подсчёт общего количества restriction zones
-            total_restrictions = 0
-            for restriction in city_data['restrictions']:
-                general = restriction.get('general_zones', {}).get('data', {})
-                total_restrictions += len(general.get('lowSpeedZones', []))
-                total_restrictions += len(general.get('restrictedZones', []))
-                total_restrictions += len(general.get('notAllowedZones', []))
-            
-            print(f"  ✅ Restriction zones: {total_restrictions}")
+        features_count = len(zones.get('features', []))
         
-        all_zones_data.append(city_data)
+        if features_count == 0:
+            print(f"   ⚠️  Зоны не найдены (0 полигонов)")
+            empty += 1
+        else:
+            # Подсчёт типов зон (безопасный вариант)
+            zone_types = {}
+            for feature in zones.get('features', []):
+                options = feature.get('properties', {}).get('options', [])
+                zone_type = None
+                for opt in options:
+                    for action in opt.get('actions', []):
+                        zone_type = action.get('zone_type')
+                        if zone_type:
+                            break
+                    if zone_type:
+                        break
+                if zone_type:
+                    zone_types[zone_type] = zone_types.get(zone_type, 0) + 1
+            
+            zone_summary = ', '.join([f"{zt}: {cnt}" for zt, cnt in zone_types.items()]) if zone_types else 'границы'
+            
+            print(f"   ✅ Загружено зон: {features_count} ({zone_summary})")
+            
+            # Сохранение
+            filepath = save_city_zones(city_id, zones, output_dir)
+            print(f"   💾 Сохранено: {filepath.name}")
+            
+            successful += 1
+            total_zones += features_count
+        
+        print()
+        
+        # Задержка между запросами
+        if idx < total_cities:
+            time.sleep(args.delay)
     
-    # Сохранение объединённых данных
-    print("\n💾 Сохраняю данные...")
-    all_data_path = tmp_dir / 'all_zones.json'
-    save_json(all_zones_data, all_data_path)
-    print(f"💾 Сохранено: {all_data_path}")
+    # Итоговая статистика
+    elapsed_time = time.time() - start_time
+    minutes = int(elapsed_time // 60)
+    seconds = int(elapsed_time % 60)
     
-    # Конвертация в GeoJSON
-    print("\n📍 Конвертирую в GeoJSON...")
-    output_dir = base_dir / 'output'
-    geojson_path = output_dir / 'zones.geojson'
-    convert_zones_to_geojson(all_zones_data, geojson_path)
+    print("="*80)
+    print()
+    print("📊 ИТОГОВАЯ СТАТИСТИКА:")
+    print(f"   Обработано городов: {idx}/{total_cities}")
+    print(f"   ✅ Успешно: {successful}")
+    print(f"   ⚠️  Пустые: {empty}")
+    print(f"   ❌ Ошибки: {failed}")
+    print(f"   📍 Всего зон загружено: {total_zones}")
+    print(f"   ⏱️  Время выполнения: {minutes}м {seconds}с")
+    print()
+    print(f"📁 Отдельные файлы сохранены в: {output_dir}")
     
-    print("\n✅ Готово!")
-    print(f"   Обработано городов: {len(all_zones_data)}")
+    # Объединение всех файлов в один
+    if successful > 0:
+        merged_file = base_dir / 'output' / 'zones.geojson'
+        merge_all_city_zones(output_dir, merged_file)
+    
+    print()
+    print("="*80)
+    print("✅ Готово!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

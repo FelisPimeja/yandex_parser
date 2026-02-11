@@ -1,0 +1,11 @@
+{
+  "subscription": {
+    "is_active": false
+  },
+  "is_newbie": false,
+  "insurance": {
+    "insurance_type": "standart"
+  },
+  "ignition_key_allowed": true,
+  "has_active_order": false
+}

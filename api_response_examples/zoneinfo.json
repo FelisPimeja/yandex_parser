@@ -1,0 +1,277 @@
+{
+  "multiclass": {
+    "type": "multiclass",
+    "name": "Самый быстрый",
+    "can_be_default": true,
+    "details": {
+      "description": "Будем искать машину в нескольких тарифах сразу. Приедет ближайшая.",
+      "order_button": {
+        "text": "Выберите минимум два тарифа"
+      },
+      "search_screen": {
+        "title": "Поиск",
+        "subtitle": "в нескольких тарифах"
+      }
+    },
+    "selection_rules": {
+      "min_selected_count": {
+        "text": "Выберите минимум два тарифа",
+        "value": 2
+      }
+    },
+    "multiclass_popup": {
+      "text": "Самый\nбыстрый",
+      "show_count": 1,
+      "show_conditions": [
+        {
+          "count": 10,
+          "metric": "tariff_switch",
+          "period_seconds": 8
+        }
+      ]
+    },
+    "selector": {},
+    "requirements_supported": true
+  },
+  "need_acceptance": [
+    {
+      "type": "selfdriving_agr",
+      "title": "Условия тестирования",
+      "show_on_demand": true,
+      "header_image_tag": "image_sdc_eula",
+      "content": "Чтобы вызвать роботакси, прочитайте и примите <a href=\"https://yandex.ru/legal/self_driving_car_rules/\">условия участия в тестировании</a>.",
+      "accept_button_title": "Прочитал и принимаю",
+      "cancel_button_title": "Отклонить",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yandgo_bogota_agr",
+      "title": "Перед заказом",
+      "show_on_demand": true,
+      "header_image_tag": "promo_comfort_fi",
+      "content": "By using this option (tariff), you agree to enter into a vehicle rental agreement with the lessor, and you declare, agree and guarantee that you are aware of such rental agreement content. You can read the rental agreement  <a href=\"https://yango.com/legal/yango_economy_moto_tariff_termsofuse/\">here</a>.",
+      "accept_button_title": "Прочитал и принимаю",
+      "cancel_button_title": "Отклонить",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_dubai_agr",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_comfort_fi",
+      "content": "В Дубае работает сервис Yango, услуги предоставляются компанией Yango GCC Electronic Transport Services. Напоминаем, что необходимо ознакомиться и принять <a href=\"https://yango.com/legal/yango_termsofuse/\">Условия использования сервиса</a>, <a href=\"https://yango.com/legal/yango_mobile_agreement\">Лицензионное соглашение</a> и <a href=\"https://yango.com/legal/yango_privacy_notice\">Политику конфиденциальности</a>.",
+      "accept_button_title": "Прочитал и принимаю",
+      "cancel_button_title": "Отклонить",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yandex_turkey_agr",
+      "title": "Перед заказом",
+      "show_on_demand": true,
+      "header_image_tag": "promo_comfort_fi",
+      "content": "На территории Турецкой Республики сервис предоставляет YE Bilgi Teknolojileri Danışmanlık Limited Şirketi. Вы сможете пользоваться правами и средствами правовой защиты, предусмотренными законодательством Турецкой Республики. Некоторые функции сервиса могут отличаться.\n\nМы напоминаем, что вам необходимо прочитать и принять <a href=\"https://yandex.com/legal/yandexgo_termsofuse/\">Условия использования</a>, <a href=\"https://yandex.com/legal/yandexgo_mobile_agreement/?lang=en\">Лицензионное соглашение</a>, <a href=\"https://yandexgo.com/legal/yandexgo_privacy_notice/\">Политика конфиденциальности</a>. ",
+      "accept_button_title": "Прочитал и принимаю",
+      "cancel_button_title": "Отклонить",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yandgo_salvador_agr",
+      "title": "Перед заказом",
+      "show_on_demand": true,
+      "header_image_tag": "promo_comfort_fi",
+      "content": "Starting from 24.01.2025 service in El Salvador will be provided by MOBILE VENTURE EL SALVADOR S.A DE C.V. Change of service provider will not affect the level of service and security of your personal data. You enjoy the rights and remedies provided for by law of El Salvador. Please consult to <a href=\"https://yango.com/legal/yango_mobile_agreement/\">License Agreement</a>  and  <a href=\"https://yango.com/legal/yango_privacy_notice/\">Privacy Notice</a> \nBy pushing “Accept” button, you consent to processing of your data for the purposes of providing the services.\n",
+      "accept_button_title": "Прочитал и принимаю",
+      "cancel_button_title": "Отклонить",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_dubai_delivery_agr",
+      "title": "Перед заказом",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Yango Delivery in Dubai is operated by Yango Delivery LLC. Before using Yango Delivery please read and accept <a href=\"https://yango.com/legal/yango_termsofuse_delivery/\">Terms of Use</a>\n",
+      "accept_button_title": "Прочитал и принимаю",
+      "cancel_button_title": "Отклонить",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_isr_delivery_agr",
+      "title": "Прежде чем заказать",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Пожалуйста, прочитайте и примите обновлённые <a href=\"https://Yandex.com/legal/yango_delivery_termsofuse/?lang=he\">Условия использования </a> ",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Отклонить",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "go_serbia_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы обновили наши <a href=\"https://yandex.com/legal/yandexgo_termsofuse/\">условия использования сервиса</a>.\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yandex.com/legal/notice_ridetechnology/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "go_uzbekistan_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы внесли несколько изменений в наше <a href=\"https://yandex.com/legal/yandexgo_mobile_agreement/\">лицензионное соглашение</a> и <a href=\"https://yandex.com/legal/yandexgo_termsofuse/\">правила пользования</a>.\n\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yandex.com/legal/notice_ridetechnology_yandexgo/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "go_uzbekistan_tou_3",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы внесли несколько изменений в наше <a href=\"https://yandex.com/legal/yandexgo_mobile_agreement/\">лицензионное соглашение</a> и <a href=\"https://yandex.com/legal/yandexgo_termsofuse/\">правила пользования</a>.\n\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yandex.com/legal/notice_ridetechnology_yandexgo/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_guatemala_bolivia_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы обновили наши условия использования сервиса.\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yango.com/legal/notice_ridetechnology/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_peru_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы обновили наши условия использования сервиса.\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yango.com/legal/notice_ridetechnology/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_ghana_zambia_angola_pakistan_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы обновили наши условия использования сервиса.\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yango.com/legal/notice_ridetechnology/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_namibia_mozambique_algiers_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы обновили наши условия использования сервиса.\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yango.com/legal/notice_ridetechnology/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_congos_senegal_ivorycoast_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы обновили наши условия использования сервиса.\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yango.com/legal/notice_ridetechnology/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_only_azerbaijan_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Мы обновили наши условия использования сервиса.\nДетальнее ознакомиться с изменениями вы можете <a href=\"https://yango.com/legal/notice_ridetechnology_en_az/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "yango_algiers_tou",
+      "title": "Перед поездкой",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Bonjour.\nNous avons mis à jour nos Conditions d’Utilisation.\nVeullez lire l’information détailée <a href=\"https://yango.com/legal/notice_ridetechnology_algeria_eurl/\">ici</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    },
+    {
+      "type": "eula_moldova_old_versions",
+      "title": "Важная информация о предоставлении сервиса",
+      "show_on_demand": true,
+      "header_image_tag": "promo_delivery_uae",
+      "content": "Для соблюдения Кодекса автомобильного транспорта c 30.01.2024 молдавское юридическое лицо Ridetech S.R.L. будет предоставлять Вам сервис и обрабатывать Ваши персональные данные. Мы гарантируем Вам, что это не повлечет изменения стандартов обработки и уровня защиты Ваших персональных данных, а также то, что Вы, как субъект персональных данных, будете иметь те же права и средства их правовой защиты. Подробнее <a href=\"https://yandexgo.com/legal/notice_YandexGo_Moldova/\">здесь</a>.",
+      "accept_button_title": "Принять",
+      "cancel_button_title": "Позже",
+      "back_button_enabled": true,
+      "close_button_enabled": true,
+      "ttl": 86400,
+      "eula_type": "default"
+    }
+  ],
+  "max_tariffs": [],
+  "client_cache_settings": {
+    "zone_ttl_sec": 1987200,
+    "zones_max_count": 10
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "objects": {
+    "objects_by_type": [],
+    "types": []
+  },
+  "rowan": {
+    "objects_by_type": [
+      {
+        "type": "rowan_scooter",
+        "objects": [
+          [
+            37.486149,
+            55.842846
+          ]
+        ]
+      }
+    ],
+    "types": [
+      {
+        "type": "rowan_scooter",
+        "revision": "revision",
+        "style": {
+          "image": {
+            "tag": "scooters_rowan_parking_new",
+            "anchor": [
+              0.5,
+              0.5
+            ],
+            "selected_tag": "scooters_rowan_parking_new",
+            "selected_anchor": [
+              0.5,
+              0.5
+            ]
+          }
+        },
+        "options": [
+          {
+            "on": "tap",
+            "actions": [
+              "zoom_map_bbox"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
