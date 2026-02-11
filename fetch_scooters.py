@@ -26,7 +26,7 @@ BASE_URL = "https://tc.mobile.yandex.net"
 
 
 def load_config():
-    """Загрузка заголовков из config.json."""
+    """Загрузка заголовков и payment_methods из config.json."""
     config_path = Path(__file__).parent / 'config.json'
     
     if not config_path.exists():
@@ -42,7 +42,9 @@ def load_config():
         print("❌ Ошибка: заголовки не найдены в config.json!")
         sys.exit(1)
     
-    return headers
+    payment_methods = config.get('payment_methods', [{"type": "card"}])
+    
+    return headers, payment_methods
 
 
 def load_city_polygon(city_id):
@@ -120,6 +122,139 @@ def fetch_scooters(bbox, user_location, zoom, headers, delay=0.1):
     except requests.exceptions.RequestException as e:
         print(f"⚠️  Ошибка запроса: {e}")
         return None
+
+
+def fetch_scooter_full_info(scooter_number, location, headers, payment_methods, delay=0.2):
+    """
+    Получение полной информации о самокате через /offers/create.
+    Возвращает данные о батарее, ценах, страховке и т.д.
+    """
+    url = f"{BASE_URL}/4.0/scooters/v1/offers/create"
+    
+    data = {
+        "maas_client_version": "6.101.0",
+        "payment_methods": payment_methods,
+        "user_position": location,
+        "vehicle_numbers": [scooter_number]
+    }
+    
+    try:
+        response = requests.post(url, headers=headers, json=data, timeout=30)
+        
+        if response.status_code not in [200, 201]:
+            return None
+        
+        if delay > 0:
+            time.sleep(delay)
+        
+        return response.json()
+        
+    except requests.exceptions.RequestException:
+        return None
+
+
+def extract_full_info_from_offer(offer_data):
+    """
+    Извлечение всей полезной информации из ответа /offers/create.
+    Возвращает dict с батареей, ценами, страховкой, оператором, подписками.
+    """
+    result = {
+        'vehicle': {},
+        'pricing': {},
+        'insurance': {},
+        'operator': {},
+        'subscription': {},
+        'currency': {}
+    }
+    
+    # Информация о самокате
+    vehicles = offer_data.get('vehicles', [])
+    if vehicles:
+        vehicle = vehicles[0]
+        result['vehicle'] = {
+            'uuid': vehicle.get('id'),
+            'model': vehicle.get('model'),
+            'vendor': vehicle.get('vendor'),
+            'image_tag': vehicle.get('image'),
+            'type': vehicle.get('type'),
+            'charge_level': vehicle.get('status', {}).get('charge_level'),
+            'remaining_distance': vehicle.get('status', {}).get('remaining_distance'),
+            'remaining_time': vehicle.get('status', {}).get('remaining_time')
+        }
+    
+    # Ценовая информация
+    offers = offer_data.get('offers', [])
+    if offers:
+        offer = offers[0]
+        prices = offer.get('prices', {})
+        surge = offer.get('surge', {})
+        
+        result['pricing'] = {
+            'offer_id': offer.get('offer_id'),
+            'offer_type': offer.get('type'),
+            'unlock_price': prices.get('unlock'),
+            'riding_price': prices.get('riding'),
+            'parking_price': prices.get('parking'),
+            'surge_balance': surge.get('balance', 0.0),
+            'surge_unlock_balance': surge.get('unlock_balance', 0.0),
+            'surge_info_balance': surge.get('info_balance', 0.0),
+            'tariff_name': offer.get('name'),
+            'tariff_subname': offer.get('subname'),
+            'tariff_short_name': offer.get('short_name')
+        }
+        
+        # Страховка
+        insurance = offer.get('insurance', {})
+        full_insurance = insurance.get('full_insurance_prices', {})
+        
+        result['insurance'] = {
+            'type': insurance.get('type'),
+            'immutable': insurance.get('is_immutable'),
+            'price': full_insurance.get('fixed_price'),
+            'coverage': full_insurance.get('coverage')
+        }
+        
+        # Парсинг информации об операторе из offer_details
+        offer_details = offer.get('texts', {}).get('offer_details', '')
+        if 'ОГРН' in offer_details:
+            # Простой парсинг (можно улучшить регулярками)
+            lines = offer_details.split('\n')
+            for i, line in enumerate(lines):
+                if 'ОГРН' in line:
+                    result['operator']['ogrn'] = line.split(':')[-1].strip()
+                if i == 0 and ('ООО' in line or 'ИП' in line or 'АО' in line):
+                    result['operator']['name'] = line.strip()
+    
+    # Подписки
+    passes = offer_data.get('passes', {})
+    super_passes = passes.get('super_passes', {})
+    purchase_window = super_passes.get('purchase_window', {})
+    
+    result['subscription'] = {
+        'title': purchase_window.get('title'),
+        'subtitle': purchase_window.get('subtitle'),
+        'packages': []
+    }
+    
+    pass_elements = purchase_window.get('pass_elements', [])
+    for element in pass_elements:
+        package = {
+            'pass_id': element.get('pass_id'),
+            'name': element.get('name'),
+            'description': element.get('description')
+        }
+        result['subscription']['packages'].append(package)
+    
+    # Валюта
+    currency_rules = offer_data.get('currency_rules', {})
+    result['currency'] = {
+        'code': currency_rules.get('code'),
+        'sign': currency_rules.get('sign'),
+        'text': currency_rules.get('text'),
+        'template': currency_rules.get('template')
+    }
+    
+    return result
 
 
 def extract_points_from_response(data):
@@ -225,12 +360,20 @@ def shrink_bbox_around_point(point, size_deg=0.005):
     ]
 
 
-def fetch_city_scooters(city_bbox, city_id, headers, min_cluster_size=50, delay=0.1):
+def fetch_city_scooters(city_bbox, city_id, headers, payment_methods, min_cluster_size=50, delay=0.1, with_full_info=False):
     """
     Комбинированный подход для полного парсинга города.
+    
+    Параметры:
+        with_full_info: если True, для каждого самоката будет запрошена полная информация
+                       (батарея, цены, страховка) через /offers/create
     """
     print(f"\n🚀 Парсинг города: {city_id}")
     print("="*80)
+    
+    if with_full_info:
+        print("ℹ️  Режим: полная информация (батарея, цены, страховка)")
+        print("⚠️  Это увеличит время парсинга в ~N раз (N = количество самокатов)")
     
     # Вычисляем центр bbox для user_location
     center_lon = (city_bbox[0] + city_bbox[2]) / 2
@@ -348,11 +491,67 @@ def fetch_city_scooters(city_bbox, city_id, headers, min_cluster_size=50, delay=
             
             print(f"✓ Раскрыто {new_scooters}/{count}")
     
+    # Этап 5 (опционально): Сбор полной информации через /offers/create
+    if with_full_info:
+        scooter_list = [s for s in all_scooters.values() if s.get('id', '').startswith('scooter_')]
+        
+        if scooter_list:
+            print(f"\n💎 Этап 5: Сбор полной информации")
+            print(f"   Самокатов для обработки: {len(scooter_list)}")
+            print(f"   ⚠️  Это займёт ~{len(scooter_list) * delay:.0f} секунд")
+            
+            # Собираем метаданные города (operator, subscription, currency)
+            # Берём данные из первого самоката
+            city_metadata = {
+                'operator': {},
+                'subscription': {},
+                'currency': {}
+            }
+            metadata_collected = False
+            
+            # Прогресс-бар
+            bar_width = 50
+            
+            for i, scooter in enumerate(scooter_list, 1):
+                scooter_number = scooter.get('payload', {}).get('number')
+                scooter_geo = scooter.get('geo')
+                
+                if not scooter_number or not scooter_geo:
+                    continue
+                
+                # Запрашиваем полную информацию
+                offer_data = fetch_scooter_full_info(scooter_number, scooter_geo, headers, payment_methods, delay)
+                
+                if offer_data:
+                    full_info = extract_full_info_from_offer(offer_data)
+                    
+                    # Добавляем информацию к самокату
+                    scooter['full_info'] = full_info
+                    
+                    # Собираем метаданные города (один раз)
+                    if not metadata_collected:
+                        city_metadata['operator'] = full_info['operator']
+                        city_metadata['subscription'] = full_info['subscription']
+                        city_metadata['currency'] = full_info['currency']
+                        metadata_collected = True
+                
+                # Обновляем прогресс-бар
+                progress = i / len(scooter_list)
+                filled = int(bar_width * progress)
+                bar = '█' * filled + '░' * (bar_width - filled)
+                percent = int(progress * 100)
+                print(f'\r   [{bar}] {percent}% ({i}/{len(scooter_list)})', end='', flush=True)
+            
+            print(f"\n   ✓ Полная информация собрана")
+            
+            # Добавляем метаданные в результат
+            all_scooters['__metadata__'] = city_metadata
+    
     return all_scooters
 
 
-def save_geojson(scooters_dict, output_path, city_id):
-    """Сохранение результатов в GeoJSON."""
+def save_geojson(scooters_dict, output_path, city_id, full_info_mode=False):
+    """Сохранение результатов в GeoJSON с metadata (Вариант C)."""
     features = []
     
     stats = {
@@ -361,12 +560,19 @@ def save_geojson(scooters_dict, output_path, city_id):
         'cluster_scooters': 0
     }
     
+    # Извлекаем метаданные (если есть)
+    city_metadata = scooters_dict.pop('__metadata__', None)
+    
     for obj_id, obj in scooters_dict.items():
         geo = obj.get('geo')
         if not geo:
             continue
         
         obj_type = obj_id.split('_')[0]
+        
+        # В режиме full_info отбрасываем кластеры (парковки)
+        if full_info_mode and obj_type in ['cluster', 'cluster_empty']:
+            continue
         
         properties = {
             "id": obj_id,
@@ -377,7 +583,47 @@ def save_geojson(scooters_dict, output_path, city_id):
         if obj_type == 'scooter':
             properties["type"] = "scooter"
             properties["number"] = obj.get('payload', {}).get('number')
+            
+            # Если есть полная информация - добавляем её
+            full_info = obj.get('full_info')
+            if full_info:
+                vehicle = full_info.get('vehicle', {})
+                pricing = full_info.get('pricing', {})
+                insurance = full_info.get('insurance', {})
+                
+                # Базовая информация о самокате
+                properties.update({
+                    'uuid': vehicle.get('uuid'),
+                    'model': vehicle.get('model'),
+                    'vendor': vehicle.get('vendor'),
+                    'image_tag': vehicle.get('image_tag')
+                })
+                
+                # Статус батареи
+                properties.update({
+                    'charge_level': vehicle.get('charge_level'),
+                    'remaining_distance': vehicle.get('remaining_distance'),
+                    'remaining_time': vehicle.get('remaining_time')
+                })
+                
+                # Цены (могут различаться по самокатам)
+                properties.update({
+                    'unlock_price': pricing.get('unlock_price'),
+                    'riding_price': pricing.get('riding_price'),
+                    'parking_price': pricing.get('parking_price'),
+                    'surge_balance': pricing.get('surge_balance'),
+                    'offer_id': pricing.get('offer_id'),
+                    'offer_type': pricing.get('offer_type')
+                })
+                
+                # Страховка (обычно одинакова)
+                properties.update({
+                    'insurance_price': insurance.get('price'),
+                    'insurance_coverage': insurance.get('coverage')
+                })
+            
             stats['scooters'] += 1
+            
         elif obj_type == 'cluster':
             properties["type"] = "cluster"
             count = obj.get('payload', {}).get('objects_count', 0)
@@ -398,19 +644,28 @@ def save_geojson(scooters_dict, output_path, city_id):
         
         features.append(feature)
     
+    # Создаём базовые метаданные
+    metadata = {
+        "city_id": city_id,
+        "generated_at": datetime.now().isoformat(),
+        "total_objects": len(features),
+        "scooters": stats['scooters'],
+        "clusters": stats['clusters'],
+        "cluster_scooters": stats['cluster_scooters'],
+        "total_scooters": stats['scooters'] + stats['cluster_scooters'],
+        "source": "Yandex Go API (Combined Approach)"
+    }
+    
+    # Добавляем метаданные города (operator, subscription, currency)
+    if city_metadata:
+        metadata['operator'] = city_metadata.get('operator', {})
+        metadata['subscription'] = city_metadata.get('subscription', {})
+        metadata['currency'] = city_metadata.get('currency', {})
+    
     geojson = {
         "type": "FeatureCollection",
         "features": features,
-        "metadata": {
-            "city_id": city_id,
-            "generated_at": datetime.now().isoformat(),
-            "total_objects": len(features),
-            "scooters": stats['scooters'],
-            "clusters": stats['clusters'],
-            "cluster_scooters": stats['cluster_scooters'],
-            "total_scooters": stats['scooters'] + stats['cluster_scooters'],
-            "source": "Yandex Go API (Combined Approach)"
-        }
+        "metadata": metadata
     }
     
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -429,11 +684,14 @@ def main():
                        help='Минимальный размер кластера для рекурсии (по умолчанию: 50)')
     parser.add_argument('--delay', type=float, default=0.1,
                        help='Задержка между запросами в секундах (по умолчанию: 0.1)')
+    parser.add_argument('--with-full-info', action='store_true',
+                       help='Запросить полную информацию для каждого самоката (батарея, цены, страховка). '
+                            'ВНИМАНИЕ: увеличивает время парсинга в N раз!')
     
     args = parser.parse_args()
     
     # Загрузка конфигурации
-    headers = load_config()
+    headers, payment_methods = load_config()
     
     # Определение bbox
     if args.bbox:
@@ -459,8 +717,10 @@ def main():
         city_bbox,
         city_id,
         headers,
+        payment_methods,
         min_cluster_size=args.min_cluster,
-        delay=args.delay
+        delay=args.delay,
+        with_full_info=args.with_full_info
     )
     
     if not scooters:
@@ -471,10 +731,18 @@ def main():
     print(f"\n💾 Сохранение результатов...")
     
     base_dir = Path(__file__).parent
-    output_dir = base_dir / 'output' / 'city_scooters'
-    output_path = output_dir / f'{city_id}.geojson'
     
-    stats = save_geojson(scooters, output_path, city_id)
+    # Выбираем директорию в зависимости от режима
+    if args.with_full_info:
+        output_dir = base_dir / 'output'
+        output_filename = 'scooters_full_info.geojson'
+    else:
+        output_dir = base_dir / 'output' / 'city_scooters'
+        output_filename = f'{city_id}.geojson'
+    
+    output_path = output_dir / output_filename
+    
+    stats = save_geojson(scooters, output_path, city_id, full_info_mode=args.with_full_info)
     
     elapsed = time.time() - start_time
     
@@ -484,11 +752,16 @@ def main():
     print(f"📄 Файл: {output_path}")
     print(f"⏱️  Время: {elapsed:.1f} сек")
     print(f"\n📊 Статистика:")
-    print(f"   Отдельных самокатов:     {stats['scooters']}")
-    print(f"   Кластеров:               {stats['clusters']}")
-    print(f"   Самокатов в кластерах:   {stats['cluster_scooters']}")
-    print(f"   {'─'*40}")
-    print(f"   ВСЕГО самокатов:         {stats['scooters'] + stats['cluster_scooters']}")
+    
+    if args.with_full_info:
+        print(f"   Самокатов с полной информацией:  {stats['scooters']}")
+        print(f"   (Кластеры исключены в режиме --with-full-info)")
+    else:
+        print(f"   Отдельных самокатов:     {stats['scooters']}")
+        print(f"   Кластеров:               {stats['clusters']}")
+        print(f"   Самокатов в кластерах:   {stats['cluster_scooters']}")
+        print(f"   {'─'*40}")
+        print(f"   ВСЕГО самокатов:         {stats['scooters'] + stats['cluster_scooters']}")
 
 
 if __name__ == "__main__":

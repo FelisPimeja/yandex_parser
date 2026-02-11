@@ -17,5 +17,11 @@
     "User-Agent": "ru.yandex.ytaxi/700.126.0.502556 (iPhone; iPhone14,4; iOS 26.3; Darwin)",
     "Connection": "keep-alive",
     "X-YaTaxi-UserId": "YOUR_USER_ID"
-  }
+  },
+  "payment_methods": [
+    {
+      "type": "card",
+      "id": "card-xYOUR_CARD_ID_HERE"
+    }
+  ]
 }
