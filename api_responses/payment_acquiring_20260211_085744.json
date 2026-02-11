@@ -1,0 +1,16 @@
+{
+  "acquiring": "Yookassa",
+  "settings": {
+    "publicId": "358915",
+    "sdkKey": "live_MzU4OTE1G2CBKqL_3Q90cm_QvVWuTBf7_oDGyysqgys",
+    "currency": "ru-RU",
+    "amount": 15.0,
+    "baseUrl": null,
+    "serviceToken": null,
+    "checkoutUrlHost": null,
+    "pixUrlHost": null,
+    "apsUrlHost": null
+  },
+  "errors": [],
+  "succeeded": true
+}

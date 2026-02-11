@@ -1,0 +1,81 @@
+{
+  "bonusAccountLimit": {
+    "value": 0.0,
+    "culture": "ru-RU",
+    "value100": 0,
+    "valueFormatted": "0,00 ₽",
+    "valueFormattedWithoutZero": "0 ₽"
+  },
+  "bonusAccountSignup": {
+    "value": 0.0,
+    "culture": "ru-RU",
+    "value100": 0,
+    "valueFormatted": "0,00 ₽",
+    "valueFormattedWithoutZero": "0 ₽"
+  },
+  "bonusConfirmEmail": {
+    "value": 0.0,
+    "culture": "ru-RU",
+    "value100": 0,
+    "valueFormatted": "0,00 ₽",
+    "valueFormattedWithoutZero": "0 ₽"
+  },
+  "depositValue": {
+    "value": 0.0,
+    "culture": "ru-RU",
+    "value100": 0,
+    "valueFormatted": "0,00 ₽",
+    "valueFormattedWithoutZero": "0 ₽"
+  },
+  "freeDepositFine": {
+    "value": 0.0,
+    "culture": "ru-RU",
+    "value100": 0,
+    "valueFormatted": "0,00 ₽",
+    "valueFormattedWithoutZero": "0 ₽"
+  },
+  "currencySymbol": "₽",
+  "culture": "ru-RU",
+  "useApplePay": true,
+  "needToFiscalizeWholeTrip": true,
+  "code": "RU",
+  "cardConfirmationSum": {
+    "value": 15.0,
+    "culture": "ru-RU",
+    "value100": 1500,
+    "valueFormatted": "15,00 ₽",
+    "valueFormattedWithoutZero": "15 ₽"
+  },
+  "enableCVVVerification": false,
+  "disableHold": false,
+  "availableLinkCard": true,
+  "enableBankCardVerification": true,
+  "enableExpiredCard": true,
+  "minimalDepositBonuses": {
+    "value": 20.0,
+    "culture": "ru-RU",
+    "value100": 2000,
+    "valueFormatted": "20,00 ₽",
+    "valueFormattedWithoutZero": "20 ₽"
+  },
+  "maximumDepositBonuses": {
+    "value": 50000.0,
+    "culture": "ru-RU",
+    "value100": 5000000,
+    "valueFormatted": "50 000,00 ₽",
+    "valueFormattedWithoutZero": "50 000 ₽"
+  },
+  "alternativePaymentSystems": [
+    "sbp",
+    "sberbank",
+    "mtsPay"
+  ],
+  "forgiveCoastPlace": {
+    "value": 3.0,
+    "culture": "ru-RU",
+    "value100": 300,
+    "valueFormatted": "3,00 ₽",
+    "valueFormattedWithoutZero": "3 ₽"
+  },
+  "pixCustomerClarificationRequired": false
+}

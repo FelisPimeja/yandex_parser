@@ -1,0 +1,21 @@
+{
+  "entries": [
+    {
+      "cardType": "MasterCard",
+      "cardHolder": null,
+      "cardNumber": "5368 29XX XXXX 8368",
+      "id": "625aa93e034962e19c8cd90f",
+      "expDate": "2022-12-31T23:59:59Z",
+      "registerDateTimeUtc": null,
+      "status": "Approved",
+      "isDefault": true,
+      "isNeedToRelinkCard": false,
+      "acquiringType": "CloudPayments",
+      "isPending": false,
+      "cardIssuerName": "VTB",
+      "apsType": "Other"
+    }
+  ],
+  "errors": [],
+  "succeeded": true
+}

@@ -1,0 +1,3256 @@
+{
+  "entries": [
+    {
+      "restricted": false,
+      "freefloat": true,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "695a3b8124797037073dec34",
+      "name": "Сосновый Бор Кашалот",
+      "localizationName": null,
+      "areaId": "6853eddb8671a0eca4d00f76",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 59.88838194608405,
+        "lng": 29.13943062158393
+      },
+      "coordinates": [
+        {
+          "lat": 59.955525692391284,
+          "lng": 28.988456726074222
+        },
+        {
+          "lat": 59.95483686661952,
+          "lng": 29.289550781250004
+        },
+        {
+          "lat": 59.82210544630546,
+          "lng": 29.290237426757816
+        },
+        {
+          "lat": 59.820490710026924,
+          "lng": 28.991203308105472
+        },
+        {
+          "lat": 59.955525692391284,
+          "lng": 28.988456726074222
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Сосновый Бор Кашалот",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 10,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": true,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "694e60e7cb4131e938d9a379",
+      "name": "Тюмень Кашалот",
+      "localizationName": null,
+      "areaId": "603f753b7c254eb5361bec81",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 57.14643799980776,
+        "lng": 65.58429214659932
+      },
+      "coordinates": [
+        {
+          "lat": 57.15318963362814,
+          "lng": 65.46581358305316
+        },
+        {
+          "lat": 57.07918877459713,
+          "lng": 65.58460817100361
+        },
+        {
+          "lat": 57.17240868010153,
+          "lng": 65.71060003357258
+        },
+        {
+          "lat": 57.1954269947637,
+          "lng": 65.5571364997666
+        },
+        {
+          "lat": 57.15318963362814,
+          "lng": 65.46581358305316
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Тюмень Кашалот",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 10,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": true,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "693bde0c062fc25ed65d0fd3",
+      "name": " Омск Кашалот 4 зоны",
+      "localizationName": null,
+      "areaId": "6103cdd4ff7a23344ae91b73",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 54.98703270998706,
+        "lng": 73.3715489941441
+      },
+      "coordinates": [
+        {
+          "lat": 55.02605422195044,
+          "lng": 73.25958251953126
+        },
+        {
+          "lat": 55.02054361297408,
+          "lng": 73.4923553466797
+        },
+        {
+          "lat": 54.94883673519918,
+          "lng": 73.48892211914064
+        },
+        {
+          "lat": 54.95356860614189,
+          "lng": 73.24653625488283
+        },
+        {
+          "lat": 55.02605422195044,
+          "lng": 73.25958251953126
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": " Омск Кашалот 4 зоны",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 10,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": true,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "693bd671062fc25ed655c95b",
+      "name": "Омск Кашалот Сквер ТД",
+      "localizationName": null,
+      "areaId": "6103cdd4ff7a23344ae91b73",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 54.90781632788548,
+        "lng": 73.44964895509455
+      },
+      "coordinates": [
+        {
+          "lat": 54.90902378146381,
+          "lng": 73.44607114750457
+        },
+        {
+          "lat": 54.90642025993428,
+          "lng": 73.44604968983424
+        },
+        {
+          "lat": 54.906617689267726,
+          "lng": 73.45334529775299
+        },
+        {
+          "lat": 54.90923353653249,
+          "lng": 73.45310926337915
+        },
+        {
+          "lat": 54.90902378146381,
+          "lng": 73.44607114750457
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Омск Кашалот Сквер ТД",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 10,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6939d51c3816d643905c1f39",
+      "name": "Анапа - ГЕО",
+      "localizationName": null,
+      "areaId": "5f9b2589f0e5ce0001db3cc6",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 45.297854424325784,
+        "lng": 36.531398150059005
+      },
+      "coordinates": [
+        {
+          "lat": 45.29058815674045,
+          "lng": 36.41143798828126
+        },
+        {
+          "lat": 45.37819632212288,
+          "lng": 36.51546478271485
+        },
+        {
+          "lat": 45.30966593483413,
+          "lng": 36.65210723876954
+        },
+        {
+          "lat": 45.21493841637804,
+          "lng": 36.54464721679688
+        },
+        {
+          "lat": 45.29058815674045,
+          "lng": 36.41143798828126
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Анапа - ГЕО",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "68fb7b60027a45286d1bd56e",
+      "name": "Гиагинская",
+      "localizationName": null,
+      "areaId": "64307422f158b50245fdae7d",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.869403333182305,
+        "lng": 40.06655919299279
+      },
+      "coordinates": [
+        {
+          "lat": 44.82227315654819,
+          "lng": 40.062675476074226
+        },
+        {
+          "lat": 44.848201960235585,
+          "lng": 40.126876831054695
+        },
+        {
+          "lat": 44.91279057679458,
+          "lng": 40.072460174560554
+        },
+        {
+          "lat": 44.89661981973036,
+          "lng": 40.00568389892578
+        },
+        {
+          "lat": 44.82227315654819,
+          "lng": 40.062675476074226
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Гиагинская",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "685e93d4cd1cc1489c15041b",
+      "name": "ГЕО Тревоги (Иваново)",
+      "localizationName": null,
+      "areaId": "681b12fe0d37e1d6dd0ac1eb",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 56.94922076288427,
+        "lng": 40.91058278227058
+      },
+      "coordinates": [
+        {
+          "lat": 57.45155703119752,
+          "lng": 41.38397316575548
+        },
+        {
+          "lat": 57.38728729308173,
+          "lng": 41.69311523757828
+        },
+        {
+          "lat": 57.004803159966585,
+          "lng": 41.91558840969331
+        },
+        {
+          "lat": 56.96286231668237,
+          "lng": 41.32232665784279
+        },
+        {
+          "lat": 57.26046223443479,
+          "lng": 41.330467088595704
+        },
+        {
+          "lat": 57.14220049628788,
+          "lng": 40.59173583984376
+        },
+        {
+          "lat": 57.00559817821848,
+          "lng": 40.48599243164063
+        },
+        {
+          "lat": 56.777560737749916,
+          "lng": 40.69885253906251
+        },
+        {
+          "lat": 56.73464864702949,
+          "lng": 40.80596923828126
+        },
+        {
+          "lat": 56.73238875754844,
+          "lng": 40.961151123046875
+        },
+        {
+          "lat": 56.79410278652992,
+          "lng": 41.24679532759406
+        },
+        {
+          "lat": 56.917978044747876,
+          "lng": 41.551644370677366
+        },
+        {
+          "lat": 56.79634080032706,
+          "lng": 41.84139930059273
+        },
+        {
+          "lat": 56.589741609539345,
+          "lng": 41.46102905273438
+        },
+        {
+          "lat": 56.46704252890228,
+          "lng": 41.08062744140626
+        },
+        {
+          "lat": 56.473111073472246,
+          "lng": 40.60821533203126
+        },
+        {
+          "lat": 56.59957061284579,
+          "lng": 40.25939941406251
+        },
+        {
+          "lat": 56.81441089807122,
+          "lng": 40.05203247070313
+        },
+        {
+          "lat": 57.031763208858415,
+          "lng": 39.93804931640626
+        },
+        {
+          "lat": 57.222582454288556,
+          "lng": 40.08087158203125
+        },
+        {
+          "lat": 57.45155703119752,
+          "lng": 41.38397316575548
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "ГЕО Тревоги (Иваново)",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6852b58d8671a0eca4c2bc4b",
+      "name": "ГЕО Тревоги (Сочи море)",
+      "localizationName": null,
+      "areaId": "681b12fe0d37e1d6dd0ac1eb",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 42.73961348533418,
+        "lng": 38.49653066677032
+      },
+      "coordinates": [
+        {
+          "lat": 42.53637046327461,
+          "lng": 37.38647424374284
+        },
+        {
+          "lat": 43.496490278630105,
+          "lng": 38.71581983722347
+        },
+        {
+          "lat": 43.02079121270552,
+          "lng": 39.718322645394615
+        },
+        {
+          "lat": 41.905681597337036,
+          "lng": 38.08959918574911
+        },
+        {
+          "lat": 42.53637046327461,
+          "lng": 37.38647424374284
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "ГЕО Тревоги (Сочи море)",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6852b5368671a0eca4c03660",
+      "name": "ГЕО Тревоги (Новороссийск)",
+      "localizationName": null,
+      "areaId": "681b12fe0d37e1d6dd0ac1eb",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.21268149320016,
+        "lng": 37.07932369089381
+      },
+      "coordinates": [
+        {
+          "lat": 43.08092491088273,
+          "lng": 36.9360351544377
+        },
+        {
+          "lat": 43.34796385594852,
+          "lng": 35.892333421654854
+        },
+        {
+          "lat": 45.092722898246215,
+          "lng": 36.86737044145531
+        },
+        {
+          "lat": 44.676169953394556,
+          "lng": 37.44415262044487
+        },
+        {
+          "lat": 44.93541043454442,
+          "lng": 37.55401589263336
+        },
+        {
+          "lat": 45.27667455304511,
+          "lng": 37.161254694559496
+        },
+        {
+          "lat": 45.45425067452294,
+          "lng": 37.36175516630349
+        },
+        {
+          "lat": 45.0075282537908,
+          "lng": 37.95227051030444
+        },
+        {
+          "lat": 44.89282384835243,
+          "lng": 37.86712649565291
+        },
+        {
+          "lat": 44.7603760228589,
+          "lng": 38.24203489455271
+        },
+        {
+          "lat": 44.880193599951625,
+          "lng": 38.3271789366153
+        },
+        {
+          "lat": 44.75044598944526,
+          "lng": 39.12231419079413
+        },
+        {
+          "lat": 44.415853444193495,
+          "lng": 38.831176519494626
+        },
+        {
+          "lat": 44.91021071376417,
+          "lng": 37.62268052542133
+        },
+        {
+          "lat": 43.08092491088273,
+          "lng": 36.9360351544377
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "ГЕО Тревоги (Новороссийск)",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6852b4ec8671a0eca4be5e82",
+      "name": "ГЕО Тревоги (Африка)",
+      "localizationName": null,
+      "areaId": "681b12fe0d37e1d6dd0ac1eb",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": -0.11296201151446081,
+        "lng": 3.5837821684308038
+      },
+      "coordinates": [
+        {
+          "lat": 12.8972983991817,
+          "lng": -13.886718184561385
+        },
+        {
+          "lat": -14.863665429374914,
+          "lng": -12.832030554075564
+        },
+        {
+          "lat": -13.50002533029359,
+          "lng": 21.09374993475707
+        },
+        {
+          "lat": 15.114993758670748,
+          "lng": 19.5996091430252
+        },
+        {
+          "lat": 12.8972983991817,
+          "lng": -13.886718184561385
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "ГЕО Тревоги (Африка)",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6852b2fd8671a0eca4ac706c",
+      "name": "ГЕО Тревоги (Воскресенск)",
+      "localizationName": null,
+      "areaId": "681b12fe0d37e1d6dd0ac1eb",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 55.39879955268412,
+        "lng": 38.6089497761262
+      },
+      "coordinates": [
+        {
+          "lat": 55.41416383365912,
+          "lng": 38.43429561924012
+        },
+        {
+          "lat": 55.31227817126154,
+          "lng": 38.537292436916836
+        },
+        {
+          "lat": 55.386863912168636,
+          "lng": 38.78036492663385
+        },
+        {
+          "lat": 55.4827203612044,
+          "lng": 38.6911010179807
+        },
+        {
+          "lat": 55.41416383365912,
+          "lng": 38.43429561924012
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "ГЕО Тревоги (Воскресенск)",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6852b2c08671a0eca4ac1739",
+      "name": "ГЕО Тревоги (Ставрополь)",
+      "localizationName": null,
+      "areaId": "681b12fe0d37e1d6dd0ac1eb",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.9515123850679,
+        "lng": 41.976709015680335
+      },
+      "coordinates": [
+        {
+          "lat": 45.12191330376201,
+          "lng": 41.852416922527105
+        },
+        {
+          "lat": 45.18197423108183,
+          "lng": 41.33605954324124
+        },
+        {
+          "lat": 44.743635041567494,
+          "lng": 41.33331296143653
+        },
+        {
+          "lat": 44.76704566620497,
+          "lng": 42.525329464681555
+        },
+        {
+          "lat": 45.20230309854512,
+          "lng": 42.7244566455232
+        },
+        {
+          "lat": 45.13451196835401,
+          "lng": 42.144927884728936
+        },
+        {
+          "lat": 44.95496130716428,
+          "lng": 42.08450308502528
+        },
+        {
+          "lat": 44.951072906571326,
+          "lng": 41.835937431698845
+        },
+        {
+          "lat": 45.12191330376201,
+          "lng": 41.852416922527105
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "ГЕО Тревоги (Ставрополь)",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "67c6ad6a9125cfddab915742",
+      "name": "Черкесск",
+      "localizationName": null,
+      "areaId": "67aa11687f1b3b2f973161bb",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.233204058611406,
+        "lng": 42.04379671175327
+      },
+      "coordinates": [
+        {
+          "lat": 44.30910890100316,
+          "lng": 41.956788111411946
+        },
+        {
+          "lat": 44.30640898478315,
+          "lng": 42.135582109353344
+        },
+        {
+          "lat": 44.15958358931483,
+          "lng": 42.13317931769326
+        },
+        {
+          "lat": 44.15835234910485,
+          "lng": 41.95125366342784
+        },
+        {
+          "lat": 44.30910890100316,
+          "lng": 41.956788111411946
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Черкесск",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "676bb8fe7161cd0ad5b3d337",
+      "name": "ГЕО Адлер",
+      "localizationName": null,
+      "areaId": "5f9b2468f0e5ce0001b638e9",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 40.0588750908166,
+        "lng": 43.53383044951724
+      },
+      "coordinates": [
+        {
+          "lat": 40.12153223765893,
+          "lng": 43.45281874397791
+        },
+        {
+          "lat": 39.993965008344155,
+          "lng": 43.45899788996812
+        },
+        {
+          "lat": 39.99843312163842,
+          "lng": 43.61554691992288
+        },
+        {
+          "lat": 40.12140267313648,
+          "lng": 43.60988039102061
+        },
+        {
+          "lat": 40.12153223765893,
+          "lng": 43.45281874397791
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "ГЕО Адлер",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6508276cea7dea7863730603",
+      "name": "Адлер Сириус 2023",
+      "localizationName": null,
+      "areaId": "5f9b2468f0e5ce0001b638e9",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 43.40302918401701,
+        "lng": 39.96402908291317
+      },
+      "coordinates": [
+        {
+          "lat": 43.41072203241825,
+          "lng": 39.92148370007893
+        },
+        {
+          "lat": 43.42608860236372,
+          "lng": 39.92987389738629
+        },
+        {
+          "lat": 43.43045211448888,
+          "lng": 39.93646141804106
+        },
+        {
+          "lat": 43.42268808517514,
+          "lng": 39.94550586002002
+        },
+        {
+          "lat": 43.418320397484294,
+          "lng": 39.94228723983053
+        },
+        {
+          "lat": 43.41612289406975,
+          "lng": 39.95049499084353
+        },
+        {
+          "lat": 43.419527976627975,
+          "lng": 39.955838063065556
+        },
+        {
+          "lat": 43.41692511263586,
+          "lng": 39.96645942094041
+        },
+        {
+          "lat": 43.40666826625838,
+          "lng": 39.987358711420626
+        },
+        {
+          "lat": 43.393947374880845,
+          "lng": 40.0066263605172
+        },
+        {
+          "lat": 43.38505885922158,
+          "lng": 39.997090305431335
+        },
+        {
+          "lat": 43.3768576670937,
+          "lng": 39.98928017834536
+        },
+        {
+          "lat": 43.41072203241825,
+          "lng": 39.92148370007893
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Адлер Сириус 2023",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "643156f7f158b50245be9b17",
+      "name": "Майкоп",
+      "localizationName": null,
+      "areaId": "64307422f158b50245fdae7d",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.50935294394658,
+        "lng": 40.15666286429791
+      },
+      "coordinates": [
+        {
+          "lat": 44.579226151183335,
+          "lng": 39.76844788398477
+        },
+        {
+          "lat": 44.717457477021384,
+          "lng": 40.4214477684047
+        },
+        {
+          "lat": 44.39653529156254,
+          "lng": 40.53817749215996
+        },
+        {
+          "lat": 44.33760040999919,
+          "lng": 39.82955933747232
+        },
+        {
+          "lat": 44.579226151183335,
+          "lng": 39.76844788398477
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Майкоп",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "642168bb7978228d3bda70ee",
+      "name": "Пятигорск Цветник",
+      "localizationName": null,
+      "areaId": "5f9b2622f0e5ce0001ea8339",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.041806045706096,
+        "lng": 43.08910584239341
+      },
+      "coordinates": [
+        {
+          "lat": 44.04265974256755,
+          "lng": 43.07533264288206
+        },
+        {
+          "lat": 44.033971303066465,
+          "lng": 43.078680038452156
+        },
+        {
+          "lat": 44.04425989667585,
+          "lng": 43.10627460479737
+        },
+        {
+          "lat": 44.04813301707716,
+          "lng": 43.100674155296694
+        },
+        {
+          "lat": 44.04265974256755,
+          "lng": 43.07533264288206
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Пятигорск Цветник",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "642168207978228d3bda3276",
+      "name": "Пятигорск Горячеводский",
+      "localizationName": null,
+      "areaId": "5f9b2622f0e5ce0001ea8339",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.02688538938766,
+        "lng": 43.103216514604014
+      },
+      "coordinates": [
+        {
+          "lat": 44.02536313333422,
+          "lng": 43.082069931631956
+        },
+        {
+          "lat": 44.024398556970134,
+          "lng": 43.08076113929713
+        },
+        {
+          "lat": 44.0234340702942,
+          "lng": 43.07945251455227
+        },
+        {
+          "lat": 44.010618261222426,
+          "lng": 43.10236931063639
+        },
+        {
+          "lat": 44.029304326734064,
+          "lng": 43.12417036619698
+        },
+        {
+          "lat": 44.04173314990712,
+          "lng": 43.11837675282333
+        },
+        {
+          "lat": 44.03343727802611,
+          "lng": 43.088421737791236
+        },
+        {
+          "lat": 44.03211105284928,
+          "lng": 43.08619009798936
+        },
+        {
+          "lat": 44.027291199662564,
+          "lng": 43.08468613347192
+        },
+        {
+          "lat": 44.02536313333422,
+          "lng": 43.082069931631956
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Пятигорск Горячеводский",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "640ed1a7657e88cc4c25be74",
+      "name": "Новороссийск",
+      "localizationName": null,
+      "areaId": "5f9b2545f0e5ce0001d39f1d",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.705043637323755,
+        "lng": 37.767236760218275
+      },
+      "coordinates": [
+        {
+          "lat": 44.775986857205304,
+          "lng": 37.741127011894775
+        },
+        {
+          "lat": 44.74478206218442,
+          "lng": 37.69065856970405
+        },
+        {
+          "lat": 44.63494349425237,
+          "lng": 37.7507400508731
+        },
+        {
+          "lat": 44.685730900081,
+          "lng": 37.86369323699322
+        },
+        {
+          "lat": 44.775986857205304,
+          "lng": 37.741127011894775
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Новороссийск",
+      "disabled": false,
+      "southEast": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "northWest": {
+        "lat": 0.0,
+        "lng": 0.0
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6400ad5ea5273fc049910753",
+      "name": "Широкая Балка",
+      "localizationName": null,
+      "areaId": "5f9b2545f0e5ce0001d39f1d",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.656521126256855,
+        "lng": 37.692212546963646
+      },
+      "coordinates": [
+        {
+          "lat": 44.65729587902075,
+          "lng": 37.70653724443872
+        },
+        {
+          "lat": 44.666265070887675,
+          "lng": 37.683019636228
+        },
+        {
+          "lat": 44.656200669209625,
+          "lng": 37.67735480917443
+        },
+        {
+          "lat": 44.646553793128106,
+          "lng": 37.70181655846268
+        },
+        {
+          "lat": 44.65729587902075,
+          "lng": 37.70653724443872
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Широкая Балка",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.646246338404595,
+        "lng": 37.70851135253907
+      },
+      "northWest": {
+        "lat": 44.666516382859534,
+        "lng": 37.67572402954102
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "634666036d60b3e9ac5c0c01",
+      "name": "Анапа",
+      "localizationName": null,
+      "areaId": "5f9b2589f0e5ce0001db3cc6",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.97112627059004,
+        "lng": 37.27786698377963
+      },
+      "coordinates": [
+        {
+          "lat": 45.0885621214513,
+          "lng": 37.35145568943936
+        },
+        {
+          "lat": 44.88701554931509,
+          "lng": 37.48329162246522
+        },
+        {
+          "lat": 44.808134019129525,
+          "lng": 37.304077152232026
+        },
+        {
+          "lat": 45.081790264839746,
+          "lng": 37.023239147692074
+        },
+        {
+          "lat": 45.0885621214513,
+          "lng": 37.35145568943936
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Анапа",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.8739097909141,
+        "lng": 37.33851703698747
+      },
+      "northWest": {
+        "lat": 45.08074104693768,
+        "lng": 37.07060422282667
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "630db89e8e156c363e500521",
+      "name": "Центр",
+      "localizationName": null,
+      "areaId": "5f9b2839f0e5ce0001288313",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 45.044563315817754,
+        "lng": 41.973087287274524
+      },
+      "coordinates": [
+        {
+          "lat": 45.04632631824157,
+          "lng": 41.966855048305675
+        },
+        {
+          "lat": 45.04446619309186,
+          "lng": 41.967267035841395
+        },
+        {
+          "lat": 45.04427208980848,
+          "lng": 41.9645204540161
+        },
+        {
+          "lat": 45.04168398032139,
+          "lng": 41.96484088825681
+        },
+        {
+          "lat": 45.04197514770852,
+          "lng": 41.969189645214584
+        },
+        {
+          "lat": 45.039403111684344,
+          "lng": 41.96978473541139
+        },
+        {
+          "lat": 45.039500172131014,
+          "lng": 41.970791817072886
+        },
+        {
+          "lat": 45.040719282446354,
+          "lng": 41.97056293489145
+        },
+        {
+          "lat": 45.04187809238597,
+          "lng": 41.98010730639857
+        },
+        {
+          "lat": 45.04794376878348,
+          "lng": 41.97866535198801
+        },
+        {
+          "lat": 45.050143428434126,
+          "lng": 41.97498035330878
+        },
+        {
+          "lat": 45.04975921812329,
+          "lng": 41.9729976642582
+        },
+        {
+          "lat": 45.047458538376866,
+          "lng": 41.973355292308135
+        },
+        {
+          "lat": 45.04632631824157,
+          "lng": 41.966855048305675
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Центр",
+      "disabled": false,
+      "southEast": {
+        "lat": 45.039403111684344,
+        "lng": 41.98010730639857
+      },
+      "northWest": {
+        "lat": 45.050143428434126,
+        "lng": 41.9645204540161
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "630db7ec011d8622020e808d",
+      "name": "Парк Победы",
+      "localizationName": null,
+      "areaId": "5f9b2839f0e5ce0001288313",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 45.02779945541375,
+        "lng": 41.924447729861086
+      },
+      "coordinates": [
+        {
+          "lat": 45.03563981133948,
+          "lng": 41.921210288974926
+        },
+        {
+          "lat": 45.030893844688066,
+          "lng": 41.93323802891835
+        },
+        {
+          "lat": 45.02804625148911,
+          "lng": 41.93328380458361
+        },
+        {
+          "lat": 45.018365546558066,
+          "lng": 41.92614555341897
+        },
+        {
+          "lat": 45.02665988744612,
+          "lng": 41.91596317555941
+        },
+        {
+          "lat": 45.032031493943464,
+          "lng": 41.91687870196138
+        },
+        {
+          "lat": 45.03563981133948,
+          "lng": 41.921210288974926
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Парк Победы",
+      "disabled": false,
+      "southEast": {
+        "lat": 45.019667822439516,
+        "lng": 41.93328380458361
+      },
+      "northWest": {
+        "lat": 45.03548915833633,
+        "lng": 41.91596317555941
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "6131cc02b56518e13f4311ff",
+      "name": "Минеральные Воды",
+      "localizationName": null,
+      "areaId": "6131cb8834704fa44ee23e21",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 44.22697912855566,
+        "lng": 43.107077170795094
+      },
+      "coordinates": [
+        {
+          "lat": 44.32405057263839,
+          "lng": 42.99128151515538
+        },
+        {
+          "lat": 44.20534605046372,
+          "lng": 42.90496504372651
+        },
+        {
+          "lat": 44.129470516229006,
+          "lng": 43.27497165097972
+        },
+        {
+          "lat": 44.25848821095227,
+          "lng": 43.268924392751515
+        },
+        {
+          "lat": 44.32405057263839,
+          "lng": 42.99128151515538
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Минеральные Воды",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.129470516229006,
+        "lng": 43.27497165097972
+      },
+      "northWest": {
+        "lat": 44.32405057263839,
+        "lng": 42.90496504372651
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "611287286217d24b4bff5eb1",
+      "name": "Нальчик",
+      "localizationName": null,
+      "areaId": "61128635c21a79e5bcd8d02a",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 43.47755261846029,
+        "lng": 43.5923952707729
+      },
+      "coordinates": [
+        {
+          "lat": 43.43871055904323,
+          "lng": 43.44646453996176
+        },
+        {
+          "lat": 43.37680679856943,
+          "lng": 43.57576551614329
+        },
+        {
+          "lat": 43.51779873330872,
+          "lng": 43.74272634275258
+        },
+        {
+          "lat": 43.57567080081844,
+          "lng": 43.60027313289057
+        },
+        {
+          "lat": 43.43871055904323,
+          "lng": 43.44646453996176
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Нальчик",
+      "disabled": false,
+      "southEast": {
+        "lat": 43.37680679856943,
+        "lng": 43.74272634275258
+      },
+      "northWest": {
+        "lat": 43.560657020263406,
+        "lng": 43.46333629466244
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "60c21be0902793895ccda50d",
+      "name": "Ставрополь",
+      "localizationName": null,
+      "areaId": "5f9b2839f0e5ce0001288313",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 45.031015180922665,
+        "lng": 41.964114736235246
+      },
+      "coordinates": [
+        {
+          "lat": 45.09666893110677,
+          "lng": 41.87353117820133
+        },
+        {
+          "lat": 45.02500911716884,
+          "lng": 41.86357498270889
+        },
+        {
+          "lat": 45.02665932921946,
+          "lng": 41.91596264764166
+        },
+        {
+          "lat": 45.03203153218925,
+          "lng": 41.91687870025618
+        },
+        {
+          "lat": 45.035639814248974,
+          "lng": 41.92121028900147
+        },
+        {
+          "lat": 45.03089383580149,
+          "lng": 41.93323804764078
+        },
+        {
+          "lat": 45.02804622569858,
+          "lng": 41.933283812832094
+        },
+        {
+          "lat": 45.01836553428153,
+          "lng": 41.926145553588874
+        },
+        {
+          "lat": 45.02665877469092,
+          "lng": 41.91596397757626
+        },
+        {
+          "lat": 45.024766636921484,
+          "lng": 41.86340332087885
+        },
+        {
+          "lat": 44.966495965794266,
+          "lng": 41.857566834827
+        },
+        {
+          "lat": 44.97466099701596,
+          "lng": 42.073518234190054
+        },
+        {
+          "lat": 45.09284796868017,
+          "lng": 42.05838776134523
+        },
+        {
+          "lat": 45.050143501191755,
+          "lng": 41.97498032916401
+        },
+        {
+          "lat": 45.04794385707349,
+          "lng": 41.97866549994822
+        },
+        {
+          "lat": 45.04187807433459,
+          "lng": 41.98010734655062
+        },
+        {
+          "lat": 45.040719276818955,
+          "lng": 41.97056293487549
+        },
+        {
+          "lat": 45.039500106461794,
+          "lng": 41.97079179296253
+        },
+        {
+          "lat": 45.03940305311285,
+          "lng": 41.96978468773964
+        },
+        {
+          "lat": 45.041975099917146,
+          "lng": 41.96918955026046
+        },
+        {
+          "lat": 45.041683981683455,
+          "lng": 41.964840820524465
+        },
+        {
+          "lat": 45.044272146659516,
+          "lng": 41.96451999899053
+        },
+        {
+          "lat": 45.0444662328139,
+          "lng": 41.967266976367775
+        },
+        {
+          "lat": 45.04632623061115,
+          "lng": 41.96685436740382
+        },
+        {
+          "lat": 45.04745866649037,
+          "lng": 41.97335541899963
+        },
+        {
+          "lat": 45.0497592292649,
+          "lng": 41.97299759555584
+        },
+        {
+          "lat": 45.050143433112034,
+          "lng": 41.974980058148525
+        },
+        {
+          "lat": 45.092732294167426,
+          "lng": 42.05806732160037
+        },
+        {
+          "lat": 45.09666893110677,
+          "lng": 41.87353117820133
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Ставрополь",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.94384980145709,
+        "lng": 42.0920333680079
+      },
+      "northWest": {
+        "lat": 45.093630456128686,
+        "lng": 41.87284252571193
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "608bc0e3e158803bfd7b93b3",
+      "name": "Сочи",
+      "localizationName": null,
+      "areaId": "5f9b24c0f0e5ce0001c2e902",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 43.542793807768106,
+        "lng": 39.64125343933463
+      },
+      "coordinates": [
+        {
+          "lat": 44.002682244202816,
+          "lng": 39.49584961209347
+        },
+        {
+          "lat": 43.373081513083484,
+          "lng": 39.02893065250906
+        },
+        {
+          "lat": 43.09495045762696,
+          "lng": 39.60845951456577
+        },
+        {
+          "lat": 43.34413203509084,
+          "lng": 39.95950698852531
+        },
+        {
+          "lat": 43.43445034376385,
+          "lng": 39.817199707031094
+        },
+        {
+          "lat": 43.50850452671958,
+          "lng": 39.88807439804077
+        },
+        {
+          "lat": 43.43241881432707,
+          "lng": 40.017743110656745
+        },
+        {
+          "lat": 43.437239466900024,
+          "lng": 40.37887573242188
+        },
+        {
+          "lat": 43.741349723189884,
+          "lng": 40.111084005329765
+        },
+        {
+          "lat": 44.002682244202816,
+          "lng": 39.49584961209347
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Сочи",
+      "disabled": false,
+      "southEast": {
+        "lat": 43.49342244897205,
+        "lng": 39.983920984809444
+      },
+      "northWest": {
+        "lat": 43.74803067998964,
+        "lng": 39.50408935173158
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "608aefb2dd154818f05d1fff",
+      "name": "Краснодар",
+      "localizationName": null,
+      "areaId": "5f96dd383719ad000142ba5a",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 45.072763626124534,
+        "lng": 38.92892230161762
+      },
+      "coordinates": [
+        {
+          "lat": 45.00995741765742,
+          "lng": 38.69659424054664
+        },
+        {
+          "lat": 45.16896003449472,
+          "lng": 38.629302996128935
+        },
+        {
+          "lat": 45.2033304244263,
+          "lng": 39.13192748785573
+        },
+        {
+          "lat": 44.96042661877707,
+          "lng": 39.19578552291402
+        },
+        {
+          "lat": 44.94000754648434,
+          "lng": 38.85726929401878
+        },
+        {
+          "lat": 45.00995741765742,
+          "lng": 38.69659424054664
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Краснодар",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.98677752145594,
+        "lng": 39.13102626800538
+      },
+      "northWest": {
+        "lat": 45.18045707364952,
+        "lng": 38.88619459256006
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5ffacb818bf54600018d99ec",
+      "name": "Роза Хутор",
+      "localizationName": null,
+      "areaId": "603f72e27c254eb5361b6cce",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 43.710293910041266,
+        "lng": 40.28169698441367
+      },
+      "coordinates": [
+        {
+          "lat": 43.60079013147431,
+          "lng": 40.28618600015494
+        },
+        {
+          "lat": 43.72694231218434,
+          "lng": 40.46401977556054
+        },
+        {
+          "lat": 43.826116266329784,
+          "lng": 40.2957916260332
+        },
+        {
+          "lat": 43.68376005573544,
+          "lng": 40.08980051174506
+        },
+        {
+          "lat": 43.60079013147431,
+          "lng": 40.28618600015494
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Роза Хутор",
+      "disabled": false,
+      "southEast": {
+        "lat": 43.65147866566022,
+        "lng": 40.32679073243944
+      },
+      "northWest": {
+        "lat": 43.70312610418604,
+        "lng": 40.167045593261726
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5f607a8044f3ac0001681c72",
+      "name": "Лазаревское",
+      "localizationName": null,
+      "areaId": "6018fc6c3c3480542e5dc115",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": "Location.Api/20200909/637352596853402902_4f1a24ef2aa047869bdba26486504365.png",
+      "center": {
+        "lat": 43.86158843578463,
+        "lng": 39.24248245826408
+      },
+      "coordinates": [
+        {
+          "lat": 43.71776883289774,
+          "lng": 39.27337196510533
+        },
+        {
+          "lat": 43.889975557497976,
+          "lng": 39.023437502265395
+        },
+        {
+          "lat": 43.97158280229475,
+          "lng": 39.32615402588685
+        },
+        {
+          "lat": 43.90936745165763,
+          "lng": 39.41660641313973
+        },
+        {
+          "lat": 43.71776883289774,
+          "lng": 39.27337196510533
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Лазаревское",
+      "disabled": false,
+      "southEast": {
+        "lat": 43.86874817096276,
+        "lng": 39.41660641313973
+      },
+      "northWest": {
+        "lat": 43.97158280229475,
+        "lng": 39.2692710757474
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5f4f80bb9b11db000116271b",
+      "name": "Геленджик",
+      "localizationName": null,
+      "areaId": "5f9b25e2f0e5ce0001e3956f",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": "Location.Api/20200909/637352596853402902_4f1a24ef2aa047869bdba26486504365.png",
+      "center": {
+        "lat": 44.50994262540957,
+        "lng": 37.99229060962815
+      },
+      "coordinates": [
+        {
+          "lat": 44.58802254439571,
+          "lng": 37.952957152414164
+        },
+        {
+          "lat": 44.499455329028066,
+          "lng": 37.72147985733231
+        },
+        {
+          "lat": 44.31902488642797,
+          "lng": 38.05938500816644
+        },
+        {
+          "lat": 44.50103638863468,
+          "lng": 38.097324371663554
+        },
+        {
+          "lat": 44.59145005254817,
+          "lng": 38.2241821239224
+        },
+        {
+          "lat": 44.6852539443418,
+          "lng": 38.041534424790925
+        },
+        {
+          "lat": 44.58802254439571,
+          "lng": 37.952957152414164
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Геленджик",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.530956254939646,
+        "lng": 38.12568881548942
+      },
+      "northWest": {
+        "lat": 44.60905867268399,
+        "lng": 38.01425863173791
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5f1ec810b368150001344fa3",
+      "name": "Химки",
+      "localizationName": null,
+      "areaId": "6074543f340f54c5519268e7",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 55.91996183488711,
+        "lng": 37.356763844623806
+      },
+      "coordinates": [
+        {
+          "lat": 55.914425563283665,
+          "lng": 37.478935718527545
+        },
+        {
+          "lat": 55.90691490322689,
+          "lng": 37.47056722640284
+        },
+        {
+          "lat": 55.89489719172479,
+          "lng": 37.467659711836895
+        },
+        {
+          "lat": 55.88272501076208,
+          "lng": 37.45779991149903
+        },
+        {
+          "lat": 55.87422737250334,
+          "lng": 37.45719907572493
+        },
+        {
+          "lat": 55.87078493954634,
+          "lng": 37.45093343546615
+        },
+        {
+          "lat": 55.87617751423703,
+          "lng": 37.439432165119804
+        },
+        {
+          "lat": 55.879524047541565,
+          "lng": 37.43724346160877
+        },
+        {
+          "lat": 55.870904824561904,
+          "lng": 37.411713399924345
+        },
+        {
+          "lat": 55.876514806724785,
+          "lng": 37.40359783177208
+        },
+        {
+          "lat": 55.878393202363675,
+          "lng": 37.38630294799793
+        },
+        {
+          "lat": 55.87488977391084,
+          "lng": 37.38398549845442
+        },
+        {
+          "lat": 55.87136113759563,
+          "lng": 37.363128662392555
+        },
+        {
+          "lat": 55.93285760035792,
+          "lng": 37.225456236814196
+        },
+        {
+          "lat": 55.98225168951352,
+          "lng": 37.31231689386391
+        },
+        {
+          "lat": 55.93766428300067,
+          "lng": 37.3895645143867
+        },
+        {
+          "lat": 55.92939236247265,
+          "lng": 37.46852874693562
+        },
+        {
+          "lat": 55.914425563283665,
+          "lng": 37.478935718527545
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Химки",
+      "disabled": false,
+      "southEast": {
+        "lat": 55.86989447762575,
+        "lng": 37.47010802648603
+      },
+      "northWest": {
+        "lat": 55.94899926371334,
+        "lng": 37.30799102405482
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 20,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5f13171e428acf0001123728",
+      "name": "Пятигорск",
+      "localizationName": null,
+      "areaId": "5f9b2622f0e5ce0001ea8339",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": "Location.Api/20200909/637352596853402902_4f1a24ef2aa047869bdba26486504365.png",
+      "center": {
+        "lat": 44.03204251825227,
+        "lng": 43.06846901689046
+      },
+      "coordinates": [
+        {
+          "lat": 43.99627206237467,
+          "lng": 43.07927995483876
+        },
+        {
+          "lat": 43.991206797594465,
+          "lng": 42.99705501287308
+        },
+        {
+          "lat": 44.06403227489201,
+          "lng": 42.987441689898745
+        },
+        {
+          "lat": 44.066404388348865,
+          "lng": 43.07597637179852
+        },
+        {
+          "lat": 44.07866044998508,
+          "lng": 43.082960844086486
+        },
+        {
+          "lat": 44.07846046964902,
+          "lng": 43.08503150899207
+        },
+        {
+          "lat": 44.075408036078805,
+          "lng": 43.09700489022224
+        },
+        {
+          "lat": 44.074005595189455,
+          "lng": 43.10118913642171
+        },
+        {
+          "lat": 44.071646528889275,
+          "lng": 43.10421466825863
+        },
+        {
+          "lat": 44.069379994799895,
+          "lng": 43.10586690904101
+        },
+        {
+          "lat": 44.067175293536145,
+          "lng": 43.107089996282305
+        },
+        {
+          "lat": 44.06797607292238,
+          "lng": 43.14828921686084
+        },
+        {
+          "lat": 44.04813295983339,
+          "lng": 43.10067398445704
+        },
+        {
+          "lat": 44.04265971225129,
+          "lng": 43.07533264144206
+        },
+        {
+          "lat": 44.0339713331964,
+          "lng": 43.078680038422256
+        },
+        {
+          "lat": 44.04425991171799,
+          "lng": 43.10627464644266
+        },
+        {
+          "lat": 44.048133036110265,
+          "lng": 43.10067419442835
+        },
+        {
+          "lat": 44.06751258958114,
+          "lng": 43.14743020552314
+        },
+        {
+          "lat": 43.99911313474111,
+          "lng": 43.15485451923855
+        },
+        {
+          "lat": 44.02930379627825,
+          "lng": 43.12417164444924
+        },
+        {
+          "lat": 44.04173322739604,
+          "lng": 43.11837606147982
+        },
+        {
+          "lat": 44.03343715578035,
+          "lng": 43.08841107552972
+        },
+        {
+          "lat": 44.03211129437775,
+          "lng": 43.086189720899284
+        },
+        {
+          "lat": 44.02729026018124,
+          "lng": 43.084687506043345
+        },
+        {
+          "lat": 44.02343393476825,
+          "lng": 43.07945234577409
+        },
+        {
+          "lat": 44.010618645093544,
+          "lng": 43.10237469203244
+        },
+        {
+          "lat": 44.029304417096775,
+          "lng": 43.12417063893993
+        },
+        {
+          "lat": 43.99999017608744,
+          "lng": 43.153963317133396
+        },
+        {
+          "lat": 43.99627206237467,
+          "lng": 43.07927995483876
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Пятигорск",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.00261119005064,
+        "lng": 43.18553924560547
+      },
+      "northWest": {
+        "lat": 44.133927821670355,
+        "lng": 42.91499017490192
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 3,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5ed9e3cac5dea20001f09b6b",
+      "name": "Ессентуки",
+      "localizationName": null,
+      "areaId": "5f9b265ef0e5ce0001f0ca12",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": "Location.Api/20200909/637352596853402902_4f1a24ef2aa047869bdba26486504365.png",
+      "center": {
+        "lat": 44.040804734257875,
+        "lng": 42.86260818336968
+      },
+      "coordinates": [
+        {
+          "lat": 44.06699059262867,
+          "lng": 42.81131744469719
+        },
+        {
+          "lat": 44.073527108944006,
+          "lng": 42.91568756103516
+        },
+        {
+          "lat": 44.02306311544506,
+          "lng": 42.928390502929695
+        },
+        {
+          "lat": 44.004052699878315,
+          "lng": 42.80170440951339
+        },
+        {
+          "lat": 44.06699059262867,
+          "lng": 42.81131744469719
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Ессентуки",
+      "disabled": false,
+      "southEast": {
+        "lat": 44.000525761057524,
+        "lng": 42.92381732313252
+      },
+      "northWest": {
+        "lat": 44.09868102799935,
+        "lng": 42.77411145515468
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5d8b6ab095412f0001cb06b2",
+      "name": "Кисловодск",
+      "localizationName": null,
+      "areaId": "603f6f1e7c254eb5361abbbe",
+      "imgUrl": null,
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": null,
+      "center": {
+        "lat": 43.913897704056524,
+        "lng": 42.71658627197765
+      },
+      "coordinates": [
+        {
+          "lat": 43.95798161325134,
+          "lng": 42.68016815252095
+        },
+        {
+          "lat": 43.87734870092277,
+          "lng": 42.65235900883155
+        },
+        {
+          "lat": 43.87091880829083,
+          "lng": 42.76308059519649
+        },
+        {
+          "lat": 43.95489158802687,
+          "lng": 42.77097701962655
+        },
+        {
+          "lat": 43.95798161325134,
+          "lng": 42.68016815252095
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Кисловодск",
+      "disabled": false,
+      "southEast": {
+        "lat": 43.876078908504994,
+        "lng": 42.76330947526731
+      },
+      "northWest": {
+        "lat": 43.94798910444013,
+        "lng": 42.652825713157654
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 20,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    },
+    {
+      "restricted": false,
+      "freefloat": false,
+      "transportCapacities": [
+        {
+          "count": 0,
+          "transportType": "bike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "scooter",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        },
+        {
+          "count": 0,
+          "transportType": "ebike",
+          "insideTransportCount": 0,
+          "insideTransports": []
+        }
+      ],
+      "id": "5b6af17a29e7700001946173",
+      "name": "Адлер",
+      "localizationName": null,
+      "areaId": "5f9b2468f0e5ce0001b638e9",
+      "imgUrl": "20181120/636783400123106284_fd82d6eb1134451c977fad6814664dcb.png",
+      "imgUrls": null,
+      "parkingForModels": [],
+      "pinImgUrl": "Location.Api/20200909/637352596853402902_4f1a24ef2aa047869bdba26486504365.png",
+      "center": {
+        "lat": 43.19515223876752,
+        "lng": 40.122404363270746
+      },
+      "coordinates": [
+        {
+          "lat": 43.37685650508522,
+          "lng": 39.98927872115271
+        },
+        {
+          "lat": 43.34413204834767,
+          "lng": 39.95950698413623
+        },
+        {
+          "lat": 43.43445036283133,
+          "lng": 39.81719971178857
+        },
+        {
+          "lat": 43.50831628055148,
+          "lng": 39.88805294036866
+        },
+        {
+          "lat": 43.43224254776953,
+          "lng": 40.01770019531251
+        },
+        {
+          "lat": 43.42997154369056,
+          "lng": 40.652152522572116
+        },
+        {
+          "lat": 42.84369643780322,
+          "lng": 40.16052246320289
+        },
+        {
+          "lat": 43.09495042294135,
+          "lng": 39.60845948126469
+        },
+        {
+          "lat": 43.343645799891604,
+          "lng": 39.96002197514818
+        },
+        {
+          "lat": 43.38504311132192,
+          "lng": 39.99707937240601
+        },
+        {
+          "lat": 43.393947375098776,
+          "lng": 40.006626360118396
+        },
+        {
+          "lat": 43.40666807028454,
+          "lng": 39.98735888358463
+        },
+        {
+          "lat": 43.41692514832611,
+          "lng": 39.96645934575823
+        },
+        {
+          "lat": 43.419528065044645,
+          "lng": 39.95583765512679
+        },
+        {
+          "lat": 43.41612303666934,
+          "lng": 39.95049459855741
+        },
+        {
+          "lat": 43.418320324285816,
+          "lng": 39.94228703841352
+        },
+        {
+          "lat": 43.42269200750586,
+          "lng": 39.94551658630372
+        },
+        {
+          "lat": 43.43042126259996,
+          "lng": 39.93650455799347
+        },
+        {
+          "lat": 43.42608707584872,
+          "lng": 39.92980920277183
+        },
+        {
+          "lat": 43.4107220348657,
+          "lng": 39.92148364640855
+        },
+        {
+          "lat": 43.37685650508522,
+          "lng": 39.98927872115271
+        }
+      ],
+      "type": "USE",
+      "alarmMode": false,
+      "description": "Адлер",
+      "disabled": false,
+      "southEast": {
+        "lat": 43.34812327899402,
+        "lng": 40.06623424632136
+      },
+      "northWest": {
+        "lat": 43.54058479482877,
+        "lng": 39.865179061889656
+      },
+      "speedLimitMode": false,
+      "speedLimitValue": 0,
+      "normalSpeedValue": 25,
+      "alarmSpeedValue": 5,
+      "circleParkingContext": null
+    }
+  ],
+  "errors": [],
+  "succeeded": true
+}
