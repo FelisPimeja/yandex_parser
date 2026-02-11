@@ -7,8 +7,9 @@
 4. Рекурсивное раскрытие больших кластеров
 
 Использование:
-    python3 fetch_city_scooters.py polygon-184332  # По ID города из cities.geojson
-    python3 fetch_city_scooters.py --bbox 39.6,43.4,39.9,43.7  # По custom bbox
+    python3 fetch_scooters.py polygon-184332  # По ID города из cities.geojson
+    python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7  # По custom bbox
+    python3 fetch_scooters.py polygon-184332 --with-full-info --delay 0.3  # С полной информацией
 """
 
 import json

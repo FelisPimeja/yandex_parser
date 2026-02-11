@@ -31,11 +31,12 @@ python3 fetch_cities.py
 # 2️⃣ Загрузить детальные зоны для всех городов (~20-30 мин)
 python3 fetch_zones.py
 
-# 3️⃣ Загрузить самокаты в городе (РЕКОМЕНДУЕТСЯ - комбинированный подход)
-python3 fetch_city_scooters.py --bbox 39.6,43.4,39.9,43.7  # Сочи
+# 3️⃣ Загрузить самокаты в городе (комбинированный подход)
+python3 fetch_scooters.py polygon-184332  # Сочи (по ID из cities.geojson)
+python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7  # Или по custom bbox
 
-# Или загрузить самокаты в конкретной области (простой метод)
-python3 fetch_scooters.py --bbox 39.72,43.58,39.78,43.62 --zoom 17
+# 4️⃣ (Опционально) С полной информацией: батарея, цены, страховка
+python3 fetch_scooters.py polygon-184332 --with-full-info --delay 0.3
 ```
 
 ## 📁 Структура проекта
@@ -86,7 +87,7 @@ python3 fetch_cities.py
 - Обрабатывает только известные города (92 квадрата с `has_city=true`)
 - Идеально для регулярных обновлений
 
-2. **Полное сканирование** (~20 часов):
+2. **Полное сканирование** (~2 часа):
 ```bash
 python3 fetch_cities.py --search_new
 ```
@@ -192,6 +193,7 @@ python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7 --min-cluster 10 --delay 0.
 - `--bbox`: Альтернативный bbox `min_lon,min_lat,max_lon,max_lat`
 - `--min-cluster`: Минимальный размер кластера для рекурсии (по умолчанию: 50)
 - `--delay`: Задержка между запросами в секундах (по умолчанию: 0.1)
+- `--with-full-info`: Запросить полную информацию (батарея, цены, страховка). ⚠️ Увеличивает время в N раз!
 
 **Алгоритм (4 этапа):**
 
@@ -332,39 +334,7 @@ python3 fetch_parkings.py --bbox 39.6,43.4,39.9,43.7 --delay 0.2
 - **Properties**: `id`, `city_id`, `type`, `objects_count` (для cluster)
 - **Metadata**: `parkings_with_scooters`, `empty_parkings`, `total_scooters_on_parkings`
 
-### `fetch_scooters.py` - Загрузка самокатов области (простой метод)
-
-Загружает самокаты в заданной области. Используйте для небольших тестов.
-
-**Использование:**
-```bash
-# По умолчанию (центр Москвы)
-python3 fetch_scooters.py
-
-# Своя область
-python3 fetch_scooters.py --bbox 37.4,55.6,37.9,55.9 --zoom 17
-
-# С явным user_location
-python3 fetch_scooters.py --bbox 39.7,43.5,39.8,43.6 --zoom 17 --location 39.75,43.55
-
-# Без экспорта в GeoJSON
-python3 fetch_scooters.py --noexport
-```
-
-**Параметры:**
-- `--bbox`: Bounding box `min_lon,min_lat,max_lon,max_lat`
-- `--zoom`: Уровень зума карты (по умолчанию: 12, рекомендуется: 17)
-- `--location`: User location `lon,lat` (по умолчанию: центр bbox)
-- `--noexport`: Не конвертировать в GeoJSON
-
-**Особенности API:**
-- **Zoom < 14**: rowan формат (упрощенный, только координаты)
-- **Zoom ≥ 14**: objects формат (детальный, с ID и payload)
-- **Zoom 17**: Оптимальный баланс детализации
-
-**Результаты:**
-- `output/scooters.geojson` - самокаты в формате GeoJSON
-- `output/tmp/scooters.json` - сырые данные от API
+---
 
 ### `check_token.py` - Проверка JWT токена
 
@@ -447,26 +417,77 @@ python3 check_token.py
 - `no_entry` - запрет въезда
 - *(отсутствует)* - граница зоны обслуживания
 
-### GeoJSON Самокаты (`scooters.geojson`)
+### GeoJSON Самокаты (`city_scooters/*.geojson` или `scooters_full_info.geojson`)
+
+**Базовый формат** (без `--with-full-info`):
 ```json
 {
   "type": "FeatureCollection",
+  "metadata": {
+    "city_id": "polygon-184332",
+    "total_objects": 337,
+    "scooters": 280,
+    "clusters": 57,
+    "source": "Yandex Go API (Combined Approach)"
+  },
   "features": [
     {
       "type": "Feature",
+      "id": "scooter_819296",
       "geometry": {
         "type": "Point",
-        "coordinates": [37.618423, 55.751244]
+        "coordinates": [39.721459, 43.586242]
       },
       "properties": {
-        "id": "scooter_id",
+        "id": "scooter_819296",
+        "city_id": "polygon-184332",
         "type": "scooter",
-        "charge": 85,
-        "number": "1234"
+        "number": "819296"
       }
     }
   ]
 }
+```
+
+**Полный формат** (с `--with-full-info`):
+```json
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "city_id": "polygon-184332",
+    "scooters": 280,
+    "operator": {"name": "Yandex", "phone": "+7 (495) 777-77-77"},
+    "subscription": {"is_active": false},
+    "currency": {"code": "RUB", "sign": "₽", "text": "руб"}
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "scooter_819296",
+        "number": "819296",
+        "model": "ninebot",
+        "vendor": "yandex",
+        "charge_level": 70,
+        "remaining_distance": 35000.0,
+        "remaining_time": 180,
+        "unlock_price": 5500,
+        "riding_price": 799,
+        "parking_price": 1500,
+        "insurance_price": 4900,
+        "insurance_coverage": 50000
+      }
+    }
+  ]
+}
+```
+
+**Поля в режиме `--with-full-info`:**
+- **Базовая информация**: `id`, `number`, `model`, `vendor`, `uuid`, `image_tag`
+- **Батарея**: `charge_level` (%), `remaining_distance` (м), `remaining_time` (мин)
+- **Цены**: `unlock_price`, `riding_price`, `parking_price` (в копейках), `surge_balance`, `offer_id`, `offer_type`
+- **Страховка**: `insurance_price` (копейки), `insurance_coverage` (копейки)
+- **Метаданные города** (1 раз на FeatureCollection): `operator`, `subscription`, `currency`
 ```
 
 ## ⚠️ Важные замечания

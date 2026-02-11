@@ -7,19 +7,29 @@
 # Установите зависимости
 ```
 output/
-├── cities.geojson          # 🌍 Все города с зонами (2.2 MB)
+├── cities.geojson          # ## 📁 Где искать результаты
+
+```
+output/
+├── cities.geojson          # �🌍 Все города с зонами (2.2 MB)
 ├── zones.geojson           # 🗺️ Все зоны всех городов (19.6 MB)
-├── parkings.geojson        # 🅿️  Парковки самокатов
-├── scooters.geojson        # 🛴 Самокаты для карт (простой метод)
+├── scooters_full_info.geojson  # 🛴 С полной информацией (--with-full-info)
 ├── city_zones/             # 🗂️  Зоны каждого города отдельно (82 файла)
 │   ├── polygon-184332.geojson
 │   └── ...
-├── city_scooters/          # 🛴 Самокаты по городам (умный подход)
-│   ├── custom_1770843272.geojson  # Сочи (2,440 самокатов)
+└── city_scooters/          # 🛴 Самокаты по городам
+    ├── polygon-184332.geojson
+    └── ...
+```зонами (2.2 MB)
+├── zones.geojson           # 🗺️ Все зоны всех городов (19.6 MB)
+├── parkings.geojson        # 🅿️  Парковки самокатов
+├── scooters_full_info.geojson  # 🛴 Самокаты с полной информацией (с --with-full-info)
+├── city_zones/             # 🗂️  Зоны каждого города отдельно (82 файла)
+│   ├── polygon-184332.geojson
 │   └── ...
-└── tmp/
-    ├── scooters.json       # 🛴 Сырые данные самокатов
-    ├── fetch_cities_log.txt
+└── city_scooters/          # 🛴 Самокаты по городам
+    ├── polygon-184332.geojson  # Сочи (2,440 самокатов)
+    ├── custom_1770843272.geojson  # Custom bbox результаты
     └── ...
 ```equests
 
@@ -178,9 +188,12 @@ python3 fetch_parkings.py polygon-184332  # Сочи
 
 ### После `fetch_scooters.py`:
 ```
-✅ Загружено самокатов: X
-💾 Сохранено: output/tmp/scooters.json
-📄 GeoJSON сохранён: output/scooters.geojson
+✅ ГОТОВО!
+� Файл: /path/to/output/city_scooters/polygon-184332.geojson
+⏱️  Время: 5.2 сек
+� Статистика:
+   Самокатов: 280
+   Кластеров: 57
 ```
 
 ## 📁 Где искать результаты
