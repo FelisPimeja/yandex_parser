@@ -1,463 +1,186 @@
 #!/usr/bin/env python3
 """
-Скрипт для загрузки парковок и доступного транспорта для всех городов.
-Использует fetch_cities.py для получения списка городов.
-
-Для каждой зоны аренды делает запрос с центром зоны и радиусом 10км.
-Сохраняет JSON в output/tmp/ и конвертирует в GeoJSON в output/.
+Скрипт для парсинга парковок Yandex Go (только cluster и cluster_empty).
+Использует те же функции что и fetch_city_scooters.py, но фильтрует только парковки.
 
 Использование:
-    python3 fetch_parkings.py                      # Все города
-    python3 fetch_parkings.py --city_id <cityId>   # Конкретный город
+    python3 fetch_parkings.py --bbox 39.6,43.4,39.9,43.7
 """
 
-import json
-import os
+# Импортируем всё из fetch_city_scooters
 import sys
-import subprocess
-import argparse
 from pathlib import Path
+
+# Добавляем текущую директорию в путь
+sys.path.insert(0, str(Path(__file__).parent))
+
+# Импортируем функции из fetch_city_scooters
+from fetch_city_scooters import (
+    load_config, load_city_polygon, get_polygon_bbox,
+    fetch_scooters, extract_points_from_response, simple_cluster_points,
+    shrink_bbox_around_point
+)
+
+import json
+import time
+import argparse
 from datetime import datetime
-import requests
-import urllib3
 
-# Отключаем предупреждения о небезопасном SSL
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+def extract_parkings_only(data):
+    """Извлекает только парковки из ответа API."""
+    parkings = []
+    objects = data.get('objects', {})
+    
+    for obj_type in objects.get('objects_by_type', []):
+        type_name = obj_type.get('type')
+        if type_name in ['cluster', 'cluster_empty']:
+            for obj in obj_type.get('objects', []):
+                if isinstance(obj, dict):
+                    parkings.append(obj)
+    
+    return parkings
 
-
-def load_config():
-    """Загрузка токена из config.json или переменной окружения."""
-    token = os.environ.get('URENT_TOKEN')
+def fetch_city_parkings(city_bbox, city_id, headers, delay=0.1):
+    """Парсинг парковок города."""
+    print(f"\n🅿️  Парсинг парковок города: {city_id}")
+    print("="*80)
     
-    if not token:
-        config_path = Path(__file__).parent / 'config.json'
-        if config_path.exists():
-            with open(config_path) as f:
-                config = json.load(f)
-                token = config.get('bearer_token')
+    center_lon = (city_bbox[0] + city_bbox[2]) / 2
+    center_lat = (city_bbox[1] + city_bbox[3]) / 2
+    user_location = [center_lon, center_lat]
     
-    if not token:
-        print("❌ Ошибка: токен не найден!")
-        print("Создайте config.json или установите переменную URENT_TOKEN")
-        sys.exit(1)
+    # Этап 1: Обзор
+    print(f"\n📡 Этап 1: Обзорный запрос (zoom 12)")
+    overview_data = fetch_scooters(city_bbox, user_location, zoom=12, headers=headers, delay=delay)
     
-    return token
-
-
-def get_cities():
-    """Получение списка городов через fetch_cities.py."""
-    base_dir = Path(__file__).parent
-    cities_json_path = base_dir / 'output' / 'tmp' / 'cities.json'
+    if not overview_data:
+        return {}
     
-    # Проверяем наличие файла
-    if not cities_json_path.exists():
-        print("📥 Файл cities.json не найден, загружаю...")
-        # Запускаем fetch_cities.py с флагом --noexport
-        result = subprocess.run(
-            [sys.executable, 'fetch_cities.py', '--noexport'],
-            cwd=base_dir,
-            capture_output=True,
-            text=True
-        )
-        if result.returncode != 0:
-            print(f"❌ Ошибка при загрузке городов:\n{result.stderr}")
-            sys.exit(1)
-        print(result.stdout)
+    all_points = extract_points_from_response(overview_data)
+    print(f"   Найдено точек: {len(all_points)}")
     
-    # Загружаем список городов
-    with open(cities_json_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    if len(all_points) == 0:
+        return {}
     
-    cities = data.get('data', [])
-    available_cities = [c for c in cities if c.get('cityAvailabilityStatus') == 'AVAILABLE']
+    # Этап 2: Кластеризация
+    print(f"\n🔥 Этап 2: Кластеризация (сетка 0.02°)")
+    hot_zones = simple_cluster_points(all_points, grid_size_deg=0.02)
+    print(f"   Горячих зон: {len(hot_zones)}")
     
-    print(f"📋 Найдено городов: {len(available_cities)} (AVAILABLE)")
-    return available_cities
-
-
-def calculate_center(coordinates):
-    """Вычисление центра полигона. Поддерживает оба формата координат."""
-    if not coordinates:
-        return None
+    # Этап 3: Детальные запросы
+    print(f"\n�� Этап 3: Детальные запросы (zoom 17)")
     
-    try:
-        if isinstance(coordinates[0], dict):
-            # Новый формат: {lat: ..., lng: ...}
-            lats = [point['lat'] for point in coordinates]
-            lngs = [point['lng'] for point in coordinates]
-        else:
-            # Старый формат: [lat, lng]
-            lats = [point[0] for point in coordinates]
-            lngs = [point[1] for point in coordinates]
+    all_parkings = {}
+    
+    for i, zone in enumerate(hot_zones, 1):
+        zone_bbox = zone['bbox']
+        zone_center = [
+            (zone_bbox[0] + zone_bbox[2]) / 2,
+            (zone_bbox[1] + zone_bbox[3]) / 2
+        ]
         
-        center_lat = sum(lats) / len(lats)
-        center_lng = sum(lngs) / len(lngs)
+        print(f"   [{i}/{len(hot_zones)}] Зона...", end=' ')
         
-        return {
-            "latitude": center_lat,
-            "longitude": center_lng
-        }
-    except (KeyError, IndexError, TypeError) as e:
-        print(f"⚠️  Ошибка вычисления центра: {e}")
-        return None
-
-
-def fetch_rent_zones(city_id, token):
-    """Загрузка зон аренды для города."""
-    url = f"https://backyard.urentbike.ru/gatewayclient/api/v3/zones/rent?cityId={city_id}"
-    headers = {
-        'Host': 'backyard.urentbike.ru',
-        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'UR-Client-Id': 'mobile.client.ios',
-        'UR-Platform': 'iOS'
-    }
-    
-    response = requests.get(url, headers=headers, verify=False, timeout=30)
-    
-    if response.status_code == 403:
-        print("❌ Ошибка 403: Токен истёк или недействителен")
-        sys.exit(1)
-    
-    response.raise_for_status()
-    return response.json()
-
-
-def fetch_transports(center, token, radius_meters=10000):
-    """
-    Загрузка доступного транспорта в радиусе от центра.
-    
-    API endpoint: GET /gatewayclient/api/v6/transports
-    Query params:
-        - locationLat, locationLng - координаты центра поиска
-        - latitude, longitude - координаты центра поиска (дубликат)
-        - radiusByMeters - радиус поиска в метрах
-        - includeEmptyParkings - включить пустые парковки
-        - withEBikes - включить электросамокаты
-        - zoom - уровень зума карты
-    """
-    url = "https://backyard.urentbike.ru/gatewayclient/api/v6/transports"
-    headers = {
-        'Host': 'backyard.urentbike.ru',
-        'User-Agent': 'Urent/1.89.0 (ru.urentbike.app; build:8; iOS)',
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'UR-Client-Id': 'mobile.client.ios',
-        'UR-Platform': 'iOS'
-    }
-    
-    params = {
-        "includeEmptyParkings": "false",
-        "latitude": center["latitude"],
-        "locationLat": center["latitude"],
-        "locationLng": center["longitude"],
-        "longitude": center["longitude"],
-        "radiusByMeters": radius_meters,
-        "withEBikes": "true",
-        "zoom": 11 if radius_meters >= 50000 else 14
-    }
-    
-    response = requests.get(url, headers=headers, params=params, verify=False, timeout=30)
-    response.raise_for_status()
-    return response.json()
-
-
-def save_json(data, output_path):
-    """Сохранение данных в JSON файл."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-
-def convert_parkings_to_geojson(all_parkings_data, output_path):
-    """Конвертация парковок в GeoJSON."""
-    features = []
-    seen_parking_ids = set()
-    
-    for city_data in all_parkings_data:
-        city_name = city_data['city_name']
+        detail_data = fetch_scooters(zone_bbox, zone_center, zoom=17, headers=headers, delay=delay)
         
-        for zone_data in city_data.get('zones', []):
-            # Поддержка обоих форматов API: data и entries
-            transports_data = zone_data.get('transports', {})
-            if 'data' in transports_data:
-                parkings = transports_data['data'].get('parkingList', [])
-            elif 'entries' in transports_data:
-                parkings = transports_data['entries'].get('parkings', [])
-            else:
-                parkings = []
-            
-            for parking in parkings:
-                parking_id = parking.get('id')
-                
-                # Избегаем дубликатов парковок
-                if parking_id in seen_parking_ids:
-                    continue
-                seen_parking_ids.add(parking_id)
-                
-                # Координаты могут быть в location.lat/long или напрямую в latitude/longitude
-                location = parking.get('location', {})
-                lat = location.get('lat') or parking.get('latitude')
-                lng = location.get('long') or parking.get('longitude')
-                
-                if lat is None or lng is None:
-                    continue
-                
-                feature = {
-                    "type": "Feature",
-                    "id": parking_id,
-                    "properties": {
-                        "id": parking_id,
-                        "isEmpty": parking.get('isEmpty'),
-                        "countBikes": parking.get('countBikes'),
-                        "countScooters": parking.get('countScooters'),
-                        "city": city_name,
-                        "radius": parking.get('radius')
-                    },
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [lng, lat]  # GeoJSON: [lng, lat]
-                    }
-                }
-                features.append(feature)
-    
-    geojson = {
-        "type": "FeatureCollection",
-        "features": features
-    }
-    
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(geojson, f, ensure_ascii=False, indent=2)
-    
-    print(f"📦 Создан GeoJSON парковок: {output_path} ({len(features)} парковок)")
-
-
-def convert_vehicles_to_geojson(all_parkings_data, output_path):
-    """Конвертация транспорта в GeoJSON."""
-    features = []
-    seen_vehicle_ids = set()
-    
-    for city_data in all_parkings_data:
-        city_name = city_data['city_name']
-        
-        for zone_data in city_data.get('zones', []):
-            # Поддержка обоих форматов API: data и entries
-            transports_data = zone_data.get('transports', {})
-            if 'data' in transports_data:
-                vehicles = transports_data['data'].get('transports', [])
-            elif 'entries' in transports_data:
-                vehicles = transports_data['entries'].get('transports', [])
-            else:
-                vehicles = []
-            
-            for vehicle in vehicles:
-                vehicle_id = vehicle.get('id') or vehicle.get('identifier')
-                
-                # Избегаем дубликатов транспорта
-                if vehicle_id in seen_vehicle_ids:
-                    continue
-                seen_vehicle_ids.add(vehicle_id)
-                
-                # Координаты могут быть в location.lat/long или напрямую в latitude/longitude
-                location = vehicle.get('location', {})
-                lat = location.get('lat') or vehicle.get('latitude')
-                lng = location.get('long') or vehicle.get('longitude')
-                
-                if lat is None or lng is None:
-                    continue
-                
-                feature = {
-                    "type": "Feature",
-                    "id": vehicle_id,
-                    "properties": {
-                        "id": vehicle_id,
-                        "identifier": vehicle.get('identifier'),
-                        "displayedIdentifier": vehicle.get('displayedIdentifier'),
-                        "city": city_name,
-                        "vehicleType": vehicle.get('type'),
-                        "batteryPercent": vehicle.get('batteryPercent')
-                    },
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [lng, lat]  # GeoJSON: [lng, lat]
-                    }
-                }
-                features.append(feature)
-    
-    geojson = {
-        "type": "FeatureCollection",
-        "features": features
-    }
-    
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(geojson, f, ensure_ascii=False, indent=2)
-    
-    print(f"📦 Создан GeoJSON транспорта: {output_path} ({len(features)} единиц)")
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        description='Загрузка парковок и транспорта Urent'
-    )
-    parser.add_argument(
-        '--city_id',
-        type=str,
-        help='ID города (cityId из cities.json) для загрузки. Если не указан, загружаются все города'
-    )
-    args = parser.parse_args()
-    
-    if args.city_id:
-        print(f"🚀 Загрузка парковок и транспорта для города {args.city_id}...\n")
-    else:
-        print("🚀 Начинаю загрузку парковок и транспорта для всех городов...\n")
-    
-    # Загрузка токена
-    token = load_config()
-    
-    # Получение списка городов
-    cities = get_cities()
-    
-    # Фильтрация по city_id если указан
-    if args.city_id:
-        cities = [c for c in cities if c['cityId'] == args.city_id]
-        if not cities:
-            print(f"❌ Город с cityId={args.city_id} не найден среди AVAILABLE городов")
-            sys.exit(1)
-        print(f"✅ Найден город: {cities[0]['cityId']}")
-    else:
-        print(f"📋 Будет обработано городов: {len(cities)}")
-    
-    # Структура для хранения всех данных
-    all_parkings_data = []
-    
-    base_dir = Path(__file__).parent
-    tmp_dir = base_dir / 'output' / 'tmp'
-    
-    # Обработка каждого города
-    for i, city in enumerate(cities, 1):
-        city_id = city['cityId']  # ID города для запроса rent zones
-        city_boundary_id = city['id']  # ID границы города
-        city_name = city.get('name', city_id)  # Используем cityId если name нет
-        
-        print(f"\n[{i}/{len(cities)}] 🏙️  {city_name}")
-        
-        city_data = {
-            'city_id': city_id,
-            'city_boundary_id': city_boundary_id,
-            'city_name': city_name,
-            'zones': []
-        }
-        
-        # Загрузка rent zones
-        try:
-            print(f"  📥 Загружаю rent zones...")
-            rent_zones_data = fetch_rent_zones(city_id, token)
-            rent_zones = rent_zones_data.get('data', [])
-            print(f"  ✅ Rent zones: {len(rent_zones)}")
-            
-        except Exception as e:
-            print(f"  ⚠️  Ошибка при загрузке rent zones: {e}")
+        if not detail_data:
+            print("⚠️")
             continue
         
-        # Загрузка транспорта для каждой rent zone
-        if rent_zones:
-            print(f"  📥 Загружаю транспорт (радиус 10км)...")
-            
-            total_parkings = 0
-            total_vehicles = 0
-            
-            for rent_zone in rent_zones:
-                rent_zone_id = rent_zone['id']
-                rent_zone_name = rent_zone.get('name', 'Unnamed')
-                coordinates = rent_zone.get('coordinates', [])
-                
-                if not coordinates:
-                    continue
-                
-                # Вычисляем центр зоны
-                center = calculate_center(coordinates)
-                if not center:
-                    continue
-                
-                try:
-                    transports_data = fetch_transports(center, token, radius_meters=10000)
-                    
-                    # Подсчёт парковок и транспорта (поддержка обоих форматов)
-                    if 'data' in transports_data:
-                        data = transports_data['data']
-                        parkings = data.get('parkingList', [])
-                        vehicles = data.get('transports', [])
-                    elif 'entries' in transports_data:
-                        entries = transports_data['entries']
-                        parkings = entries.get('parkings', [])
-                        vehicles = entries.get('transports', [])
-                    else:
-                        parkings = []
-                        vehicles = []
-                    
-                    total_parkings += len(parkings)
-                    total_vehicles += len(vehicles)
-                    
-                    city_data['zones'].append({
-                        'rent_zone_id': rent_zone_id,
-                        'rent_zone_name': rent_zone_name,
-                        'center': center,
-                        'transports': transports_data
-                    })
-                    
-                    # Сохранение в tmp
-                    transports_path = tmp_dir / f'transports_{rent_zone_id}.json'
-                    save_json(transports_data, transports_path)
-                    
-                except Exception as e:
-                    print(f"  ⚠️  Ошибка для rent zone {rent_zone_name}: {e}")
-                    continue
-            
-            print(f"  ✅ Парковок: {total_parkings}, Транспорта: {total_vehicles}")
+        parkings = extract_parkings_only(detail_data)
         
-        all_parkings_data.append(city_data)
+        for parking in parkings:
+            parking_id = parking.get('id')
+            if parking_id:
+                all_parkings[parking_id] = parking
+        
+        print(f"✓ {len(parkings)} парковок")
     
-    # Сохранение объединённых данных
-    print("\n💾 Сохраняю данные...")
-    
-    # Формируем имя файла в зависимости от режима
-    if args.city_id:
-        all_data_path = tmp_dir / f'parkings_{args.city_id}.json'
-    else:
-        all_data_path = tmp_dir / 'all_parkings.json'
-    
-    save_json(all_parkings_data, all_data_path)
-    print(f"💾 Сохранено: {all_data_path}")
-    
-    # Конвертация в GeoJSON
-    print("\n📍 Конвертирую в GeoJSON...")
-    output_dir = base_dir / 'output'
-    
-    # Формируем имена выходных файлов
-    if args.city_id:
-        parkings_geojson_path = output_dir / f'parkings_{args.city_id}.geojson'
-        vehicles_geojson_path = output_dir / f'vehicles_{args.city_id}.geojson'
-    else:
-        parkings_geojson_path = output_dir / 'parkings.geojson'
-        vehicles_geojson_path = output_dir / 'vehicles.geojson'
-    
-    # Парковки
-    convert_parkings_to_geojson(all_parkings_data, parkings_geojson_path)
-    
-    # Транспорт
-    convert_vehicles_to_geojson(all_parkings_data, vehicles_geojson_path)
-    
-    print("\n✅ Готово!")
-    print(f"   Обработано городов: {len(all_parkings_data)}")
-    print("\n⚠️  Примечание: радиус 10км может не покрывать все парковки и транспорт.")
-    print("   Это первая версия, в будущем можно будет улучшить покрытие.")
+    return all_parkings
 
+def save_geojson(parkings_dict, output_path, city_id):
+    """Сохранение парковок в GeoJSON."""
+    features = []
+    stats = {'cluster': 0, 'cluster_empty': 0, 'total_scooters': 0}
+    
+    for obj_id, obj in parkings_dict.items():
+        geo = obj.get('geo')
+        if not geo:
+            continue
+        
+        obj_type = obj_id.split('_')[0]
+        properties = {"id": obj_id, "city_id": city_id, "type": obj_type}
+        
+        if obj_type == 'cluster':
+            count = obj.get('payload', {}).get('objects_count', 0)
+            properties["objects_count"] = count
+            stats['cluster'] += 1
+            stats['total_scooters'] += count
+        else:
+            stats['cluster_empty'] += 1
+        
+        features.append({
+            "type": "Feature",
+            "id": obj_id,
+            "geometry": {"type": "Point", "coordinates": geo},
+            "properties": properties
+        })
+    
+    geojson = {
+        "type": "FeatureCollection",
+        "features": features,
+        "metadata": {
+            "city_id": city_id,
+            "generated_at": datetime.now().isoformat(),
+            "parkings_with_scooters": stats['cluster'],
+            "empty_parkings": stats['cluster_empty'],
+            "total_scooters_on_parkings": stats['total_scooters']
+        }
+    }
+    
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(geojson, f, ensure_ascii=False, indent=2)
+    
+    return stats
 
-if __name__ == '__main__':
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('city_id', nargs='?')
+    parser.add_argument('--bbox', type=str)
+    parser.add_argument('--delay', type=float, default=0.1)
+    args = parser.parse_args()
+    
+    headers = load_config()
+    
+    if args.bbox:
+        parts = args.bbox.split(',')
+        city_bbox = [float(x) for x in parts]
+        city_id = f"custom_{int(time.time())}"
+    elif args.city_id:
+        city_feature = load_city_polygon(args.city_id)
+        city_bbox = get_polygon_bbox(city_feature['geometry']['coordinates'])
+        city_id = args.city_id
+    else:
+        print("❌ Укажите city_id или --bbox")
+        sys.exit(1)
+    
+    start_time = time.time()
+    parkings = fetch_city_parkings(city_bbox, city_id, headers, delay=args.delay)
+    
+    if not parkings:
+        print("\n❌ Парковки не найдены")
+        sys.exit(0)
+    
+    output_path = Path(__file__).parent / 'output' / 'parkings.geojson'
+    stats = save_geojson(parkings, output_path, city_id)
+    
+    print("\n✅ ГОТОВО!")
+    print(f"📄 {output_path}")
+    print(f"⏱️  {time.time() - start_time:.1f} сек")
+    print(f"\n📊 Парковок с самокатами: {stats['cluster']}")
+    print(f"   Пустых парковок: {stats['cluster_empty']}")
+    print(f"   Самокатов на парковках: {stats['total_scooters']}")
+
+if __name__ == "__main__":
     main()
