@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
 Скрипт для парсинга парковок Yandex Go (только cluster и cluster_empty).
-Использует те же функции что и fetch_city_scooters.py, но фильтрует только парковки.
+Использует те же функции что и fetch_scooters.py, но фильтрует только парковки.
 
 Использование:
     python3 fetch_parkings.py --bbox 39.6,43.4,39.9,43.7
 """
 
-# Импортируем всё из fetch_city_scooters
+# Импортируем всё из fetch_scooters
 import sys
 from pathlib import Path
 
 # Добавляем текущую директорию в путь
 sys.path.insert(0, str(Path(__file__).parent))
 
-# Импортируем функции из fetch_city_scooters
-from fetch_city_scooters import (
+# Импортируем функции из fetch_scooters
+from fetch_scooters import (
     load_config, load_city_polygon, get_polygon_bbox,
     fetch_scooters, extract_points_from_response, simple_cluster_points,
     shrink_bbox_around_point
