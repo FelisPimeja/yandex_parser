@@ -20,8 +20,8 @@
   },
   "payment_methods": [
     {
-      "type": "card",
-      "id": "card-xYOUR_CARD_ID_HERE"
+      "card": "card-xYOUR_CARD_ID_HERE",
+      "account_id": "card"
     }
   ]
 }

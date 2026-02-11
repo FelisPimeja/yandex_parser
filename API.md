@@ -297,8 +297,8 @@ mobpr=go_ru_by_geo_hosts_2_TAXI_V4_0
   "yandex_headers": { ... },
   "payment_methods": [
     {
-      "type": "card",
-      "id": "card-xYOUR_CARD_ID"
+      "card": "card-xYOUR_CARD_ID",
+      "account_id": "card"
     }
   ]
 }
@@ -310,8 +310,8 @@ mobpr=go_ru_by_geo_hosts_2_TAXI_V4_0
   "maas_client_version": "6.101.0",
   "payment_methods": [
     {
-      "type": "card",
-      "id": "card-x48cebdfe39bf7d84cc4ae20d"
+      "card": "card-x48cebdfe39bf7d84cc4ae20d",
+      "account_id": "card"
     }
   ],
   "user_position": [39.721459, 43.586242],  // [lon, lat]

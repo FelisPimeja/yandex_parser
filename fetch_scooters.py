@@ -570,10 +570,6 @@ def save_geojson(scooters_dict, output_path, city_id, full_info_mode=False):
         
         obj_type = obj_id.split('_')[0]
         
-        # В режиме full_info отбрасываем кластеры (парковки)
-        if full_info_mode and obj_type in ['cluster', 'cluster_empty']:
-            continue
-        
         properties = {
             "id": obj_id,
             "city_id": city_id
@@ -625,6 +621,10 @@ def save_geojson(scooters_dict, output_path, city_id, full_info_mode=False):
             stats['scooters'] += 1
             
         elif obj_type == 'cluster':
+            # В режиме full_info отбрасываем кластеры (парковки)
+            if full_info_mode:
+                continue
+                
             properties["type"] = "cluster"
             count = obj.get('payload', {}).get('objects_count', 0)
             properties["objects_count"] = count

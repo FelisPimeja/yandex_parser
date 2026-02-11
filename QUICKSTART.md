@@ -68,8 +68,8 @@ nano config.json  # или используйте ваш редактор
   },
   "payment_methods": [
     {
-      "type": "card",
-      "id": "card-xYOUR_CARD_ID"
+      "card": "card-xYOUR_CARD_ID",
+      "account_id": "card"
     }
   ]
 }
@@ -77,8 +77,9 @@ nano config.json  # или используйте ваш редактор
 
 **⚠️ Что такое `payment_methods`?**
 - Требуется для эндпоинта `/offers/create` (получение батареи, цен, страховки)
-- Без него API вернёт ошибку 500
+- Без него API вернёт ошибку 400
 - Найдите его в Charles Proxy в запросе `/offers/create` когда открываете карточку самоката
+- **Обязательно** включает `account_id: "card"`
 - Для обычного парсинга (без `--with-full-info`) не требуется
 
 **⚠️ Важно про токены:**
