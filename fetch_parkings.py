@@ -37,7 +37,7 @@ def find_cities_by_name(city_name):
     
     if not cities_csv.exists():
         print("❌ Ошибка: файл cities_list.csv не найден!")
-        print("Сначала запустите: python3 geocode_cities.py")
+        print("Сначала запустите: python3 fetch_cities.py")
         sys.exit(1)
     
     matching_cities = []

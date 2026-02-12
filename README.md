@@ -50,10 +50,10 @@ python3 fetch_scooters.py --city "Минск" --with-full-info --delay 0.3
 ├── fetch_parkings.py         # 🅿️  Загрузка парковок города
 │
 ├── check_token.py            # 🔍 Проверка срока JWT токена
-├── test_api.py               # 🧪 Тестирование эндпоинтов
 │
 ├── config.json.example       # Шаблон конфигурации
 ├── config.json               # Ваши заголовки (не коммитится)
+├── cities_list.csv           # 📋 Справочник городов (id, name, country, lon, lat, bbox)
 ├── grid_3x3.geojson          # Глобальная сетка 3×3° (7,998 квадратов)
 │
 ├── output/
