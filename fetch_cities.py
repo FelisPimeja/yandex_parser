@@ -25,6 +25,7 @@ import sys
 import time
 import re
 import argparse
+import csv
 from pathlib import Path
 import requests
 from datetime import datetime
@@ -159,9 +160,31 @@ def check_token_expiry(headers):
     except:
         return None
 
+def load_city_names():
+    """Загружает справочник названий городов из cities_list.csv"""
+    city_names = {}
+    csv_path = Path('cities_list.csv')
+    
+    if not csv_path.exists():
+        print("⚠️  Файл cities_list.csv не найден, названия городов не будут добавлены")
+        return city_names
+    
+    with open(csv_path, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            city_names[row['id']] = {
+                'name': row['name'],
+                'country': row['country']
+            }
+    
+    return city_names
+
 def save_results(all_polygons, stage_name, timestamp):
-    """Сохраняет результаты сканирования."""
+    """Сохраняет результаты сканирования с обогащением из cities_list.csv"""
     Path('output/tmp').mkdir(parents=True, exist_ok=True)
+    
+    # Загружаем справочник названий городов
+    city_names = load_city_names()
     
     # Сохраняем сырые данные
     raw_geojson = {'type': 'FeatureCollection', 'features': list(all_polygons.values())}
@@ -169,11 +192,29 @@ def save_results(all_polygons, stage_name, timestamp):
     with open(raw_file, 'w', encoding='utf-8') as f:
         json.dump(raw_geojson, f, indent=2, ensure_ascii=False)
     
-    # Сохраняем упрощённую версию
-    simplified_features = [simplify_polygon_feature(poly) for poly in all_polygons.values()]
+    # Сохраняем упрощённую версию с обогащением
+    simplified_features = []
+    enriched_count = 0
+    
+    for poly in all_polygons.values():
+        feature = simplify_polygon_feature(poly)
+        city_id = feature['id']
+        
+        # Добавляем название города и страну из справочника
+        if city_id in city_names:
+            feature['properties']['name'] = city_names[city_id]['name']
+            feature['properties']['country'] = city_names[city_id]['country']
+            enriched_count += 1
+        
+        simplified_features.append(feature)
+    
     simplified_geojson = {'type': 'FeatureCollection', 'features': simplified_features}
     with open('output/cities.geojson', 'w', encoding='utf-8') as f:
         json.dump(simplified_geojson, f, indent=2, ensure_ascii=False)
+    
+    # Выводим статистику обогащения
+    if city_names:
+        print(f"   📝 Обогащено названиями: {enriched_count}/{len(all_polygons)} городов")
     
     # Сохраняем список уникальных ID
     id_list_file = f'output/tmp/polygon_ids_{stage_name}_{timestamp}.txt'
@@ -441,33 +482,7 @@ def main():
         print(f"   • Всего с паузами: ~{estimated_hours * 1.1:.1f} часа")
     else:
         print(f"   • Всего: ~{stage1_time:.1f} минут")
-    
-    # Формируем итоговый результат
-    result = {
-        'data': enriched_cities,
-        'meta': {
-            'v1_zones': len(v1_cities),
-            'v3_zones': len(v3_cities),
-            'enriched': matched,
-            'timestamp': datetime.now().isoformat()
-        },
-        'errors': [],
-        'succeeded': True
-    }
-    
-    return result
 
-
-def save_json(data, output_path):
-    """Сохранение данных в JSON файл."""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    
-    print(f"\n📝 Лог сохраняется в: {log_file}")
-    print(f"\n{'='*80}\n")
-    
     all_polygons = {}  # polygon_id -> feature
     errors = []
     start_time = time.time()
