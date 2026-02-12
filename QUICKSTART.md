@@ -114,17 +114,22 @@ python3 fetch_cities.py
 # 2️⃣ Загрузить зоны для всех городов (~20-30 мин)
 python3 fetch_zones.py
 
+# 2️⃣-альт. Загрузить зоны только для одного города
+python3 fetch_zones.py --city "Сочи"
+
 # 3️⃣ Загрузить самокаты в городе (быстрый режим)
-python3 fetch_scooters.py polygon-184332  # Сочи, ~35 запросов, 5 сек
+python3 fetch_scooters.py polygon-184332  # По ID из cities.geojson
+python3 fetch_scooters.py --city "Сочи"   # По названию города
 
 # 3️⃣-альт. Загрузить самокаты с ПОЛНОЙ ИНФОРМАЦИЕЙ (медленный режим)
-python3 fetch_scooters.py polygon-184332 --with-full-info --delay 0.3
+python3 fetch_scooters.py --city "Минск" --with-full-info --delay 0.3
 # ⚠️ Это добавит батарею, цены, страховку для КАЖДОГО самоката
 # ⚠️ 2,440 самокатов = ~12 минут
 # ⚠️ Требуется payment_methods в config.json!
 
 # 4️⃣ Загрузить парковки в городе
-python3 fetch_parkings.py polygon-184332  # Сочи
+python3 fetch_parkings.py polygon-184332  # По ID
+python3 fetch_parkings.py --city "Сочи"   # По названию
 ```
 
 **Разница между режимами:**
