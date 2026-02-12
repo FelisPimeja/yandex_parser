@@ -6,7 +6,8 @@
 и загружает детальные зоны для каждого города.
 
 Использование:
-    python3 fetch_zones.py                  # Все города
+    python3 fetch_zones.py                     # Все города
+    python3 fetch_zones.py --city "Сочи"       # Только указанный город
     python3 fetch_zones.py --continue_from 15  # Продолжить с города N
 """
 
@@ -15,6 +16,7 @@ import os
 import sys
 import argparse
 import time
+import csv
 from pathlib import Path
 from datetime import datetime
 import requests
@@ -41,6 +43,53 @@ def load_config():
         sys.exit(1)
     
     return headers
+
+
+def find_cities_by_name(city_name):
+    """
+    Ищет все зоны города по названию в cities_list.csv.
+    Возвращает список словарей с полями: id, name, country, bbox
+    """
+    cities_csv = Path(__file__).parent / 'cities_list.csv'
+    
+    if not cities_csv.exists():
+        print("❌ Ошибка: файл cities_list.csv не найден!")
+        print("Сначала запустите: python3 geocode_cities.py")
+        sys.exit(1)
+    
+    matching_cities = []
+    
+    with open(cities_csv, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row['name'].lower() == city_name.lower():
+                matching_cities.append({
+                    'id': row['id'],
+                    'name': row['name'],
+                    'country': row['country'],
+                    'bbox': [float(x) for x in row['bbox'].split(',')]
+                })
+    
+    if not matching_cities:
+        print(f"❌ Город '{city_name}' не найден в cities_list.csv")
+        print("\nДоступные города:")
+        
+        # Показать первые 10 городов для справки
+        with open(cities_csv, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            seen_names = set()
+            count = 0
+            for row in reader:
+                if row['name'] not in seen_names:
+                    print(f"  • {row['name']} ({row['country']})")
+                    seen_names.add(row['name'])
+                    count += 1
+                    if count >= 10:
+                        print("  ...")
+                        break
+        sys.exit(1)
+    
+    return matching_cities
 
 
 def calculate_polygon_bounds(coordinates):
@@ -382,10 +431,14 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Примеры использования:
-  python3 fetch_zones.py                  # Все города
+  python3 fetch_zones.py                     # Все города
+  python3 fetch_zones.py --city "Сочи"       # Только указанный город
   python3 fetch_zones.py --continue_from 15  # Продолжить с города #15
         """
     )
+    
+    parser.add_argument('--city', type=str,
+                       help='Название города из cities_list.csv (например: Сочи)')
     
     parser.add_argument('--continue_from', type=int, metavar='N',
                        help='Продолжить с города N')
@@ -412,6 +465,52 @@ def main():
     base_dir = Path(__file__).parent
     cities_geojson = base_dir / 'output' / 'cities.geojson'
     output_dir = base_dir / 'output' / 'city_zones'
+    
+    # Если указан --city, обрабатываем только этот город
+    if args.city:
+        city_zones = find_cities_by_name(args.city)
+        
+        if len(city_zones) > 1:
+            print(f"🌍 Город '{args.city}' содержит {len(city_zones)} зон")
+        
+        print()
+        
+        # Обработка всех зон города
+        total_zones = 0
+        for idx, zone in enumerate(city_zones, 1):
+            if len(city_zones) > 1:
+                print(f"\n{'=' * 80}")
+                print(f"📍 Зона {idx}/{len(city_zones)}: {zone['id']}")
+                print(f"{'=' * 80}")
+            
+            bbox = zone['bbox']
+            location = [(bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2]
+            
+            print(f"   📍 Bbox: {bbox}")
+            print(f"   📍 Center: {location}")
+            
+            # Загрузка зон
+            zones = fetch_city_zones(zone['id'], location, bbox, args.zoom, headers)
+            
+            if zones:
+                # Сохранение
+                output_path = save_city_zones(zone['id'], zones, output_dir)
+                print(f"   ✅ Сохранено {len(zones)} зон → {output_path.name}")
+                total_zones += len(zones)
+            else:
+                print(f"   ⚠️  Зоны не найдены")
+            
+            # Задержка между запросами
+            if idx < len(city_zones):
+                time.sleep(args.delay)
+        
+        print(f"\n{'=' * 80}")
+        print(f"✅ Город '{args.city}' обработан!")
+        print(f"   • Обработано зон города: {len(city_zones)}")
+        print(f"   • Найдено зон API: {total_zones}")
+        print(f"{'=' * 80}")
+        
+        return
     
     # Загрузка городов
     print(f"📥 Загружаю список городов из {cities_geojson.name}...")

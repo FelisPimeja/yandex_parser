@@ -132,6 +132,9 @@ python3 fetch_cities.py --delay 0.2
 # Загрузить зоны для всех городов
 python3 fetch_zones.py
 
+# Загрузить зоны только для указанного города
+python3 fetch_zones.py --city "Сочи"
+
 # Продолжить с города #15 (после ошибки)
 python3 fetch_zones.py --continue_from 15
 
@@ -289,7 +292,10 @@ python3 fetch_scooters.py --city "Минск" --with-full-info --delay 0.3
 
 **Использование:**
 ```bash
-# По произвольному bbox (Сочи)
+# По названию города
+python3 fetch_parkings.py --city "Сочи"
+
+# По произвольному bbox
 python3 fetch_parkings.py --bbox 39.6,43.4,39.9,43.7
 
 # С настройками
@@ -297,6 +303,7 @@ python3 fetch_parkings.py --bbox 39.6,43.4,39.9,43.7 --delay 0.2
 ```
 
 **Параметры:**
+- `--city`: Название города из `cities_list.csv` (например, `Сочи`, `Омск`)
 - `--bbox`: Bounding box `min_lon,min_lat,max_lon,max_lat`
 - `--delay`: Задержка между запросами в секундах (по умолчанию: 0.1)
 

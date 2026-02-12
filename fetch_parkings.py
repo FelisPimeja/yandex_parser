@@ -5,6 +5,7 @@
 
 Использование:
     python3 fetch_parkings.py --bbox 39.6,43.4,39.9,43.7
+    python3 fetch_parkings.py --city "Сочи"
 """
 
 # Импортируем всё из fetch_scooters
@@ -23,8 +24,55 @@ from fetch_scooters import (
 
 import json
 import time
+import csv
 import argparse
 from datetime import datetime
+
+def find_cities_by_name(city_name):
+    """
+    Ищет все зоны города по названию в cities_list.csv.
+    Возвращает список словарей с полями: id, name, country, bbox
+    """
+    cities_csv = Path(__file__).parent / 'cities_list.csv'
+    
+    if not cities_csv.exists():
+        print("❌ Ошибка: файл cities_list.csv не найден!")
+        print("Сначала запустите: python3 geocode_cities.py")
+        sys.exit(1)
+    
+    matching_cities = []
+    
+    with open(cities_csv, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row['name'].lower() == city_name.lower():
+                matching_cities.append({
+                    'id': row['id'],
+                    'name': row['name'],
+                    'country': row['country'],
+                    'bbox': [float(x) for x in row['bbox'].split(',')]
+                })
+    
+    if not matching_cities:
+        print(f"❌ Город '{city_name}' не найден в cities_list.csv")
+        print("\nДоступные города:")
+        
+        # Показать первые 10 городов для справки
+        with open(cities_csv, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            seen_names = set()
+            count = 0
+            for row in reader:
+                if row['name'] not in seen_names:
+                    print(f"  • {row['name']} ({row['country']})")
+                    seen_names.add(row['name'])
+                    count += 1
+                    if count >= 10:
+                        print("  ...")
+                        break
+        sys.exit(1)
+    
+    return matching_cities
 
 def extract_parkings_only(data):
     """Извлекает только парковки из ответа API."""
@@ -145,15 +193,61 @@ def save_geojson(parkings_dict, output_path, city_id):
     return stats
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('city_id', nargs='?')
-    parser.add_argument('--bbox', type=str)
-    parser.add_argument('--delay', type=float, default=0.1)
+    parser = argparse.ArgumentParser(description='Парсинг парковок Yandex Go')
+    parser.add_argument('city_id', nargs='?', help='ID города из cities.geojson')
+    parser.add_argument('--bbox', type=str, help='Custom bbox: min_lon,min_lat,max_lon,max_lat')
+    parser.add_argument('--city', type=str, help='Название города из cities_list.csv')
+    parser.add_argument('--delay', type=float, default=0.1, help='Задержка между запросами')
     args = parser.parse_args()
     
-    headers = load_config()
+    headers, _ = load_config()  # load_config возвращает (headers, payment_methods)
     
-    if args.bbox:
+    # Обработка --city
+    if args.city:
+        city_zones = find_cities_by_name(args.city)
+        
+        if len(city_zones) > 1:
+            print(f"🌍 Город '{args.city}' содержит {len(city_zones)} зон, обрабатываю последовательно...")
+        
+        all_parkings = {}
+        total_time = 0
+        
+        for idx, zone in enumerate(city_zones, 1):
+            if len(city_zones) > 1:
+                print(f"\n{'=' * 80}")
+                print(f"📍 Зона {idx}/{len(city_zones)}: {zone['id']}")
+                print(f"{'=' * 80}")
+            
+            zone_start = time.time()
+            
+            parkings = fetch_city_parkings(zone['bbox'], zone['id'], headers, delay=args.delay)
+            
+            zone_time = time.time() - zone_start
+            total_time += zone_time
+            
+            all_parkings.update(parkings)
+            
+            if len(city_zones) > 1:
+                print(f"   ✓ Зона {idx}: {len(parkings):,} парковок за {zone_time/60:.1f} мин")
+        
+        # Сохранение объединённых результатов
+        output_path = Path(__file__).parent / 'output' / 'parkings.geojson'
+        stats = save_geojson(all_parkings, output_path, args.city)
+        
+        print(f"\n{'=' * 80}")
+        print(f"✅ Парсинг завершён!")
+        print(f"   • Город: {args.city}")
+        print(f"   • Обработано зон: {len(city_zones)}")
+        print(f"   • Парковок с самокатами: {stats['cluster']:,}")
+        print(f"   • Пустых парковок: {stats['cluster_empty']:,}")
+        print(f"   • Самокатов на парковках: {stats['total_scooters']:,}")
+        print(f"   • Общее время: {total_time/60:.1f} минут")
+        print(f"   • Сохранено в: {output_path}")
+        print(f"{'=' * 80}")
+        
+        return
+    
+    elif args.bbox:
         parts = args.bbox.split(',')
         city_bbox = [float(x) for x in parts]
         city_id = f"custom_{int(time.time())}"
@@ -162,7 +256,7 @@ def main():
         city_bbox = get_polygon_bbox(city_feature['geometry']['coordinates'])
         city_id = args.city_id
     else:
-        print("❌ Укажите city_id или --bbox")
+        print("❌ Укажите city_id, --city или --bbox")
         sys.exit(1)
     
     start_time = time.time()
