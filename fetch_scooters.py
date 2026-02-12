@@ -9,7 +9,8 @@
 Использование:
     python3 fetch_scooters.py polygon-184332  # По ID города из cities.geojson
     python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7  # По custom bbox
-    python3 fetch_scooters.py polygon-184332 --with-full-info --delay 0.3  # С полной информацией
+    python3 fetch_scooters.py --city "Минск"  # По названию города из cities_list.csv
+    python3 fetch_scooters.py --city "Омск" --with-full-info --delay 0.3  # С полной информацией
 """
 
 import json
@@ -17,6 +18,7 @@ import os
 import sys
 import argparse
 import time
+import csv
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
@@ -46,6 +48,53 @@ def load_config():
     payment_methods = config.get('payment_methods', [{"type": "card"}])
     
     return headers, payment_methods
+
+
+def find_cities_by_name(city_name):
+    """
+    Ищет все зоны города по названию в cities_list.csv.
+    Возвращает список словарей с полями: id, name, country, bbox
+    """
+    cities_csv = Path(__file__).parent / 'cities_list.csv'
+    
+    if not cities_csv.exists():
+        print("❌ Ошибка: файл cities_list.csv не найден!")
+        print("Сначала запустите: python3 geocode_cities.py")
+        sys.exit(1)
+    
+    matching_cities = []
+    
+    with open(cities_csv, 'r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row['name'].lower() == city_name.lower():
+                matching_cities.append({
+                    'id': row['id'],
+                    'name': row['name'],
+                    'country': row['country'],
+                    'bbox': [float(x) for x in row['bbox'].split(',')]
+                })
+    
+    if not matching_cities:
+        print(f"❌ Город '{city_name}' не найден в cities_list.csv")
+        print("\nДоступные города:")
+        
+        # Показать первые 10 городов для справки
+        with open(cities_csv, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            seen_names = set()
+            count = 0
+            for row in reader:
+                if row['name'] not in seen_names:
+                    print(f"  • {row['name']} ({row['country']})")
+                    seen_names.add(row['name'])
+                    count += 1
+                    if count >= 10:
+                        print("  ...")
+                        break
+        sys.exit(1)
+    
+    return matching_cities
 
 
 def load_city_polygon(city_id):
@@ -681,6 +730,7 @@ def main():
     parser = argparse.ArgumentParser(description='Полный парсинг самокатов города')
     parser.add_argument('city_id', nargs='?', help='ID города из cities.geojson (например: polygon-184332)')
     parser.add_argument('--bbox', type=str, help='Custom bbox: min_lon,min_lat,max_lon,max_lat')
+    parser.add_argument('--city', type=str, help='Название города из cities_list.csv (например: Минск)')
     parser.add_argument('--min-cluster', type=int, default=50,
                        help='Минимальный размер кластера для рекурсии (по умолчанию: 50)')
     parser.add_argument('--delay', type=float, default=0.1,
@@ -694,8 +744,80 @@ def main():
     # Загрузка конфигурации
     headers, payment_methods = load_config()
     
-    # Определение bbox
-    if args.bbox:
+    # Определение bbox и city_id
+    if args.city:
+        # Поиск города по названию в cities_list.csv
+        city_zones = find_cities_by_name(args.city)
+        
+        if len(city_zones) > 1:
+            print(f"🌍 Город '{args.city}' содержит {len(city_zones)} зон, обрабатываю последовательно...")
+        
+        all_scooters = []
+        total_time = 0
+        
+        for idx, zone in enumerate(city_zones, 1):
+            if len(city_zones) > 1:
+                print(f"\n{'=' * 80}")
+                print(f"📍 Зона {idx}/{len(city_zones)}: {zone['id']}")
+                print(f"{'=' * 80}")
+            
+            zone_start = time.time()
+            
+            scooters = fetch_city_scooters(
+                zone['bbox'],
+                zone['id'],
+                headers,
+                payment_methods,
+                min_cluster_size=args.min_cluster,
+                delay=args.delay,
+                with_full_info=args.with_full_info
+            )
+            
+            zone_time = time.time() - zone_start
+            total_time += zone_time
+            
+            # Объединяем результаты
+            for scooter_id, scooter_data in scooters.items():
+                if scooter_id != '__metadata__':
+                    all_scooters.append((scooter_id, scooter_data))
+            
+            if len(city_zones) > 1:
+                # Подсчёт самокатов (исключая кластеры в режиме full-info)
+                zone_scooters = sum(1 for sid, _ in all_scooters if sid.startswith('scooter_'))
+                print(f"   ✓ Зона {idx}: {zone_scooters:,} самокатов за {zone_time/60:.1f} мин")
+        
+        # Преобразуем обратно в словарь для save_geojson
+        scooters_dict = dict(all_scooters)
+        
+        # Сохранение объединённых результатов
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        city_id_safe = args.city.lower().replace(' ', '_')
+        
+        if args.with_full_info:
+            output_dir = Path(__file__).parent / 'output'
+            output_filename = f'scooters_full_info_{city_id_safe}_{timestamp}.geojson'
+        else:
+            output_dir = Path(__file__).parent / 'output' / 'city_scooters'
+            output_filename = f'{city_id_safe}_{timestamp}.geojson'
+        
+        output_path = output_dir / output_filename
+        
+        stats = save_geojson(scooters_dict, output_path, args.city, full_info_mode=args.with_full_info)
+        
+        print(f"\n{'=' * 80}")
+        print(f"✅ Парсинг завершён!")
+        print(f"   • Город: {args.city}")
+        print(f"   • Обработано зон: {len(city_zones)}")
+        print(f"   • Всего самокатов: {stats['scooters']:,}")
+        if not args.with_full_info:
+            print(f"   • Кластеров: {stats['clusters']:,}")
+        print(f"   • Общее время: {total_time/60:.1f} минут")
+        print(f"   • Сохранено в: {output_path}")
+        print(f"{'=' * 80}")
+        
+        return
+    
+    elif args.bbox:
         parts = args.bbox.split(',')
         if len(parts) != 4:
             print("❌ Ошибка: bbox должен содержать 4 значения")
@@ -707,7 +829,7 @@ def main():
         city_bbox = get_polygon_bbox(city_feature['geometry']['coordinates'])
         city_id = args.city_id
     else:
-        print("❌ Ошибка: укажите city_id или --bbox")
+        print("❌ Ошибка: укажите city_id, --city или --bbox")
         parser.print_help()
         sys.exit(1)
     

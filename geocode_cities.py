@@ -33,6 +33,17 @@ def get_polygon_center(coordinates):
     
     return (sum(lons) / len(lons), sum(lats) / len(lats))
 
+def get_polygon_bbox(coordinates):
+    """Вычисляет bbox полигона [min_lon, min_lat, max_lon, max_lat]"""
+    if not coordinates or not coordinates[0]:
+        return None
+    
+    ring = coordinates[0]
+    lons = [p[0] for p in ring]
+    lats = [p[1] for p in ring]
+    
+    return [min(lons), min(lats), max(lons), max(lats)]
+
 # Справочник городов: (lon, lat, название, страна)
 KNOWN_CITIES = [
     # Россия - крупные города
@@ -147,8 +158,9 @@ def main():
     for feature in cities_data['features']:
         city_id = feature['id']
         center = get_polygon_center(feature['geometry']['coordinates'])
+        bbox = get_polygon_bbox(feature['geometry']['coordinates'])
         
-        if center:
+        if center and bbox:
             lon, lat = center
             city_name, country = find_nearest_city(lon, lat, max_distance_km=50)
             
@@ -162,7 +174,8 @@ def main():
                 'name': city_name,
                 'country': country,
                 'lon': f'{lon:.6f}',
-                'lat': f'{lat:.6f}'
+                'lat': f'{lat:.6f}',
+                'bbox': f"{bbox[0]:.6f},{bbox[1]:.6f},{bbox[2]:.6f},{bbox[3]:.6f}"
             })
     
     # Сортируем по стране и городу
@@ -185,9 +198,9 @@ def main():
         print(f"   • {name_col} | {id_col} | {coords}")
     
     # Сохраняем в CSV
-    csv_path = Path('output/cities_list.csv')
+    csv_path = Path('cities_list.csv')
     with open(csv_path, 'w', encoding='utf-8', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=['id', 'name', 'country', 'lon', 'lat'])
+        writer = csv.DictWriter(f, fieldnames=['id', 'name', 'country', 'lon', 'lat', 'bbox'])
         writer.writeheader()
         writer.writerows(cities_info)
     

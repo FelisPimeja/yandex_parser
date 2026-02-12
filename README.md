@@ -32,11 +32,12 @@ python3 fetch_cities.py
 python3 fetch_zones.py
 
 # 3️⃣ Загрузить самокаты в городе (комбинированный подход)
-python3 fetch_scooters.py polygon-184332  # Сочи (по ID из cities.geojson)
-python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7  # Или по custom bbox
+python3 fetch_scooters.py polygon-184332  # По ID из cities.geojson
+python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7  # По custom bbox
+python3 fetch_scooters.py --city "Сочи"  # По названию из cities_list.csv
 
 # 4️⃣ (Опционально) С полной информацией: батарея, цены, страховка
-python3 fetch_scooters.py polygon-184332 --with-full-info --delay 0.3
+python3 fetch_scooters.py --city "Минск" --with-full-info --delay 0.3
 ```
 
 ## 📁 Структура проекта
@@ -181,15 +182,20 @@ python3 fetch_zones.py --zoom 17.0 --delay 0.2
 # По ID города из cities.geojson
 python3 fetch_scooters.py polygon-184332
 
-# Или по произвольному bbox (Сочи)
+# По названию города (автоматически обработает все зоны)
+python3 fetch_scooters.py --city "Сочи"
+python3 fetch_scooters.py --city "Омск"  # Автоматически обработает 10 зон
+
+# Или по произвольному bbox
 python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7
 
 # С настройками
-python3 fetch_scooters.py --bbox 39.6,43.4,39.9,43.7 --min-cluster 10 --delay 0.2
+python3 fetch_scooters.py --city "Минск" --with-full-info --delay 0.3
 ```
 
 **Параметры:**
 - `city_id`: ID города из `cities.geojson` (например, `polygon-184332`)
+- `--city`: Название города из `cities_list.csv` (например, `Сочи`, `Омск`)
 - `--bbox`: Альтернативный bbox `min_lon,min_lat,max_lon,max_lat`
 - `--min-cluster`: Минимальный размер кластера для рекурсии (по умолчанию: 50)
 - `--delay`: Задержка между запросами в секундах (по умолчанию: 0.1)
